@@ -1,0 +1,42 @@
+.form-controls{
+    text-align: right;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+.form-controls .btn{
+    margin-top: 1rem;
+    margin-left: 10px;
+}
+.form-control{
+    height: auto;
+}
+p.btn{
+    cursor: text;
+    opacity: .65;
+}
+.previous-fieldset,
+.submit-button{
+    display: none;
+}
+.progress-bar {
+    height: 30px;
+    position: relative;
+    background: #eee;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: .25rem;
+}
+.progress-bar .progress-bg {
+    display: block;
+    height: 100%;
+    background-color: #28a745;
+    overflow: hidden;
+    width: 0%;
+}
+.progress-bar .progress-text {
+    position: absolute;
+    padding: 10px;
+}
+
+form.val-min-h-auto{
+    min-height: auto !important;
+}
