@@ -139,7 +139,7 @@ require_once('header.php');
 											</div>
 											<div>
 												<label class="mr-3">Build Date</label>
-												<label class="badge badge-secondary">01-August-2023</label>
+												<label class="badge badge-secondary">17-August-2023</label>
 											</div>
 											<div>
 												<label class="mr-3">Application Version</label>
@@ -251,14 +251,6 @@ require_once('header.php');
 													<label class="text-danger"><i class="mdi mdi-close"></i> <?php echo 'Failed to check'; ?></label>
 												<?php } ?>
 											</div>
-											<div>
-												<label class="mr-3">Ioncube</label>
-												<?php if(ioncube_installed()){ ?>
-													<label class="text-success"><i class="mdi mdi-check"></i> <?php echo 'Checked'; ?></label>
-												<?php }else{ ?>
-													<label class="text-danger"><i class="mdi mdi-close"></i> <?php echo 'Failed to check'; ?></label>
-												<?php } ?>
-											</div>
 										</div>
 									</div>
 								</fieldset>
@@ -316,7 +308,6 @@ require_once('header.php');
 									<div class="text-right">
 										<input type="button" id="chk_submit" class="btn btn-sm btn-danger" value="Test Connection">
 									</div>
-									<br>
 								</fieldset>
 								<fieldset>
 									<div class="form-top">

@@ -19,16 +19,6 @@ function curl_installed()
         return false;
     }
 }
-function ioncube_installed()
-{
-    if(extension_loaded("IonCube Loader")){
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
 
 // PDO
 function pdo_installed(){

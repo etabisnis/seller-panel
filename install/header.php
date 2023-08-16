@@ -3,7 +3,7 @@
 <head>
 
 	<!-- Browser Bar Icon -->
-	<link rel="shortcut icon" href="../fav-icon.png" />
+	<link rel="shortcut icon" href="../icon.png" />
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,5 +26,5 @@
 				<div class="col-lg-12">
 					<div>
 						<div class="text-center">
-							<img width="100px" src="../<?php echo APP_DEFAULT_LOGO; ?>" alt="" class="mb-4" />
+							<img width="150px" src="../<?php echo APP_DEFAULT_LOGO; ?>" alt="" class="mb-4" />
 						</div>
