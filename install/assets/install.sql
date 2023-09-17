@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 17, 2023 at 12:06 PM
+-- Generation Time: Sep 17, 2023 at 03:24 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -42,6 +42,13 @@ CREATE TABLE `account` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`id`, `usercode`, `fullname`, `username`, `password`, `email`, `phone`, `ipregistered`, `verify`, `status`, `role`, `created`) VALUES
+(1, 'a85d790085', 'Administrator', 'admin123', 'MDE5MjAyM2E3YmJkNzMyNTA1MTZmMDY5ZGYxOGI1MDA=', 'admin@admin.com', '6281111111111', '127.0.0.1', NULL, '1', '1', '2023-09-17 08:23:43');
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +82,13 @@ CREATE TABLE `logs` (
   `datainfo` varchar(150) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`id`, `recipient`, `message`, `datainfo`, `created`) VALUES
+(1, '6281111111111', 'Dear Administrator\n\nYour Account Has Been Registered\nDetail:\nFullname : Administrator\nEmail : admin@admin.com\nPhone : 6281111111111\nPassword : ************ \n\nActivate your account via the link : http://seller/system/activated?code=kj12L60YTIZVUcg9ggC2m65IZmkuhi48TR8x8ZxMPx6iHotUBq6HZCLC3WLJCqRNweqQzhMfDdeUs4ZV7ROaiWEbbDskxM5JodlQ', 'silahkan disi semua parameter yang dibutuhkan', '2023-09-17 08:23:44');
 
 -- --------------------------------------------------------
 
@@ -224,7 +238,7 @@ ALTER TABLE `website`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(35) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `devices`
@@ -236,7 +250,7 @@ ALTER TABLE `devices`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment`
