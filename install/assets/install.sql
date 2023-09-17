@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 17, 2023 at 03:24 PM
+-- Generation Time: Sep 17, 2023 at 05:32 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -82,13 +82,6 @@ CREATE TABLE `logs` (
   `datainfo` varchar(150) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `logs`
---
-
-INSERT INTO `logs` (`id`, `recipient`, `message`, `datainfo`, `created`) VALUES
-(1, '6281111111111', 'Dear Administrator\n\nYour Account Has Been Registered\nDetail:\nFullname : Administrator\nEmail : admin@admin.com\nPhone : 6281111111111\nPassword : ************ \n\nActivate your account via the link : http://seller/system/activated?code=kj12L60YTIZVUcg9ggC2m65IZmkuhi48TR8x8ZxMPx6iHotUBq6HZCLC3WLJCqRNweqQzhMfDdeUs4ZV7ROaiWEbbDskxM5JodlQ', 'silahkan disi semua parameter yang dibutuhkan', '2023-09-17 08:23:44');
 
 -- --------------------------------------------------------
 
@@ -182,7 +175,7 @@ CREATE TABLE `website` (
 --
 
 INSERT INTO `website` (`id`, `unix`, `icon`, `logo`, `name`, `url`, `whatsapp`, `unbanned`, `host`, `apikey`, `notif`, `owner`, `status`) VALUES
-(1, NULL, 'default.png', 'default.png', 'Seller System', NULL, 45000, 100000, NULL, NULL, 0, NULL, 1);
+(1, NULL, 'default.png', 'default.png', 'WAGW Pro', 'http://seller/system', 45000, 100000, NULL, NULL, 0, NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -250,7 +243,7 @@ ALTER TABLE `devices`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment`
