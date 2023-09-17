@@ -1,39 +1,172 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-VQqYFms7drilDCU0kBEt6TlJ
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 2.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * CodeIgniter Dummy Caching Class
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	Core
+ * @author		EllisLab Dev Team
+ * @link
+ */
+class CI_Cache_dummy extends CI_Driver {
+
+	/**
+	 * Get
+	 *
+	 * Since this is the dummy class, it's always going to return FALSE.
+	 *
+	 * @param	string
+	 * @return	bool	FALSE
+	 */
+	public function get($id)
+	{
+		return FALSE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Cache Save
+	 *
+	 * @param	string	Unique Key
+	 * @param	mixed	Data to store
+	 * @param	int	Length of time (in seconds) to cache the data
+	 * @param	bool	Whether to store the raw value
+	 * @return	bool	TRUE, Simulating success
+	 */
+	public function save($id, $data, $ttl = 60, $raw = FALSE)
+	{
+		return TRUE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Delete from Cache
+	 *
+	 * @param	mixed	unique identifier of the item in the cache
+	 * @return	bool	TRUE, simulating success
+	 */
+	public function delete($id)
+	{
+		return TRUE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Increment a raw value
+	 *
+	 * @param	string	$id	Cache ID
+	 * @param	int	$offset	Step/value to add
+	 * @return	mixed	New value on success or FALSE on failure
+	 */
+	public function increment($id, $offset = 1)
+	{
+		return TRUE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Decrement a raw value
+	 *
+	 * @param	string	$id	Cache ID
+	 * @param	int	$offset	Step/value to reduce by
+	 * @return	mixed	New value on success or FALSE on failure
+	 */
+	public function decrement($id, $offset = 1)
+	{
+		return TRUE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Clean the cache
+	 *
+	 * @return	bool	TRUE, simulating success
+	 */
+	public function clean()
+	{
+		return TRUE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Cache Info
+	 *
+	 * @param	string	user/filehits
+	 * @return	bool	FALSE
+	 */
+	 public function cache_info($type = NULL)
+	 {
+		 return FALSE;
+	 }
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Get Cache Metadata
+	 *
+	 * @param	mixed	key to get cache metadata on
+	 * @return	bool	FALSE
+	 */
+	public function get_metadata($id)
+	{
+		return FALSE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Is this caching driver supported on the system?
+	 * Of course this one is.
+	 *
+	 * @return	bool	TRUE
+	 */
+	public function is_supported()
+	{
+		return TRUE;
+	}
+
+}

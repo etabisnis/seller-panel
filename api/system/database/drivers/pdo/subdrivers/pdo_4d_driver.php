@@ -1,80 +1,200 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-fzjQ6AnN5yfMJzwwcVpJjyc24+aTjN+QU84=
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 3.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * PDO 4D Database Adapter Class
+ *
+ * Note: _DB is an extender class that the app controller
+ * creates dynamically based on whether the query builder
+ * class is being used or not.
+ *
+ * @package		CodeIgniter
+ * @subpackage	Drivers
+ * @category	Database
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/database/
+ */
+class CI_DB_pdo_4d_driver extends CI_DB_pdo_driver {
+
+	/**
+	 * Sub-driver
+	 *
+	 * @var	string
+	 */
+	public $subdriver = '4d';
+
+	/**
+	 * Identifier escape character
+	 *
+	 * @var	string[]
+	 */
+	protected $_escape_char = array('[', ']');
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Class constructor
+	 *
+	 * Builds the DSN if not already set.
+	 *
+	 * @param	array	$params
+	 * @return	void
+	 */
+	public function __construct($params)
+	{
+		parent::__construct($params);
+
+		if (empty($this->dsn))
+		{
+			$this->dsn = '4D:host='.(empty($this->hostname) ? '127.0.0.1' : $this->hostname);
+
+			empty($this->port) OR $this->dsn .= ';port='.$this->port;
+			empty($this->database) OR $this->dsn .= ';dbname='.$this->database;
+			empty($this->char_set) OR $this->dsn .= ';charset='.$this->char_set;
+		}
+		elseif ( ! empty($this->char_set) && strpos($this->dsn, 'charset=', 3) === FALSE)
+		{
+			$this->dsn .= ';charset='.$this->char_set;
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Show table query
+	 *
+	 * Generates a platform-specific query string so that the table names can be fetched
+	 *
+	 * @param	bool	$prefix_limit
+	 * @return	string
+	 */
+	protected function _list_tables($prefix_limit = FALSE)
+	{
+		$sql = 'SELECT '.$this->escape_identifiers('TABLE_NAME').' FROM '.$this->escape_identifiers('_USER_TABLES');
+
+		if ($prefix_limit === TRUE && $this->dbprefix !== '')
+		{
+			$sql .= ' WHERE '.$this->escape_identifiers('TABLE_NAME')." LIKE '".$this->escape_like_str($this->dbprefix)."%' "
+				.sprintf($this->_like_escape_str, $this->_like_escape_chr);
+		}
+
+		return $sql;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Show column query
+	 *
+	 * Generates a platform-specific query string so that the column names can be fetched
+	 *
+	 * @param	string	$table
+	 * @return	string
+	 */
+	protected function _list_columns($table = '')
+	{
+		return 'SELECT '.$this->escape_identifiers('COLUMN_NAME').' FROM '.$this->escape_identifiers('_USER_COLUMNS')
+			.' WHERE '.$this->escape_identifiers('TABLE_NAME').' = '.$this->escape($table);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Field data query
+	 *
+	 * Generates a platform-specific query so that the column data can be retrieved
+	 *
+	 * @param	string	$table
+	 * @return	string
+	 */
+	protected function _field_data($table)
+	{
+		return 'SELECT * FROM '.$this->protect_identifiers($table, TRUE, NULL, FALSE).' LIMIT 1';
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Update statement
+	 *
+	 * Generates a platform-specific update string from the supplied data
+	 *
+	 * @param	string	$table
+	 * @param	array	$values
+	 * @return	string
+	 */
+	protected function _update($table, $values)
+	{
+		$this->qb_limit = FALSE;
+		$this->qb_orderby = array();
+		return parent::_update($table, $values);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Delete statement
+	 *
+	 * Generates a platform-specific delete string from the supplied data
+	 *
+	 * @param	string	$table
+	 * @return	string
+	 */
+	protected function _delete($table)
+	{
+		$this->qb_limit = FALSE;
+		return parent::_delete($table);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * LIMIT
+	 *
+	 * Generates a platform-specific LIMIT clause
+	 *
+	 * @param	string	$sql	SQL Query
+	 * @return	string
+	 */
+	protected function _limit($sql)
+	{
+		return $sql.' LIMIT '.$this->qb_limit.($this->qb_offset ? ' OFFSET '.$this->qb_offset : '');
+	}
+
+}

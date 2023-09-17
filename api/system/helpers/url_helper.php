@@ -1,215 +1,569 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-Nw8dY/F5bWD4m7USovMUkXILwFi=
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * CodeIgniter URL Helpers
+ *
+ * @package		CodeIgniter
+ * @subpackage	Helpers
+ * @category	Helpers
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/helpers/url_helper.html
+ */
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('site_url'))
+{
+	/**
+	 * Site URL
+	 *
+	 * Create a local URL based on your basepath. Segments can be passed via the
+	 * first parameter either as a string or an array.
+	 *
+	 * @param	string	$uri
+	 * @param	string	$protocol
+	 * @return	string
+	 */
+	function site_url($uri = '', $protocol = NULL)
+	{
+		return get_instance()->config->site_url($uri, $protocol);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('base_url'))
+{
+	/**
+	 * Base URL
+	 *
+	 * Create a local URL based on your basepath.
+	 * Segments can be passed in as a string or an array, same as site_url
+	 * or a URL to a file can be passed in, e.g. to an image file.
+	 *
+	 * @param	string	$uri
+	 * @param	string	$protocol
+	 * @return	string
+	 */
+	function base_url($uri = '', $protocol = NULL)
+	{
+		return get_instance()->config->base_url($uri, $protocol);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('current_url'))
+{
+	/**
+	 * Current URL
+	 *
+	 * Returns the full URL (including segments) of the page where this
+	 * function is placed
+	 *
+	 * @return	string
+	 */
+	function current_url()
+	{
+		$CI =& get_instance();
+		return $CI->config->site_url($CI->uri->uri_string());
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('uri_string'))
+{
+	/**
+	 * URL String
+	 *
+	 * Returns the URI segments.
+	 *
+	 * @return	string
+	 */
+	function uri_string()
+	{
+		return get_instance()->uri->uri_string();
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('index_page'))
+{
+	/**
+	 * Index page
+	 *
+	 * Returns the "index_page" from your config file
+	 *
+	 * @return	string
+	 */
+	function index_page()
+	{
+		return get_instance()->config->item('index_page');
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('anchor'))
+{
+	/**
+	 * Anchor Link
+	 *
+	 * Creates an anchor based on the local URL.
+	 *
+	 * @param	string	the URL
+	 * @param	string	the link title
+	 * @param	mixed	any attributes
+	 * @return	string
+	 */
+	function anchor($uri = '', $title = '', $attributes = '')
+	{
+		$title = (string) $title;
+
+		$site_url = is_array($uri)
+			? site_url($uri)
+			: (preg_match('#^(\w+:)?//#i', $uri) ? $uri : site_url($uri));
+
+		if ($title === '')
+		{
+			$title = $site_url;
+		}
+
+		if ($attributes !== '')
+		{
+			$attributes = _stringify_attributes($attributes);
+		}
+
+		return '<a href="'.$site_url.'"'.$attributes.'>'.$title.'</a>';
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('anchor_popup'))
+{
+	/**
+	 * Anchor Link - Pop-up version
+	 *
+	 * Creates an anchor based on the local URL. The link
+	 * opens a new window based on the attributes specified.
+	 *
+	 * @param	string	the URL
+	 * @param	string	the link title
+	 * @param	mixed	any attributes
+	 * @return	string
+	 */
+	function anchor_popup($uri = '', $title = '', $attributes = FALSE)
+	{
+		$title = (string) $title;
+		$site_url = preg_match('#^(\w+:)?//#i', $uri) ? $uri : site_url($uri);
+
+		if ($title === '')
+		{
+			$title = $site_url;
+		}
+
+		if ($attributes === FALSE)
+		{
+			return '<a href="'.$site_url.'" onclick="window.open(\''.$site_url."', '_blank'); return false;\">".$title.'</a>';
+		}
+
+		if ( ! is_array($attributes))
+		{
+			$attributes = array($attributes);
+
+			// Ref: http://www.w3schools.com/jsref/met_win_open.asp
+			$window_name = '_blank';
+		}
+		elseif ( ! empty($attributes['window_name']))
+		{
+			$window_name = $attributes['window_name'];
+			unset($attributes['window_name']);
+		}
+		else
+		{
+			$window_name = '_blank';
+		}
+
+		foreach (array('width' => '800', 'height' => '600', 'scrollbars' => 'yes', 'menubar' => 'no', 'status' => 'yes', 'resizable' => 'yes', 'screenx' => '0', 'screeny' => '0') as $key => $val)
+		{
+			$atts[$key] = isset($attributes[$key]) ? $attributes[$key] : $val;
+			unset($attributes[$key]);
+		}
+
+		$attributes = _stringify_attributes($attributes);
+
+		return '<a href="'.$site_url
+			.'" onclick="window.open(\''.$site_url."', '".$window_name."', '"._stringify_attributes($atts, TRUE)."'); return false;\""
+			.$attributes.'>'.$title.'</a>';
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('mailto'))
+{
+	/**
+	 * Mailto Link
+	 *
+	 * @param	string	the email address
+	 * @param	string	the link title
+	 * @param	mixed	any attributes
+	 * @return	string
+	 */
+	function mailto($email, $title = '', $attributes = '')
+	{
+		$title = (string) $title;
+
+		if ($title === '')
+		{
+			$title = $email;
+		}
+
+		return '<a href="mailto:'.$email.'"'._stringify_attributes($attributes).'>'.$title.'</a>';
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('safe_mailto'))
+{
+	/**
+	 * Encoded Mailto Link
+	 *
+	 * Create a spam-protected mailto link written in Javascript
+	 *
+	 * @param	string	the email address
+	 * @param	string	the link title
+	 * @param	mixed	any attributes
+	 * @return	string
+	 */
+	function safe_mailto($email, $title = '', $attributes = '')
+	{
+		$title = (string) $title;
+
+		if ($title === '')
+		{
+			$title = $email;
+		}
+
+		$x = str_split('<a href="mailto:', 1);
+
+		for ($i = 0, $l = strlen($email); $i < $l; $i++)
+		{
+			$x[] = '|'.ord($email[$i]);
+		}
+
+		$x[] = '"';
+
+		if ($attributes !== '')
+		{
+			if (is_array($attributes))
+			{
+				foreach ($attributes as $key => $val)
+				{
+					$x[] = ' '.$key.'="';
+					for ($i = 0, $l = strlen($val); $i < $l; $i++)
+					{
+						$x[] = '|'.ord($val[$i]);
+					}
+					$x[] = '"';
+				}
+			}
+			else
+			{
+				for ($i = 0, $l = strlen($attributes); $i < $l; $i++)
+				{
+					$x[] = $attributes[$i];
+				}
+			}
+		}
+
+		$x[] = '>';
+
+		$temp = array();
+		for ($i = 0, $l = strlen($title); $i < $l; $i++)
+		{
+			$ordinal = ord($title[$i]);
+
+			if ($ordinal < 128)
+			{
+				$x[] = '|'.$ordinal;
+			}
+			else
+			{
+				if (count($temp) === 0)
+				{
+					$count = ($ordinal < 224) ? 2 : 3;
+				}
+
+				$temp[] = $ordinal;
+				if (count($temp) === $count)
+				{
+					$number = ($count === 3)
+							? (($temp[0] % 16) * 4096) + (($temp[1] % 64) * 64) + ($temp[2] % 64)
+							: (($temp[0] % 32) * 64) + ($temp[1] % 64);
+					$x[] = '|'.$number;
+					$count = 1;
+					$temp = array();
+				}
+			}
+		}
+
+		$x[] = '<'; $x[] = '/'; $x[] = 'a'; $x[] = '>';
+
+		$x = array_reverse($x);
+
+		$output = "<script type=\"text/javascript\">\n"
+			."\t//<![CDATA[\n"
+			."\tvar l=new Array();\n";
+
+		for ($i = 0, $c = count($x); $i < $c; $i++)
+		{
+			$output .= "\tl[".$i."] = '".$x[$i]."';\n";
+		}
+
+		$output .= "\n\tfor (var i = l.length-1; i >= 0; i=i-1) {\n"
+			."\t\tif (l[i].substring(0, 1) === '|') document.write(\"&#\"+unescape(l[i].substring(1))+\";\");\n"
+			."\t\telse document.write(unescape(l[i]));\n"
+			."\t}\n"
+			."\t//]]>\n"
+			.'</script>';
+
+		return $output;
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('auto_link'))
+{
+	/**
+	 * Auto-linker
+	 *
+	 * Automatically links URL and Email addresses.
+	 * Note: There's a bit of extra code here to deal with
+	 * URLs or emails that end in a period. We'll strip these
+	 * off and add them after the link.
+	 *
+	 * @param	string	the string
+	 * @param	string	the type: email, url, or both
+	 * @param	bool	whether to create pop-up links
+	 * @return	string
+	 */
+	function auto_link($str, $type = 'both', $popup = FALSE)
+	{
+		// Find and replace any URLs.
+		if ($type !== 'email' && preg_match_all('#(\w*://|www\.)[a-z0-9]+(-+[a-z0-9]+)*(\.[a-z0-9]+(-+[a-z0-9]+)*)+(/([^\s()<>;]+\w)?/?)?#i', $str, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER))
+		{
+			// Set our target HTML if using popup links.
+			$target = ($popup) ? ' target="_blank" rel="noopener"' : '';
+
+			// We process the links in reverse order (last -> first) so that
+			// the returned string offsets from preg_match_all() are not
+			// moved as we add more HTML.
+			foreach (array_reverse($matches) as $match)
+			{
+				// $match[0] is the matched string/link
+				// $match[1] is either a protocol prefix or 'www.'
+				//
+				// With PREG_OFFSET_CAPTURE, both of the above is an array,
+				// where the actual value is held in [0] and its offset at the [1] index.
+				$a = '<a href="'.(strpos($match[1][0], '/') ? '' : 'http://').$match[0][0].'"'.$target.'>'.$match[0][0].'</a>';
+				$str = substr_replace($str, $a, $match[0][1], strlen($match[0][0]));
+			}
+		}
+
+		// Find and replace any emails.
+		if ($type !== 'url' && preg_match_all('#([\w\.\-\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+[^[:punct:]\s])#i', $str, $matches, PREG_OFFSET_CAPTURE))
+		{
+			foreach (array_reverse($matches[0]) as $match)
+			{
+				if (filter_var($match[0], FILTER_VALIDATE_EMAIL) !== FALSE)
+				{
+					$str = substr_replace($str, safe_mailto($match[0]), $match[1], strlen($match[0]));
+				}
+			}
+		}
+
+		return $str;
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('prep_url'))
+{
+	/**
+	 * Prep URL
+	 *
+	 * Simply adds the http:// part if no scheme is included
+	 *
+	 * @param	string	the URL
+	 * @return	string
+	 */
+	function prep_url($str = '')
+	{
+		if ($str === 'http://' OR $str === '')
+		{
+			return '';
+		}
+
+		$url = parse_url($str);
+
+		if ( ! $url OR ! isset($url['scheme']))
+		{
+			return 'http://'.$str;
+		}
+
+		return $str;
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('url_title'))
+{
+	/**
+	 * Create URL Title
+	 *
+	 * Takes a "title" string as input and creates a
+	 * human-friendly URL string with a "separator" string
+	 * as the word separator.
+	 *
+	 * @todo	Remove old 'dash' and 'underscore' usage in 3.1+.
+	 * @param	string	$str		Input string
+	 * @param	string	$separator	Word separator
+	 *			(usually '-' or '_')
+	 * @param	bool	$lowercase	Whether to transform the output string to lowercase
+	 * @return	string
+	 */
+	function url_title($str, $separator = '-', $lowercase = FALSE)
+	{
+		if ($separator === 'dash')
+		{
+			$separator = '-';
+		}
+		elseif ($separator === 'underscore')
+		{
+			$separator = '_';
+		}
+
+		$q_separator = preg_quote($separator, '#');
+
+		$trans = array(
+			'&.+?;'			=> '',
+			'[^\w\d _-]'		=> '',
+			'\s+'			=> $separator,
+			'('.$q_separator.')+'	=> $separator
+		);
+
+		$str = strip_tags($str);
+		foreach ($trans as $key => $val)
+		{
+			$str = preg_replace('#'.$key.'#i'.(UTF8_ENABLED ? 'u' : ''), $val, $str);
+		}
+
+		if ($lowercase === TRUE)
+		{
+			$str = strtolower($str);
+		}
+
+		return trim(trim($str, $separator));
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('redirect'))
+{
+	/**
+	 * Header Redirect
+	 *
+	 * Header redirect in two flavors
+	 * For very fine grained control over headers, you could use the Output
+	 * Library's set_header() function.
+	 *
+	 * @param	string	$uri	URL
+	 * @param	string	$method	Redirect method
+	 *			'auto', 'location' or 'refresh'
+	 * @param	int	$code	HTTP Response status code
+	 * @return	void
+	 */
+	function redirect($uri = '', $method = 'auto', $code = NULL)
+	{
+		if ( ! preg_match('#^(\w+:)?//#i', $uri))
+		{
+			$uri = site_url($uri);
+		}
+
+		// IIS environment likely? Use 'refresh' for better compatibility
+		if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE)
+		{
+			$method = 'refresh';
+		}
+		elseif ($method !== 'refresh' && (empty($code) OR ! is_numeric($code)))
+		{
+			if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1')
+			{
+				$code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
+					? 303	// reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
+					: 307;
+			}
+			else
+			{
+				$code = 302;
+			}
+		}
+
+		switch ($method)
+		{
+			case 'refresh':
+				header('Refresh:0;url='.$uri);
+				break;
+			default:
+				header('Location: '.$uri, TRUE, $code);
+				break;
+		}
+		exit;
+	}
+}

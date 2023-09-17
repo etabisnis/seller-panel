@@ -1,34 +1,60 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-EU9qPsZAIpjANWfU9mhMYPN7zzD4es2PrUW=
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+$lang['profiler_database'] = 'DATABASE';
+$lang['profiler_controller_info'] = 'CLASS/METHOD';
+$lang['profiler_benchmarks'] = 'BENCHMARKS';
+$lang['profiler_queries'] = 'QUERIES';
+$lang['profiler_get_data'] = 'GET DATA';
+$lang['profiler_post_data'] = 'POST DATA';
+$lang['profiler_uri_string'] = 'URI STRING';
+$lang['profiler_memory_usage'] = 'MEMORY USAGE';
+$lang['profiler_config'] = 'CONFIG VARIABLES';
+$lang['profiler_session_data'] = 'SESSION DATA';
+$lang['profiler_headers'] = 'HTTP HEADERS';
+$lang['profiler_no_db'] = 'Database driver is not currently loaded';
+$lang['profiler_no_queries'] = 'No queries were run';
+$lang['profiler_no_post'] = 'No POST data exists';
+$lang['profiler_no_get'] = 'No GET data exists';
+$lang['profiler_no_uri'] = 'No URI data exists';
+$lang['profiler_no_memory'] = 'Memory Usage Unavailable';
+$lang['profiler_no_profiles'] = 'No Profile data - all Profiler sections have been disabled.';
+$lang['profiler_section_hide'] = 'Hide';
+$lang['profiler_section_show'] = 'Show';
+$lang['profiler_seconds'] = 'seconds';

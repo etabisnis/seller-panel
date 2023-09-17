@@ -1,61 +1,182 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-koe=
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.3.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Postgres Result Class
+ *
+ * This class extends the parent result class: CI_DB_result
+ *
+ * @package		CodeIgniter
+ * @subpackage	Drivers
+ * @category	Database
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/database/
+ */
+class CI_DB_postgre_result extends CI_DB_result {
+
+	/**
+	 * Number of rows in the result set
+	 *
+	 * @return	int
+	 */
+	public function num_rows()
+	{
+		return is_int($this->num_rows)
+			? $this->num_rows
+			: $this->num_rows = pg_num_rows($this->result_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Number of fields in the result set
+	 *
+	 * @return	int
+	 */
+	public function num_fields()
+	{
+		return pg_num_fields($this->result_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Fetch Field Names
+	 *
+	 * Generates an array of column names
+	 *
+	 * @return	array
+	 */
+	public function list_fields()
+	{
+		$field_names = array();
+		for ($i = 0, $c = $this->num_fields(); $i < $c; $i++)
+		{
+			$field_names[] = pg_field_name($this->result_id, $i);
+		}
+
+		return $field_names;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Field data
+	 *
+	 * Generates an array of objects containing field meta-data
+	 *
+	 * @return	array
+	 */
+	public function field_data()
+	{
+		$retval = array();
+		for ($i = 0, $c = $this->num_fields(); $i < $c; $i++)
+		{
+			$retval[$i]			= new stdClass();
+			$retval[$i]->name		= pg_field_name($this->result_id, $i);
+			$retval[$i]->type		= pg_field_type($this->result_id, $i);
+			$retval[$i]->max_length		= pg_field_size($this->result_id, $i);
+		}
+
+		return $retval;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Free the result
+	 *
+	 * @return	void
+	 */
+	public function free_result()
+	{
+		if (is_resource($this->result_id))
+		{
+			pg_free_result($this->result_id);
+			$this->result_id = FALSE;
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Data Seek
+	 *
+	 * Moves the internal pointer to the desired offset. We call
+	 * this internally before fetching results to make sure the
+	 * result set starts at zero.
+	 *
+	 * @param	int	$n
+	 * @return	bool
+	 */
+	public function data_seek($n = 0)
+	{
+		return pg_result_seek($this->result_id, $n);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Result - associative array
+	 *
+	 * Returns the result set as an array
+	 *
+	 * @return	array
+	 */
+	protected function _fetch_assoc()
+	{
+		return pg_fetch_assoc($this->result_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Result - object
+	 *
+	 * Returns the result set as an object
+	 *
+	 * @param	string	$class_name
+	 * @return	object
+	 */
+	protected function _fetch_object($class_name = 'stdClass')
+	{
+		return pg_fetch_object($this->result_id, NULL, $class_name);
+	}
+
+}

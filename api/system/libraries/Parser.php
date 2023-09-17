@@ -1,80 +1,248 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Parser Class
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	Parser
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/libraries/parser.html
+ */
+class CI_Parser {
+
+	/**
+	 * Left delimiter character for pseudo vars
+	 *
+	 * @var string
+	 */
+	public $l_delim = '{';
+
+	/**
+	 * Right delimiter character for pseudo vars
+	 *
+	 * @var string
+	 */
+	public $r_delim = '}';
+
+	/**
+	 * Reference to CodeIgniter instance
+	 *
+	 * @var object
+	 */
+	protected $CI;
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Class constructor
+	 *
+	 * @return	void
+	 */
+	public function __construct()
+	{
+		$this->CI =& get_instance();
+		log_message('info', 'Parser Class Initialized');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Parse a template
+	 *
+	 * Parses pseudo-variables contained in the specified template view,
+	 * replacing them with the data in the second param
+	 *
+	 * @param	string
+	 * @param	array
+	 * @param	bool
+	 * @return	string
+	 */
+	public function parse($template, $data, $return = FALSE)
+	{
+		$template = $this->CI->load->view($template, $data, TRUE);
+
+		return $this->_parse($template, $data, $return);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Parse a String
+	 *
+	 * Parses pseudo-variables contained in the specified string,
+	 * replacing them with the data in the second param
+	 *
+	 * @param	string
+	 * @param	array
+	 * @param	bool
+	 * @return	string
+	 */
+	public function parse_string($template, $data, $return = FALSE)
+	{
+		return $this->_parse($template, $data, $return);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Parse a template
+	 *
+	 * Parses pseudo-variables contained in the specified template,
+	 * replacing them with the data in the second param
+	 *
+	 * @param	string
+	 * @param	array
+	 * @param	bool
+	 * @return	string
+	 */
+	protected function _parse($template, $data, $return = FALSE)
+	{
+		if ($template === '')
+		{
+			return FALSE;
+		}
+
+		$replace = array();
+		foreach ($data as $key => $val)
+		{
+			$replace = array_merge(
+				$replace,
+				is_array($val)
+					? $this->_parse_pair($key, $val, $template)
+					: $this->_parse_single($key, (string) $val, $template)
+			);
+		}
+
+		unset($data);
+		$template = strtr($template, $replace);
+
+		if ($return === FALSE)
+		{
+			$this->CI->output->append_output($template);
+		}
+
+		return $template;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Set the left/right variable delimiters
+	 *
+	 * @param	string
+	 * @param	string
+	 * @return	void
+	 */
+	public function set_delimiters($l = '{', $r = '}')
+	{
+		$this->l_delim = $l;
+		$this->r_delim = $r;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Parse a single key/value
+	 *
+	 * @param	string
+	 * @param	string
+	 * @param	string
+	 * @return	string
+	 */
+	protected function _parse_single($key, $val, $string)
+	{
+		return array($this->l_delim.$key.$this->r_delim => (string) $val);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Parse a tag pair
+	 *
+	 * Parses tag pairs: {some_tag} string... {/some_tag}
+	 *
+	 * @param	string
+	 * @param	array
+	 * @param	string
+	 * @return	string
+	 */
+	protected function _parse_pair($variable, $data, $string)
+	{
+		$replace = array();
+		preg_match_all(
+			'#'.preg_quote($this->l_delim.$variable.$this->r_delim).'(.+?)'.preg_quote($this->l_delim.'/'.$variable.$this->r_delim).'#s',
+			$string,
+			$matches,
+			PREG_SET_ORDER
+		);
+
+		foreach ($matches as $match)
+		{
+			$str = '';
+			foreach ($data as $row)
+			{
+				$temp = array();
+				foreach ($row as $key => $val)
+				{
+					if (is_array($val))
+					{
+						$pair = $this->_parse_pair($key, $val, $match[1]);
+						if ( ! empty($pair))
+						{
+							$temp = array_merge($temp, $pair);
+						}
+
+						continue;
+					}
+
+					$temp[$this->l_delim.$key.$this->r_delim] = $val;
+				}
+
+				$str .= strtr($match[1], $temp);
+			}
+
+			$replace[$match[0]] = $str;
+		}
+
+		return $replace;
+	}
+
+}

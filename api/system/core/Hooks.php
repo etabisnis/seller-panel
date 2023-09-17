@@ -1,82 +1,266 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Hooks Class
+ *
+ * Provides a mechanism to extend the base system without hacking.
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/general/hooks.html
+ */
+class CI_Hooks {
+
+	/**
+	 * Determines whether hooks are enabled
+	 *
+	 * @var	bool
+	 */
+	public $enabled = FALSE;
+
+	/**
+	 * List of all hooks set in config/hooks.php
+	 *
+	 * @var	array
+	 */
+	public $hooks =	array();
+
+	/**
+	 * Array with class objects to use hooks methods
+	 *
+	 * @var array
+	 */
+	protected $_objects = array();
+
+	/**
+	 * In progress flag
+	 *
+	 * Determines whether hook is in progress, used to prevent infinte loops
+	 *
+	 * @var	bool
+	 */
+	protected $_in_progress = FALSE;
+
+	/**
+	 * Class constructor
+	 *
+	 * @return	void
+	 */
+	public function __construct()
+	{
+		$CFG =& load_class('Config', 'core');
+		log_message('info', 'Hooks Class Initialized');
+
+		// If hooks are not enabled in the config file
+		// there is nothing else to do
+		if ($CFG->item('enable_hooks') === FALSE)
+		{
+			return;
+		}
+
+		// Grab the "hooks" definition file.
+		if (file_exists(APPPATH.'config/hooks.php'))
+		{
+			include(APPPATH.'config/hooks.php');
+		}
+
+		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/hooks.php'))
+		{
+			include(APPPATH.'config/'.ENVIRONMENT.'/hooks.php');
+		}
+
+		// If there are no hooks, we're done.
+		if ( ! isset($hook) OR ! is_array($hook))
+		{
+			return;
+		}
+
+		$this->hooks =& $hook;
+		$this->enabled = TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Call Hook
+	 *
+	 * Calls a particular hook. Called by CodeIgniter.php.
+	 *
+	 * @uses	CI_Hooks::_run_hook()
+	 *
+	 * @param	string	$which	Hook name
+	 * @return	bool	TRUE on success or FALSE on failure
+	 */
+	public function call_hook($which = '')
+	{
+		if ( ! $this->enabled OR ! isset($this->hooks[$which]))
+		{
+			return FALSE;
+		}
+
+		if (is_array($this->hooks[$which]) && ! isset($this->hooks[$which]['function']))
+		{
+			foreach ($this->hooks[$which] as $val)
+			{
+				$this->_run_hook($val);
+			}
+		}
+		else
+		{
+			$this->_run_hook($this->hooks[$which]);
+		}
+
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Run Hook
+	 *
+	 * Runs a particular hook
+	 *
+	 * @param	array	$data	Hook details
+	 * @return	bool	TRUE on success or FALSE on failure
+	 */
+	protected function _run_hook($data)
+	{
+		// Closures/lambda functions and array($object, 'method') callables
+		if (is_callable($data))
+		{
+			is_array($data)
+				? $data[0]->{$data[1]}()
+				: $data();
+
+			return TRUE;
+		}
+		elseif ( ! is_array($data))
+		{
+			return FALSE;
+		}
+
+		// -----------------------------------
+		// Safety - Prevents run-away loops
+		// -----------------------------------
+
+		// If the script being called happens to have the same
+		// hook call within it a loop can happen
+		if ($this->_in_progress === TRUE)
+		{
+			return;
+		}
+
+		// -----------------------------------
+		// Set file path
+		// -----------------------------------
+
+		if ( ! isset($data['filepath'], $data['filename']))
+		{
+			return FALSE;
+		}
+
+		$filepath = APPPATH.$data['filepath'].'/'.$data['filename'];
+
+		if ( ! file_exists($filepath))
+		{
+			return FALSE;
+		}
+
+		// Determine and class and/or function names
+		$class		= empty($data['class']) ? FALSE : $data['class'];
+		$function	= empty($data['function']) ? FALSE : $data['function'];
+		$params		= isset($data['params']) ? $data['params'] : '';
+
+		if (empty($function))
+		{
+			return FALSE;
+		}
+
+		// Set the _in_progress flag
+		$this->_in_progress = TRUE;
+
+		// Call the requested class and/or function
+		if ($class !== FALSE)
+		{
+			// The object is stored?
+			if (isset($this->_objects[$class]))
+			{
+				if (method_exists($this->_objects[$class], $function))
+				{
+					$this->_objects[$class]->$function($params);
+				}
+				else
+				{
+					return $this->_in_progress = FALSE;
+				}
+			}
+			else
+			{
+				class_exists($class, FALSE) OR require_once($filepath);
+
+				if ( ! class_exists($class, FALSE) OR ! method_exists($class, $function))
+				{
+					return $this->_in_progress = FALSE;
+				}
+
+				// Store the object and execute the method
+				$this->_objects[$class] = new $class();
+				$this->_objects[$class]->$function($params);
+			}
+		}
+		else
+		{
+			function_exists($function) OR require_once($filepath);
+
+			if ( ! function_exists($function))
+			{
+				return $this->_in_progress = FALSE;
+			}
+
+			$function($params);
+		}
+
+		$this->_in_progress = FALSE;
+		return TRUE;
+	}
+
+}

@@ -1,169 +1,567 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-/tQIXGgEmiibhGzoU3e=
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Shopping Cart Class
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	Shopping Cart
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/libraries/cart.html
+ * @deprecated	3.0.0	This class is too specific for CI.
+ */
+class CI_Cart {
+
+	/**
+	 * These are the regular expression rules that we use to validate the product ID and product name
+	 * alpha-numeric, dashes, underscores, or periods
+	 *
+	 * @var string
+	 */
+	public $product_id_rules = '\.a-z0-9_-';
+
+	/**
+	 * These are the regular expression rules that we use to validate the product ID and product name
+	 * alpha-numeric, dashes, underscores, colons or periods
+	 *
+	 * @var string
+	 */
+	public $product_name_rules = '\w \-\.\:';
+
+	/**
+	 * only allow safe product names
+	 *
+	 * @var bool
+	 */
+	public $product_name_safe = TRUE;
+
+	// --------------------------------------------------------------------------
+
+	/**
+	 * Reference to CodeIgniter instance
+	 *
+	 * @var object
+	 */
+	protected $CI;
+
+	/**
+	 * Contents of the cart
+	 *
+	 * @var array
+	 */
+	protected $_cart_contents = array();
+
+	/**
+	 * Shopping Class Constructor
+	 *
+	 * The constructor loads the Session class, used to store the shopping cart contents.
+	 *
+	 * @param	array
+	 * @return	void
+	 */
+	public function __construct($params = array())
+	{
+		// Set the super object to a local variable for use later
+		$this->CI =& get_instance();
+
+		// Are any config settings being passed manually?  If so, set them
+		$config = is_array($params) ? $params : array();
+
+		// Load the Sessions class
+		$this->CI->load->driver('session', $config);
+
+		// Grab the shopping cart array from the session table
+		$this->_cart_contents = $this->CI->session->userdata('cart_contents');
+		if ($this->_cart_contents === NULL)
+		{
+			// No cart exists so we'll set some base values
+			$this->_cart_contents = array('cart_total' => 0, 'total_items' => 0);
+		}
+
+		log_message('info', 'Cart Class Initialized');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Insert items into the cart and save it to the session table
+	 *
+	 * @param	array
+	 * @return	bool
+	 */
+	public function insert($items = array())
+	{
+		// Was any cart data passed? No? Bah...
+		if ( ! is_array($items) OR count($items) === 0)
+		{
+			log_message('error', 'The insert method must be passed an array containing data.');
+			return FALSE;
+		}
+
+		// You can either insert a single product using a one-dimensional array,
+		// or multiple products using a multi-dimensional one. The way we
+		// determine the array type is by looking for a required array key named "id"
+		// at the top level. If it's not found, we will assume it's a multi-dimensional array.
+
+		$save_cart = FALSE;
+		if (isset($items['id']))
+		{
+			if (($rowid = $this->_insert($items)))
+			{
+				$save_cart = TRUE;
+			}
+		}
+		else
+		{
+			foreach ($items as $val)
+			{
+				if (is_array($val) && isset($val['id']))
+				{
+					if ($this->_insert($val))
+					{
+						$save_cart = TRUE;
+					}
+				}
+			}
+		}
+
+		// Save the cart data if the insert was successful
+		if ($save_cart === TRUE)
+		{
+			$this->_save_cart();
+			return isset($rowid) ? $rowid : TRUE;
+		}
+
+		return FALSE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Insert
+	 *
+	 * @param	array
+	 * @return	bool
+	 */
+	protected function _insert($items = array())
+	{
+		// Was any cart data passed? No? Bah...
+		if ( ! is_array($items) OR count($items) === 0)
+		{
+			log_message('error', 'The insert method must be passed an array containing data.');
+			return FALSE;
+		}
+
+		// --------------------------------------------------------------------
+
+		// Does the $items array contain an id, quantity, price, and name?  These are required
+		if ( ! isset($items['id'], $items['qty'], $items['price'], $items['name']))
+		{
+			log_message('error', 'The cart array must contain a product ID, quantity, price, and name.');
+			return FALSE;
+		}
+
+		// --------------------------------------------------------------------
+
+		// Prep the quantity. It can only be a number.  Duh... also trim any leading zeros
+		$items['qty'] = (float) $items['qty'];
+
+		// If the quantity is zero or blank there's nothing for us to do
+		if ($items['qty'] == 0)
+		{
+			return FALSE;
+		}
+
+		// --------------------------------------------------------------------
+
+		// Validate the product ID. It can only be alpha-numeric, dashes, underscores or periods
+		// Not totally sure we should impose this rule, but it seems prudent to standardize IDs.
+		// Note: These can be user-specified by setting the $this->product_id_rules variable.
+		if ( ! preg_match('/^['.$this->product_id_rules.']+$/i', $items['id']))
+		{
+			log_message('error', 'Invalid product ID.  The product ID can only contain alpha-numeric characters, dashes, and underscores');
+			return FALSE;
+		}
+
+		// --------------------------------------------------------------------
+
+		// Validate the product name. It can only be alpha-numeric, dashes, underscores, colons or periods.
+		// Note: These can be user-specified by setting the $this->product_name_rules variable.
+		if ($this->product_name_safe && ! preg_match('/^['.$this->product_name_rules.']+$/i'.(UTF8_ENABLED ? 'u' : ''), $items['name']))
+		{
+			log_message('error', 'An invalid name was submitted as the product name: '.$items['name'].' The name can only contain alpha-numeric characters, dashes, underscores, colons, and spaces');
+			return FALSE;
+		}
+
+		// --------------------------------------------------------------------
+
+		// Prep the price. Remove leading zeros and anything that isn't a number or decimal point.
+		$items['price'] = (float) $items['price'];
+
+		// We now need to create a unique identifier for the item being inserted into the cart.
+		// Every time something is added to the cart it is stored in the master cart array.
+		// Each row in the cart array, however, must have a unique index that identifies not only
+		// a particular product, but makes it possible to store identical products with different options.
+		// For example, what if someone buys two identical t-shirts (same product ID), but in
+		// different sizes?  The product ID (and other attributes, like the name) will be identical for
+		// both sizes because it's the same shirt. The only difference will be the size.
+		// Internally, we need to treat identical submissions, but with different options, as a unique product.
+		// Our solution is to convert the options array to a string and MD5 it along with the product ID.
+		// This becomes the unique "row ID"
+		if (isset($items['options']) && count($items['options']) > 0)
+		{
+			$rowid = md5($items['id'].serialize($items['options']));
+		}
+		else
+		{
+			// No options were submitted so we simply MD5 the product ID.
+			// Technically, we don't need to MD5 the ID in this case, but it makes
+			// sense to standardize the format of array indexes for both conditions
+			$rowid = md5($items['id']);
+		}
+
+		// --------------------------------------------------------------------
+
+		// Now that we have our unique "row ID", we'll add our cart items to the master array
+		// grab quantity if it's already there and add it on
+		$old_quantity = isset($this->_cart_contents[$rowid]['qty']) ? (int) $this->_cart_contents[$rowid]['qty'] : 0;
+
+		// Re-create the entry, just to make sure our index contains only the data from this submission
+		$items['rowid'] = $rowid;
+		$items['qty'] += $old_quantity;
+		$this->_cart_contents[$rowid] = $items;
+
+		return $rowid;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Update the cart
+	 *
+	 * This function permits the quantity of a given item to be changed.
+	 * Typically it is called from the "view cart" page if a user makes
+	 * changes to the quantity before checkout. That array must contain the
+	 * product ID and quantity for each item.
+	 *
+	 * @param	array
+	 * @return	bool
+	 */
+	public function update($items = array())
+	{
+		// Was any cart data passed?
+		if ( ! is_array($items) OR count($items) === 0)
+		{
+			return FALSE;
+		}
+
+		// You can either update a single product using a one-dimensional array,
+		// or multiple products using a multi-dimensional one.  The way we
+		// determine the array type is by looking for a required array key named "rowid".
+		// If it's not found we assume it's a multi-dimensional array
+		$save_cart = FALSE;
+		if (isset($items['rowid']))
+		{
+			if ($this->_update($items) === TRUE)
+			{
+				$save_cart = TRUE;
+			}
+		}
+		else
+		{
+			foreach ($items as $val)
+			{
+				if (is_array($val) && isset($val['rowid']))
+				{
+					if ($this->_update($val) === TRUE)
+					{
+						$save_cart = TRUE;
+					}
+				}
+			}
+		}
+
+		// Save the cart data if the insert was successful
+		if ($save_cart === TRUE)
+		{
+			$this->_save_cart();
+			return TRUE;
+		}
+
+		return FALSE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Update the cart
+	 *
+	 * This function permits changing item properties.
+	 * Typically it is called from the "view cart" page if a user makes
+	 * changes to the quantity before checkout. That array must contain the
+	 * rowid and quantity for each item.
+	 *
+	 * @param	array
+	 * @return	bool
+	 */
+	protected function _update($items = array())
+	{
+		// Without these array indexes there is nothing we can do
+		if ( ! isset($items['rowid'], $this->_cart_contents[$items['rowid']]))
+		{
+			return FALSE;
+		}
+
+		// Prep the quantity
+		if (isset($items['qty']))
+		{
+			$items['qty'] = (float) $items['qty'];
+			// Is the quantity zero?  If so we will remove the item from the cart.
+			// If the quantity is greater than zero we are updating
+			if ($items['qty'] == 0)
+			{
+				unset($this->_cart_contents[$items['rowid']]);
+				return TRUE;
+			}
+		}
+
+		// find updatable keys
+		$keys = array_intersect(array_keys($this->_cart_contents[$items['rowid']]), array_keys($items));
+		// if a price was passed, make sure it contains valid data
+		if (isset($items['price']))
+		{
+			$items['price'] = (float) $items['price'];
+		}
+
+		// product id & name shouldn't be changed
+		foreach (array_diff($keys, array('id', 'name')) as $key)
+		{
+			$this->_cart_contents[$items['rowid']][$key] = $items[$key];
+		}
+
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Save the cart array to the session DB
+	 *
+	 * @return	bool
+	 */
+	protected function _save_cart()
+	{
+		// Let's add up the individual prices and set the cart sub-total
+		$this->_cart_contents['total_items'] = $this->_cart_contents['cart_total'] = 0;
+		foreach ($this->_cart_contents as $key => $val)
+		{
+			// We make sure the array contains the proper indexes
+			if ( ! is_array($val) OR ! isset($val['price'], $val['qty']))
+			{
+				continue;
+			}
+
+			$this->_cart_contents['cart_total'] += ($val['price'] * $val['qty']);
+			$this->_cart_contents['total_items'] += $val['qty'];
+			$this->_cart_contents[$key]['subtotal'] = ($this->_cart_contents[$key]['price'] * $this->_cart_contents[$key]['qty']);
+		}
+
+		// Is our cart empty? If so we delete it from the session
+		if (count($this->_cart_contents) <= 2)
+		{
+			$this->CI->session->unset_userdata('cart_contents');
+
+			// Nothing more to do... coffee time!
+			return FALSE;
+		}
+
+		// If we made it this far it means that our cart has data.
+		// Let's pass it to the Session class so it can be stored
+		$this->CI->session->set_userdata(array('cart_contents' => $this->_cart_contents));
+
+		// Woot!
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Cart Total
+	 *
+	 * @return	int
+	 */
+	public function total()
+	{
+		return $this->_cart_contents['cart_total'];
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Remove Item
+	 *
+	 * Removes an item from the cart
+	 *
+	 * @param	int
+	 * @return	bool
+	 */
+	 public function remove($rowid)
+	 {
+		// unset & save
+		unset($this->_cart_contents[$rowid]);
+		$this->_save_cart();
+		return TRUE;
+	 }
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Total Items
+	 *
+	 * Returns the total item count
+	 *
+	 * @return	int
+	 */
+	public function total_items()
+	{
+		return $this->_cart_contents['total_items'];
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Cart Contents
+	 *
+	 * Returns the entire cart array
+	 *
+	 * @param	bool
+	 * @return	array
+	 */
+	public function contents($newest_first = FALSE)
+	{
+		// do we want the newest first?
+		$cart = ($newest_first) ? array_reverse($this->_cart_contents) : $this->_cart_contents;
+
+		// Remove these so they don't create a problem when showing the cart table
+		unset($cart['total_items']);
+		unset($cart['cart_total']);
+
+		return $cart;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Get cart item
+	 *
+	 * Returns the details of a specific item in the cart
+	 *
+	 * @param	string	$row_id
+	 * @return	array
+	 */
+	public function get_item($row_id)
+	{
+		return (in_array($row_id, array('total_items', 'cart_total'), TRUE) OR ! isset($this->_cart_contents[$row_id]))
+			? FALSE
+			: $this->_cart_contents[$row_id];
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Has options
+	 *
+	 * Returns TRUE if the rowid passed to this function correlates to an item
+	 * that has options associated with it.
+	 *
+	 * @param	string	$row_id = ''
+	 * @return	bool
+	 */
+	public function has_options($row_id = '')
+	{
+		return (isset($this->_cart_contents[$row_id]['options']) && count($this->_cart_contents[$row_id]['options']) !== 0);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Product options
+	 *
+	 * Returns the an array of options, for a particular product row ID
+	 *
+	 * @param	string	$row_id = ''
+	 * @return	array
+	 */
+	public function product_options($row_id = '')
+	{
+		return isset($this->_cart_contents[$row_id]['options']) ? $this->_cart_contents[$row_id]['options'] : array();
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Format Number
+	 *
+	 * Returns the supplied number with commas and a decimal point.
+	 *
+	 * @param	float
+	 * @return	string
+	 */
+	public function format_number($n = '')
+	{
+		return ($n === '') ? '' : number_format( (float) $n, 2, '.', ',');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Destroy the cart
+	 *
+	 * Empties the cart and kills the session
+	 *
+	 * @return	void
+	 */
+	public function destroy()
+	{
+		$this->_cart_contents = array('cart_total' => 0, 'total_items' => 0);
+		$this->CI->session->unset_userdata('cart_contents');
+	}
+
+}

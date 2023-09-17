@@ -1,48 +1,113 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * CodeIgniter Cookie Helpers
+ *
+ * @package		CodeIgniter
+ * @subpackage	Helpers
+ * @category	Helpers
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/helpers/cookie_helper.html
+ */
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('set_cookie'))
+{
+	/**
+	 * Set cookie
+	 *
+	 * Accepts seven parameters, or you can submit an associative
+	 * array in the first parameter containing all the values.
+	 *
+	 * @param	mixed
+	 * @param	string	the value of the cookie
+	 * @param	string	the number of seconds until expiration
+	 * @param	string	the cookie domain.  Usually:  .yourdomain.com
+	 * @param	string	the cookie path
+	 * @param	string	the cookie prefix
+	 * @param	bool	true makes the cookie secure
+	 * @param	bool	true makes the cookie accessible via http(s) only (no javascript)
+	 * @return	void
+	 */
+	function set_cookie($name, $value = '', $expire = '', $domain = '', $path = '/', $prefix = '', $secure = NULL, $httponly = NULL)
+	{
+		// Set the config file options
+		get_instance()->input->set_cookie($name, $value, $expire, $domain, $path, $prefix, $secure, $httponly);
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('get_cookie'))
+{
+	/**
+	 * Fetch an item from the COOKIE array
+	 *
+	 * @param	string
+	 * @param	bool
+	 * @return	mixed
+	 */
+	function get_cookie($index, $xss_clean = NULL)
+	{
+		is_bool($xss_clean) OR $xss_clean = (config_item('global_xss_filtering') === TRUE);
+		$prefix = isset($_COOKIE[$index]) ? '' : config_item('cookie_prefix');
+		return get_instance()->input->cookie($prefix.$index, $xss_clean);
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('delete_cookie'))
+{
+	/**
+	 * Delete a COOKIE
+	 *
+	 * @param	mixed
+	 * @param	string	the cookie domain. Usually: .yourdomain.com
+	 * @param	string	the cookie path
+	 * @param	string	the cookie prefix
+	 * @return	void
+	 */
+	function delete_cookie($name, $domain = '', $path = '/', $prefix = '')
+	{
+		set_cookie($name, '', '', $domain, $path, $prefix);
+	}
+}

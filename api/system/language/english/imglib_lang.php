@@ -1,38 +1,57 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+$lang['imglib_source_image_required'] = 'You must specify a source image in your preferences.';
+$lang['imglib_gd_required'] = 'The GD image library is required for this feature.';
+$lang['imglib_gd_required_for_props'] = 'Your server must support the GD image library in order to determine the image properties.';
+$lang['imglib_unsupported_imagecreate'] = 'Your server does not support the GD function required to process this type of image.';
+$lang['imglib_gif_not_supported'] = 'GIF images are often not supported due to licensing restrictions. You may have to use JPG or PNG images instead.';
+$lang['imglib_jpg_not_supported'] = 'JPG images are not supported.';
+$lang['imglib_png_not_supported'] = 'PNG images are not supported.';
+$lang['imglib_jpg_or_png_required'] = 'The image resize protocol specified in your preferences only works with JPEG or PNG image types.';
+$lang['imglib_copy_error'] = 'An error was encountered while attempting to replace the file. Please make sure your file directory is writable.';
+$lang['imglib_rotate_unsupported'] = 'Image rotation does not appear to be supported by your server.';
+$lang['imglib_libpath_invalid'] = 'The path to your image library is not correct. Please set the correct path in your image preferences.';
+$lang['imglib_image_process_failed'] = 'Image processing failed. Please verify that your server supports the chosen protocol and that the path to your image library is correct.';
+$lang['imglib_rotation_angle_required'] = 'An angle of rotation is required to rotate the image.';
+$lang['imglib_invalid_path'] = 'The path to the image is not correct.';
+$lang['imglib_invalid_image'] = 'The provided image is not valid.';
+$lang['imglib_copy_failed'] = 'The image copy routine failed.';
+$lang['imglib_missing_font'] = 'Unable to find a font to use.';
+$lang['imglib_save_failed'] = 'Unable to save the image. Please make sure the image and file directory are writable.';

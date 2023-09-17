@@ -1,39 +1,115 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * CodeIgniter Array Helpers
+ *
+ * @package		CodeIgniter
+ * @subpackage	Helpers
+ * @category	Helpers
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/helpers/array_helper.html
+ */
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('element'))
+{
+	/**
+	 * Element
+	 *
+	 * Lets you determine whether an array index is set and whether it has a value.
+	 * If the element is empty it returns NULL (or whatever you specify as the default value.)
+	 *
+	 * @param	string
+	 * @param	array
+	 * @param	mixed
+	 * @return	mixed	depends on what the array contains
+	 */
+	function element($item, array $array, $default = NULL)
+	{
+		return array_key_exists($item, $array) ? $array[$item] : $default;
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('random_element'))
+{
+	/**
+	 * Random Element - Takes an array as input and returns a random element
+	 *
+	 * @param	array
+	 * @return	mixed	depends on what the array contains
+	 */
+	function random_element($array)
+	{
+		return is_array($array) ? $array[array_rand($array)] : $array;
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('elements'))
+{
+	/**
+	 * Elements
+	 *
+	 * Returns only the array items specified. Will return a default value if
+	 * it is not set.
+	 *
+	 * @param	array
+	 * @param	array
+	 * @param	mixed
+	 * @return	mixed	depends on what the array contains
+	 */
+	function elements($items, array $array, $default = NULL)
+	{
+		$return = array();
+
+		is_array($items) OR $items = array($items);
+
+		foreach ($items as $item)
+		{
+			$return[$item] = array_key_exists($item, $array) ? $array[$item] : $default;
+		}
+
+		return $return;
+	}
+}

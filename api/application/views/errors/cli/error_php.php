@@ -1,32 +1,21 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+A PHP Error was encountered
+
+Severity:    <?php echo $severity, "\n"; ?>
+Message:     <?php echo $message, "\n"; ?>
+Filename:    <?php echo $filepath, "\n"; ?>
+Line Number: <?php echo $line; ?>
+
+<?php if (defined('SHOW_DEBUG_BACKTRACE') && SHOW_DEBUG_BACKTRACE === TRUE): ?>
+
+Backtrace:
+<?php	foreach (debug_backtrace() as $error): ?>
+<?php		if (isset($error['file']) && strpos($error['file'], realpath(BASEPATH)) !== 0): ?>
+	File: <?php echo $error['file'], "\n"; ?>
+	Line: <?php echo $error['line'], "\n"; ?>
+	Function: <?php echo $error['function'], "\n\n"; ?>
+<?php		endif ?>
+<?php	endforeach ?>
+
+<?php endif ?>

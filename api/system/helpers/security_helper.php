@@ -1,50 +1,137 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-dfkmdkI0v3C3+w0jj/ncEQS=
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * CodeIgniter Security Helpers
+ *
+ * @package		CodeIgniter
+ * @subpackage	Helpers
+ * @category	Helpers
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/helpers/security_helper.html
+ */
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('xss_clean'))
+{
+	/**
+	 * XSS Filtering
+	 *
+	 * @param	string
+	 * @param	bool	whether or not the content is an image file
+	 * @return	string
+	 */
+	function xss_clean($str, $is_image = FALSE)
+	{
+		return get_instance()->security->xss_clean($str, $is_image);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('sanitize_filename'))
+{
+	/**
+	 * Sanitize Filename
+	 *
+	 * @param	string
+	 * @return	string
+	 */
+	function sanitize_filename($filename)
+	{
+		return get_instance()->security->sanitize_filename($filename);
+	}
+}
+
+// --------------------------------------------------------------------
+
+if ( ! function_exists('do_hash'))
+{
+	/**
+	 * Hash encode a string
+	 *
+	 * @todo	Remove in version 3.1+.
+	 * @deprecated	3.0.0	Use PHP's native hash() instead.
+	 * @param	string	$str
+	 * @param	string	$type = 'sha1'
+	 * @return	string
+	 */
+	function do_hash($str, $type = 'sha1')
+	{
+		if ( ! in_array(strtolower($type), hash_algos()))
+		{
+			$type = 'md5';
+		}
+
+		return hash($type, $str);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('strip_image_tags'))
+{
+	/**
+	 * Strip Image Tags
+	 *
+	 * @param	string
+	 * @return	string
+	 */
+	function strip_image_tags($str)
+	{
+		return get_instance()->security->strip_image_tags($str);
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('encode_php_tags'))
+{
+	/**
+	 * Convert PHP tags to entities
+	 *
+	 * @param	string
+	 * @return	string
+	 */
+	function encode_php_tags($str)
+	{
+		return str_replace(array('<?', '?>'), array('&lt;?', '?&gt;'), $str);
+	}
+}

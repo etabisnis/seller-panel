@@ -1,98 +1,221 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Database Cache Class
+ *
+ * @category	Database
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/database/
+ */
+class CI_DB_Cache {
+
+	/**
+	 * CI Singleton
+	 *
+	 * @var	object
+	 */
+	public $CI;
+
+	/**
+	 * Database object
+	 *
+	 * Allows passing of DB object so that multiple database connections
+	 * and returned DB objects can be supported.
+	 *
+	 * @var	object
+	 */
+	public $db;
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Constructor
+	 *
+	 * @param	object	&$db
+	 * @return	void
+	 */
+	public function __construct(&$db)
+	{
+		// Assign the main CI object to $this->CI and load the file helper since we use it a lot
+		$this->CI =& get_instance();
+		$this->db =& $db;
+		$this->CI->load->helper('file');
+
+		$this->check_path();
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Set Cache Directory Path
+	 *
+	 * @param	string	$path	Path to the cache directory
+	 * @return	bool
+	 */
+	public function check_path($path = '')
+	{
+		if ($path === '')
+		{
+			if ($this->db->cachedir === '')
+			{
+				return $this->db->cache_off();
+			}
+
+			$path = $this->db->cachedir;
+		}
+
+		// Add a trailing slash to the path if needed
+		$path = realpath($path)
+			? rtrim(realpath($path), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR
+			: rtrim($path, '/').'/';
+
+		if ( ! is_dir($path))
+		{
+			log_message('debug', 'DB cache path error: '.$path);
+
+			// If the path is wrong we'll turn off caching
+			return $this->db->cache_off();
+		}
+
+		if ( ! is_really_writable($path))
+		{
+			log_message('debug', 'DB cache dir not writable: '.$path);
+
+			// If the path is not really writable we'll turn off caching
+			return $this->db->cache_off();
+		}
+
+		$this->db->cachedir = $path;
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Retrieve a cached query
+	 *
+	 * The URI being requested will become the name of the cache sub-folder.
+	 * An MD5 hash of the SQL statement will become the cache file name.
+	 *
+	 * @param	string	$sql
+	 * @return	string
+	 */
+	public function read($sql)
+	{
+		$segment_one = ($this->CI->uri->segment(1) == FALSE) ? 'default' : $this->CI->uri->segment(1);
+		$segment_two = ($this->CI->uri->segment(2) == FALSE) ? 'index' : $this->CI->uri->segment(2);
+		$filepath = $this->db->cachedir.$segment_one.'+'.$segment_two.'/'.md5($sql);
+
+		if ( ! is_file($filepath) OR FALSE === ($cachedata = file_get_contents($filepath)))
+		{
+			return FALSE;
+		}
+
+		return unserialize($cachedata);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Write a query to a cache file
+	 *
+	 * @param	string	$sql
+	 * @param	object	$object
+	 * @return	bool
+	 */
+	public function write($sql, $object)
+	{
+		$segment_one = ($this->CI->uri->segment(1) == FALSE) ? 'default' : $this->CI->uri->segment(1);
+		$segment_two = ($this->CI->uri->segment(2) == FALSE) ? 'index' : $this->CI->uri->segment(2);
+		$dir_path = $this->db->cachedir.$segment_one.'+'.$segment_two.'/';
+		$filename = md5($sql);
+
+		if ( ! is_dir($dir_path) && ! @mkdir($dir_path, 0750))
+		{
+			return FALSE;
+		}
+
+		if (write_file($dir_path.$filename, serialize($object)) === FALSE)
+		{
+			return FALSE;
+		}
+
+		chmod($dir_path.$filename, 0640);
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Delete cache files within a particular directory
+	 *
+	 * @param	string	$segment_one
+	 * @param	string	$segment_two
+	 * @return	void
+	 */
+	public function delete($segment_one = '', $segment_two = '')
+	{
+		if ($segment_one === '')
+		{
+			$segment_one  = ($this->CI->uri->segment(1) == FALSE) ? 'default' : $this->CI->uri->segment(1);
+		}
+
+		if ($segment_two === '')
+		{
+			$segment_two = ($this->CI->uri->segment(2) == FALSE) ? 'index' : $this->CI->uri->segment(2);
+		}
+
+		$dir_path = $this->db->cachedir.$segment_one.'+'.$segment_two.'/';
+		delete_files($dir_path, TRUE);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Delete all existing cache files
+	 *
+	 * @return	void
+	 */
+	public function delete_all()
+	{
+		delete_files($this->db->cachedir, TRUE, TRUE);
+	}
+
+}

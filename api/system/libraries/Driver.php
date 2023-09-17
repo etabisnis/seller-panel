@@ -1,101 +1,342 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-HR+cPsSECXJ/2iM6Ms38fpVkKj4Mieh26AFDn0eGT+0uOaAIXqzGCpKp203w4FgFCOYkuURrV/l/
-wu8XILdxH4SbkXfkAegBiYbG53dZ9jzFqvKh7Xfnlb9e184CmiodVE1WeQ4rqx8tKq4T/7O2rR9l
-RKkVIKgQlR2alckleEOe9oywlXCM74jGzTHPiP5estldM9VVcepEGo7EwFAMheftTzkLNPmU9X9L
-jUi2xOaL/GUZ+bX/g7yL0vLa18kzzYqrp4Ome3geaHyibyh4eEb0IAmkGnQnDQ7Hzzr/PMH0lnid
-qqE5lfiq1UgNiMdjw05gzC77lWdOsQpmEtfhcOYsUtQF7I56jKTIQyjGfHTK9bdywhbtL1eWf9k/
-tMh0FzqxFK4OLEq6xavHpoLrdJyzFRurLde/+ioy8uq5iKtiFzrT+eRD7X3bcTcWT01AorEq4mk3
-/7qHyRsI21SjLM3uJFbPmLflN4hY6j9/yuI4aNR7BO1fHwfAxQ6rWwEu3mWOLrIQG9dfMs1BB5qC
-1n6yj8J6RWoChdQHBR/QcNJDsjHahoMyACg1L3qMFlX/1bHDy+EUWMDAMgWfqFIVDntIq7Gp+VVd
-/xt6+q4UsUdoPxtyuqVBCPzfIxegJ+y8yhDgbNvbGU4wHFea5SUoM3XbY8ounSbuMGZlSoGACrh6
-HwoutuM4w1LyEV7XxMyz2V4jOWj0ODzRKw242zwD0pTAgbTishuFFN/JcvOVVJi0TVURxwVyV657
-ci8zgTGnzp2V45FelwWAuvbDyYmIx8Hue/69NXQ8txOVsE2Din7GkNRg7xFI9R2h0ru1hfxKGIZt
-KlotnatgR8aDib9jhd+Xl7jE+v157kowxJgGpagx6qSETC6pAD1+9wL16geq5LxUquXrJAwuHMR8
-Y4H6Xh9/vxQTHqL+GErVrl6nB5kKDPCqZxYncCbv1Tc7/ttcnFrWXIgebVmoUA+QllvEIgK4pE8A
-JCXDaoZuhLING5r3wl6TkytT+OV+C8+foRyg/LmCnV21qzIR9kQtkr8rDprUUNLEYy8A9xCm++UA
-ankh8mctxmDImdwyI6WYQRqsvEA/tHU5E7WYypepu4R9aU+77KzPkFAbkkBYAoobbc33X+2QkgY1
-LRLeELgQBAgrNMXikJF7zlXMejiYeua9eQX9THRRss3XXTlChk2GeRojBowsUVpZZ7lY8oJcDERJ
-QkLxWxgECX/c/q9zGuT2/xrdSpDsoQQeQ8sp1jLuDcNTkwKSf8oBIdyQiBe9r4LDwzvo/gFEB0hy
-rfzxhmSafXPpIAO86zx7xGQsvW5m89cAarYYy1Pk09bRMFVt1y6HRYFZE7F5qiQtia37aOvZBrly
-zWcMC7h62/zYiuNbvkDxkamIw2rznNBoYhyTGsiVQwbOlMV8HvEwJpfTnDJX9Gvg14pzD7LldIIX
-ityacUratV7th18e/yGhGX2Hi5jtDEYsglvjdGUIvDhBeKCdiq2bkDcjHst7hGdSknovCX3QqoKJ
-wbDx7/JyM5p1pfCx6z5tU+yB/8l81n3ECnO7e1W/MmZotGepudfQgzNPcmYflwHLr9OfjRr8ZVRo
-yzpisbqdwNXcPkCqLPMLYxk2FKzj5GP8bzxfVMiiHEhLGOw2w0zqREEW/w5d93/x5NX1zuO2pHjK
-L6phE4C9zXTnx2iCCwBxlPIHChlyNPotOFUJsmkjvQR60c8uI0A517nfyAyKwXi8NWVydtkvwqc3
-Q4meWVqAopyWqgAIkU8SsK3YPP4SaVrjCYCsa6YeUV0uj2R51lL9vDvZNOWH0rK5t5ATng1jmYbS
-GnPyCDujON2lyefi1Lj1yFfDIevANJedv8gMhH7mTV4oemte9gIJG7zWK/d4j6nXAX4D3SDFUlaV
-vioJD+ww6uFqrPjk5xc074H42F+7G0Vp9b/dMmT6pWRYYEwtFKkGuyuiRhpptQr6PKpycCNRBLX9
-vVwhjeCE5roRPbBNlzN2iSRpD8M3EAS6cRSGXCm6uIyiP+6QpS2eC7KBsRJa4BqqFj1+BhD3Hf5A
-FaGHqYiJ8Cb0CV9+dRkYWKISNfTkoIw7ZIL4gtsB5U4p2SJwba5VjIWsxPW/Aco8pj6WC1FmaLZI
-9cnolbYFtPW3aem5t42sH2VZebtqRBSJyUiuJk7fkgwF6UiKQwh01SSVgHUoH6p0W6WCKB3tMeqn
-nsmvEinDPKPzw2g5audzxKg5d1j9WYq60zHmKPsfXqzso7k/bKlHmWmOQ6bJD60SANMKgrJH+OYD
-qPiFNnYgC2io5tnGAqCFN0OQwNZVDT5Gk+zc255sTh/5dB9trI052DCATjeo7GK1nxJwE/vBP9d9
-9JqzL7NMbs6KFjPijpVTVpLDQ3fXGNyVpo+nODL/bDFPG+y35HyXl6OHNuTaaJPo9z9HNJJ/9dxw
-JRNF3QiRP1gO8Z7+4jRABX0RusbkrWGfLe1TnVYgJrWVdxPSXDV91S00+rcIv/yXO3wee9azAVbn
-RKuVQ+j8wyvkgrJjBgE7ubgpXHEeIKmH1IOkFYlCYM8nw1vxRz3dQGLiR9JYTHQ4UeDS6kKXzbC3
-bHgWAKRj71qPeDS5+1bemjBlnHmcIrV/Ba6oE53JS5dHKYzLI16JcDubXDnET4CoesNqLw8iHfNC
-hafRRC1l0RI6Zm+b88PDBK1XFLyTgpK4umr9FcRVxqY9Jj0SINuXMCf5w1OCUjkPcuktWOCgnETE
-Ir7Rl2vYmxsRt5+1O+fiHAOkn9xcfFWLhDwHy6uEwHK5RLyGJHkjAzU8OsRScUgHxLOA9F8O2Mfl
-uzzhT9Uqxv0AOkTealDOAeafMyCgc93rwq/KFhuzh8K+x/hnXGp4KlOAJ181eDSMoL2zlDYBpQvV
-qkuvy6yNXDrxZ/UUyUKGzgG1omwXWTS5PgGJmODdeHEjrqHRQjyDEdnK/xJJ4L06aptGI4HhZyhQ
-46dsPPaJHdxlF/IPdpdRL10AOSlxQnMGJxDjdM8w1HmDgDO6+MqS/RF0hIfOHnQKEoww6jmd7MQq
-UDZuoxNYHOYwJH64/K1ksbYOMmpQnNXRkQ0kS8qU0wWttysVqJgVpy0+u4V4CFEYmRrGL8/0vXwv
-ega/4K50fqM+AYWf0PCPG7v+49EKupzIezvaT5cb57v39CrMCUJz9SOfXg/PLE8OpuA7jXoGOYBN
-6krwhf8TduKdKJ/2ptsDAUW0sdRBk4/FuAcqtM1SHft+fLkKRiBovW9US5EX5tQQYiKJbC80OYxN
-6jRx1wfbCfJB2hvj7KrqgV1IfKUk9dWvtwSgVJvL/s9wMVt1Wg2fcwia3x0b/zjr1Dc6s8wpkE7G
-USUsJY0605brTXHVao9/Zlxagy4Rx1nU9v9mmvfphHfOdvrcepUXbzvQZia5LwPPBFUedw8qQPpV
-MBHaOJw5gKppH1xkXrL3pTW4mKn3GvPLlARuoBUYY6VTyVQAO6BG09zqCAbtcboqgiVU0IKUz6K+
-ykm8MK6TUC82y9eEIh5sQ4mdZr+zsQI7+/xzUhTPhJeGFX/ROfpfnoXpjicIP47Mrnmm16TA9Och
-XPE0IZkHPbrvkUmci8RTWLZcYfPfGg0YyTN8CLGl3xQizUIxlmHsLLL7pm4MFNuzcJNJSoqFAn76
-tcWFX5Qc9+BkNNLGRtvBt0q8Y3ykABXGRZgBDuYuuk1j9q4Xr/8VQrPL2Tmh8tnASHlxjj6xAXOL
-QhmZ0BUEFZ76nHmwTeNOHIDnC7QRIkh8QdkV9VfIJ8d0HN/tt86CTAn8qKqnlRDPkCUgwt06i88U
-F+p6VlVaRhqjL75oRPVW1LoTy8mc4blz1xmjyzIVboToKt25BgJ3ZXRUc7rpQ0bFz8ILr8mZJTWl
-qcrsJuduADHf6HJ865b4OkaPO7sq3oF3Se9VsTxCa5XUw69NdMrMSG4eDWv1orXhL8py7eYsUKlg
-hPVuHUYq1Y24MgLezqQJcw6wAr0IuKuHXep2YeDHmIGHc9hdDfNCvH6sR9XlVSJeVwtWYSoIWVTZ
-ljedyZje24yKK9GFwtKYtkzHRAsfvRZR8eZMfkDllHEEUx1aqrVOzlaimGRFBfAorAkRrCfm2NNB
-Vn9xqnf2Kz/ZBWqs0JQJ0CfHmsV3tivUXCaXchuCuW6QNCDw8tPRyl3TzCGcqN6dsVPSVf8p0Stq
-IrENDhpzY+sB8jVxWobcbfO67o645acU8ULWnQpIQj6deiqmRtl1hv7L4Qrgkg47S11hGR+VHIWE
-lzOcp1kuZo49Y20rrMY8Z3CuHYPuD/rB+Ubc2VqX8cBMGPTQHfmGSFqzO0ylj0om25eR7+LxQEji
-qosPNExnMmPONJWmkza3Go5VXVwr2mACjGLrhIeOcVJham6EmtbecEKZa5/f2vgy/qO2SSIL4XKq
-fQvglZYYqCijehwOJP8fhy0iFRXfx8n00LixkRLm01qYeGV/o5dlXEyu/gsw6dFwRm6kzUJFBYUy
-w4xYMV5lZIY09o4H84Azj6ziTygsDlbHhm9kD+BTGDXmtAr/85gVAYfvAThS+9a/Lx8ejlJw1pyM
-mvkx4y53cbfKWDBYILMZNjZ/76V63RWBoDmBijwBI+cFJKU92hbId+42j1MddMHYWlksJRQ9FeYN
-tvXYwuMkx1aN20FPIehEkt5vGyaBoQ+DuzdEZqrelvG4Jlkad46Stf+LnM71PyrxidAm1L2Jo1yq
-b0fGFXH51BHMYykgKpP1OyEUOH6o2I03KhXPU6R4Cvq22slbbgj8bNyN49+yH13MDLCHbtm1fGzq
-/ZHiKbyxNOydH1HqEBIMHrz4j1oIi5Q6+A4RKYJYk5eTHeILTcCq0RA8mok1S4J9hr5DNTSUE3L6
-WcnJpsrrznb1zPAcs7+omXlBvY2vqQPp41Fa7mxo6rMauLvbzOl5WbF+ZmMcW4gleI3i6t1NJasI
-q1PERzKBXi4ktPeYYSZYO7OKP5qQWKtrL3lpYKTDo1edeau9LFQXOpkYLAfq2y6pEXk2bwSSYEny
-MTcfGitIJR2CeXCoamGVRzbRn8sK/btWDJfZDDi7MjMHwZH90kF7JhPXlCHJaum9W0JTBAYlfHe5
-rZBhwDfZqiQ8NU8rzfVTq97degHoavTGbs6cbNu/nCfG9Iu9PiVmQtmsU50sEu7DQNcS1HvyWRgK
-vHPOoOQCSY/y4LPG2oB296FKupNjGCev3ZfTG04MGqGansf+R9/Ru839bWKxis/lZRQLTW3fXf/Q
-fU0plHLsbbmjhRRhg4JnsqKsrl+0sxGh4Qz6J6OifExP45aEfClgvdedGk5cLSqdq5LLLybGYObt
-jlIiV9c4BgoeJ27EcEEJSXtMeU1zudSw33gxmvxNiWJTB1d0DVU1yGgGYd/58ZPYZVnl96i40Ev8
-R+yxO/Utpzt3yM6q64MQAYezRW5toS0P7PO5+omwIC11Fu4iEqpXmlMpUXrWl0JwDtvcNAjIwHEQ
-V67ew/WEu/AJJ3qQOMDzHfbgAlv5mFBj7d9ix29y8aDx3IgLZbIwzvAFVcp+EnJqlUFbaz+tgOZ8
-DezQVfboCufAdcGYsluYgG/a5tTkTzjqdR6lQkUhCye8CbNwN7ghigL3QZ2TeJSE+eB6fwMp+8IT
-Hj1PDl+3GzcZqx2tZrYoHygVqodNJQKpGMkkdrlS2jZdP13vV4hJoPJDEy7T76gddzA1DeA0/TtS
-DZW2LigUY9UI05pWdJFj1hu3BjsA04PunytrFy+IO4F/eu3Iskh6794T2Cy+zwTIh5RxE/8jSJJk
-zdFjGV8uSP2DR1WFts5xrnB02FJdX2lVLUom1oBJxkSRP8+P+TE2cNliIvBptD3XURCDajS/AF6v
-mR5S/Oxcz7y5XwbNrCL/wmrwK9TVVxQQc3UXOvE7cVBGgIi6i4rUx3Jt8ab5cEtX1rYSlCgSjobc
-5clAfTdUZ86wRp67+F+y9T2oVnLHuREgZxiaGEPNvIe/JP52AUg1mJsUuGjINEXXKw/npeRMH47z
-iS3yaKqlSObH3MCCegCrLnI/SZg28uPCnd+D5VSAFmMYjYeBtK6sd7QAA4IN843BoVZP82VseLCD
-HD6UMCOBezFKDbB1Sfjz+54SjmkkQEtkzGoyQ7dHKQUuN9OByv3tGhpHCKyrOrtdsWoY10K83O7G
-yjkSbSVTMPRBw1N0Na6q9jKNGHZJhmVbSLtdB2g6GyQHVSarQ+y8If3nRWBfwTV6dBFkT+JXtlkL
-09CbkrP4AV9rZWbKJ6bSvgq827oNDmArw9CgVd9r8hMA3W4xEdUoZdoFcQAB1ueTpbOXilxVqa6b
-2Tuu0O8++Xge6Q0Bwe4ePL0+gRJdausPPwkQQajo+pMO9WqRk2S2HGMGARf7KvWOppagSPIZa1Li
-DJFRxLxvZIys2SHFTOeWp5VKLvP/UHBRtDI6UUghnYLIWo6CjipvgTWN80XCEltN9wdvsqn2SvCt
-vpDkHiwYHT2ebGz5ylGgZMm2bvWE2CirwNYbIFmXZenVrOMf5rYf2XbrEQhwqK0d3JG6AE/IFwE3
-MvOpwSeIfYxR/SUYBzR05qPSxRJQ/WffQgzewB9KK/RN54v83bzimiaEWxvA9zqbmgOkuQPk+7GZ
-DZNw2+rVMwgroQMBViCh2L9mVRsNg2REbxDAu6tRk7TI53ujAst9YonAePtcC9VYaFDXx0iHZer5
-XQ/MkqZsph7HhVR7uSEFCLpyT0eBJaf8D4cN/02IU4QvNewYiLXVJ/Jyb8jFQIsh25InAF/VI1Xy
-fkJ4hTH4Oo1koRr8d6PUJF89gLzHlryuDGU3L79aIyg1LsEIKXOK3gokZz2uyxU8hZ8his/yxhMn
-RYQXASbXnRQLZFzLpnF9/hjBSaGVkSsLyxwf2tavWFqVt6ACjMCNPAR1sVbmdx5ChKX3hhDXNCnC
-WA2MRWObu0bhRh4MZ/uOFLKJ8QnWzsJCWph/rYUv0VadjQ0wTLbCDywTWSZJHwbWXZDJHsvlMz7L
-CpucY5hkL1pqDzwRJNss/P+WAleuCb5o8kRJPZRIuXjUJa7ZCxYlVH6OziEjGI7kRRHKEl832ZAr
-uRm9Jjbci0eh2hlFGl9nfRqkIC5mBtOc/y7FmCYf2eSxqXI4e4f03xNFN6Tiar2l2903RyeOj9IW
-MoQCbQtpjP6UwSFUl1GiqKW1W8MUzvC32V9TISg8/uP0ExKQzGc4hBqzVdN7anVXsHkxP/Bi5gIx
-8KerbzAFYs9jxIWxapGQ7zllLOUJUpFp54ZYjRLGjaIchmCO7TD9D1WfpGBxP3q3Sd6oWfgYXD5s
-5l99NkfpisGM0quwTeUUpMiuPVhZCWW0tr+HH9tb3ccYbCMPXVU33wDfWacXmCAv7C1TDgaXkA8u
-tQoJ7S7dyEgQQbUoZszZMZJunyTkQCRRIjxzjRGB91a=
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * CodeIgniter Driver Library Class
+ *
+ * This class enables you to create "Driver" libraries that add runtime ability
+ * to extend the capabilities of a class via additional driver objects
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		EllisLab Dev Team
+ * @link
+ */
+class CI_Driver_Library {
+
+	/**
+	 * Array of drivers that are available to use with the driver class
+	 *
+	 * @var array
+	 */
+	protected $valid_drivers = array();
+
+	/**
+	 * Name of the current class - usually the driver class
+	 *
+	 * @var string
+	 */
+	protected $lib_name;
+
+	/**
+	 * Get magic method
+	 *
+	 * The first time a child is used it won't exist, so we instantiate it
+	 * subsequents calls will go straight to the proper child.
+	 *
+	 * @param	string	Child class name
+	 * @return	object	Child class
+	 */
+	public function __get($child)
+	{
+		// Try to load the driver
+		return $this->load_driver($child);
+	}
+
+	/**
+	 * Load driver
+	 *
+	 * Separate load_driver call to support explicit driver load by library or user
+	 *
+	 * @param	string	Driver name (w/o parent prefix)
+	 * @return	object	Child class
+	 */
+	public function load_driver($child)
+	{
+		// Get CodeIgniter instance and subclass prefix
+		$prefix = config_item('subclass_prefix');
+
+		if ( ! isset($this->lib_name))
+		{
+			// Get library name without any prefix
+			$this->lib_name = str_replace(array('CI_', $prefix), '', get_class($this));
+		}
+
+		// The child will be prefixed with the parent lib
+		$child_name = $this->lib_name.'_'.$child;
+
+		// See if requested child is a valid driver
+		if ( ! in_array($child, $this->valid_drivers))
+		{
+			// The requested driver isn't valid!
+			$msg = 'Invalid driver requested: '.$child_name;
+			log_message('error', $msg);
+			show_error($msg);
+		}
+
+		// Get package paths and filename case variations to search
+		$CI = get_instance();
+		$paths = $CI->load->get_package_paths(TRUE);
+
+		// Is there an extension?
+		$class_name = $prefix.$child_name;
+		$found = class_exists($class_name, FALSE);
+		if ( ! $found)
+		{
+			// Check for subclass file
+			foreach ($paths as $path)
+			{
+				// Does the file exist?
+				$file = $path.'libraries/'.$this->lib_name.'/drivers/'.$prefix.$child_name.'.php';
+				if (file_exists($file))
+				{
+					// Yes - require base class from BASEPATH
+					$basepath = BASEPATH.'libraries/'.$this->lib_name.'/drivers/'.$child_name.'.php';
+					if ( ! file_exists($basepath))
+					{
+						$msg = 'Unable to load the requested class: CI_'.$child_name;
+						log_message('error', $msg);
+						show_error($msg);
+					}
+
+					// Include both sources and mark found
+					include_once($basepath);
+					include_once($file);
+					$found = TRUE;
+					break;
+				}
+			}
+		}
+
+		// Do we need to search for the class?
+		if ( ! $found)
+		{
+			// Use standard class name
+			$class_name = 'CI_'.$child_name;
+			if ( ! class_exists($class_name, FALSE))
+			{
+				// Check package paths
+				foreach ($paths as $path)
+				{
+					// Does the file exist?
+					$file = $path.'libraries/'.$this->lib_name.'/drivers/'.$child_name.'.php';
+					if (file_exists($file))
+					{
+						// Include source
+						include_once($file);
+						break;
+					}
+				}
+			}
+		}
+
+		// Did we finally find the class?
+		if ( ! class_exists($class_name, FALSE))
+		{
+			if (class_exists($child_name, FALSE))
+			{
+				$class_name = $child_name;
+			}
+			else
+			{
+				$msg = 'Unable to load the requested driver: '.$class_name;
+				log_message('error', $msg);
+				show_error($msg);
+			}
+		}
+
+		// Instantiate, decorate and add child
+		$obj = new $class_name();
+		$obj->decorate($this);
+		$this->$child = $obj;
+		return $this->$child;
+	}
+
+}
+
+// --------------------------------------------------------------------------
+
+/**
+ * CodeIgniter Driver Class
+ *
+ * This class enables you to create drivers for a Library based on the Driver Library.
+ * It handles the drivers' access to the parent library
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		EllisLab Dev Team
+ * @link
+ */
+class CI_Driver {
+
+	/**
+	 * Instance of the parent class
+	 *
+	 * @var object
+	 */
+	protected $_parent;
+
+	/**
+	 * List of methods in the parent class
+	 *
+	 * @var array
+	 */
+	protected $_methods = array();
+
+	/**
+	 * List of properties in the parent class
+	 *
+	 * @var array
+	 */
+	protected $_properties = array();
+
+	/**
+	 * Array of methods and properties for the parent class(es)
+	 *
+	 * @static
+	 * @var	array
+	 */
+	protected static $_reflections = array();
+
+	/**
+	 * Decorate
+	 *
+	 * Decorates the child with the parent driver lib's methods and properties
+	 *
+	 * @param	object
+	 * @return	void
+	 */
+	public function decorate($parent)
+	{
+		$this->_parent = $parent;
+
+		// Lock down attributes to what is defined in the class
+		// and speed up references in magic methods
+
+		$class_name = get_class($parent);
+
+		if ( ! isset(self::$_reflections[$class_name]))
+		{
+			$r = new ReflectionObject($parent);
+
+			foreach ($r->getMethods() as $method)
+			{
+				if ($method->isPublic())
+				{
+					$this->_methods[] = $method->getName();
+				}
+			}
+
+			foreach ($r->getProperties() as $prop)
+			{
+				if ($prop->isPublic())
+				{
+					$this->_properties[] = $prop->getName();
+				}
+			}
+
+			self::$_reflections[$class_name] = array($this->_methods, $this->_properties);
+		}
+		else
+		{
+			list($this->_methods, $this->_properties) = self::$_reflections[$class_name];
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * __call magic method
+	 *
+	 * Handles access to the parent driver library's methods
+	 *
+	 * @param	string
+	 * @param	array
+	 * @return	mixed
+	 */
+	public function __call($method, $args = array())
+	{
+		if (in_array($method, $this->_methods))
+		{
+			return call_user_func_array(array($this->_parent, $method), $args);
+		}
+
+		throw new BadMethodCallException('No such method: '.$method.'()');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * __get magic method
+	 *
+	 * Handles reading of the parent driver library's properties
+	 *
+	 * @param	string
+	 * @return	mixed
+	 */
+	public function __get($var)
+	{
+		if (in_array($var, $this->_properties))
+		{
+			return $this->_parent->$var;
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * __set magic method
+	 *
+	 * Handles writing to the parent driver library's properties
+	 *
+	 * @param	string
+	 * @param	array
+	 * @return	mixed
+	 */
+	public function __set($var, $val)
+	{
+		if (in_array($var, $this->_properties))
+		{
+			$this->_parent->$var = $val;
+		}
+	}
+
+}

@@ -1,132 +1,406 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.3.1
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Unit Testing Class
+ *
+ * Simple testing class
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	UnitTesting
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/libraries/unit_testing.html
+ */
+class CI_Unit_test {
+
+	/**
+	 * Active flag
+	 *
+	 * @var	bool
+	 */
+	public $active = TRUE;
+
+	/**
+	 * Test results
+	 *
+	 * @var	array
+	 */
+	public $results = array();
+
+	/**
+	 * Strict comparison flag
+	 *
+	 * Whether to use === or == when comparing
+	 *
+	 * @var	bool
+	 */
+	public $strict = FALSE;
+
+	/**
+	 * Template
+	 *
+	 * @var	string
+	 */
+	protected $_template = NULL;
+
+	/**
+	 * Template rows
+	 *
+	 * @var	string
+	 */
+	protected $_template_rows = NULL;
+
+	/**
+	 * List of visible test items
+	 *
+	 * @var	array
+	 */
+	protected $_test_items_visible	= array(
+		'test_name',
+		'test_datatype',
+		'res_datatype',
+		'result',
+		'file',
+		'line',
+		'notes'
+	);
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Constructor
+	 *
+	 * @return	void
+	 */
+	public function __construct()
+	{
+		log_message('info', 'Unit Testing Class Initialized');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Run the tests
+	 *
+	 * Runs the supplied tests
+	 *
+	 * @param	array	$items
+	 * @return	void
+	 */
+	public function set_test_items($items)
+	{
+		if ( ! empty($items) && is_array($items))
+		{
+			$this->_test_items_visible = $items;
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Run the tests
+	 *
+	 * Runs the supplied tests
+	 *
+	 * @param	mixed	$test
+	 * @param	mixed	$expected
+	 * @param	string	$test_name
+	 * @param	string	$notes
+	 * @return	string
+	 */
+	public function run($test, $expected = TRUE, $test_name = 'undefined', $notes = '')
+	{
+		if ($this->active === FALSE)
+		{
+			return FALSE;
+		}
+
+		if (in_array($expected, array('is_object', 'is_string', 'is_bool', 'is_true', 'is_false', 'is_int', 'is_numeric', 'is_float', 'is_double', 'is_array', 'is_null', 'is_resource'), TRUE))
+		{
+			$result = $expected($test);
+			$extype = str_replace(array('true', 'false'), 'bool', str_replace('is_', '', $expected));
+		}
+		else
+		{
+			$result = ($this->strict === TRUE) ? ($test === $expected) : ($test == $expected);
+			$extype = gettype($expected);
+		}
+
+		$back = $this->_backtrace();
+
+		$report = array (
+			'test_name'     => $test_name,
+			'test_datatype' => gettype($test),
+			'res_datatype'  => $extype,
+			'result'        => ($result === TRUE) ? 'passed' : 'failed',
+			'file'          => $back['file'],
+			'line'          => $back['line'],
+			'notes'         => $notes
+		);
+
+		$this->results[] = $report;
+
+		return $this->report($this->result(array($report)));
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Generate a report
+	 *
+	 * Displays a table with the test data
+	 *
+	 * @param	array	 $result
+	 * @return	string
+	 */
+	public function report($result = array())
+	{
+		if (count($result) === 0)
+		{
+			$result = $this->result();
+		}
+
+		$CI =& get_instance();
+		$CI->load->language('unit_test');
+
+		$this->_parse_template();
+
+		$r = '';
+		foreach ($result as $res)
+		{
+			$table = '';
+
+			foreach ($res as $key => $val)
+			{
+				if ($key === $CI->lang->line('ut_result'))
+				{
+					if ($val === $CI->lang->line('ut_passed'))
+					{
+						$val = '<span style="color: #0C0;">'.$val.'</span>';
+					}
+					elseif ($val === $CI->lang->line('ut_failed'))
+					{
+						$val = '<span style="color: #C00;">'.$val.'</span>';
+					}
+				}
+
+				$table .= str_replace(array('{item}', '{result}'), array($key, $val), $this->_template_rows);
+			}
+
+			$r .= str_replace('{rows}', $table, $this->_template);
+		}
+
+		return $r;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Use strict comparison
+	 *
+	 * Causes the evaluation to use === rather than ==
+	 *
+	 * @param	bool	$state
+	 * @return	void
+	 */
+	public function use_strict($state = TRUE)
+	{
+		$this->strict = (bool) $state;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Make Unit testing active
+	 *
+	 * Enables/disables unit testing
+	 *
+	 * @param	bool
+	 * @return	void
+	 */
+	public function active($state = TRUE)
+	{
+		$this->active = (bool) $state;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Result Array
+	 *
+	 * Returns the raw result data
+	 *
+	 * @param	array	$results
+	 * @return	array
+	 */
+	public function result($results = array())
+	{
+		$CI =& get_instance();
+		$CI->load->language('unit_test');
+
+		if (count($results) === 0)
+		{
+			$results = $this->results;
+		}
+
+		$retval = array();
+		foreach ($results as $result)
+		{
+			$temp = array();
+			foreach ($result as $key => $val)
+			{
+				if ( ! in_array($key, $this->_test_items_visible))
+				{
+					continue;
+				}
+				elseif (in_array($key, array('test_name', 'test_datatype', 'res_datatype', 'result'), TRUE))
+				{
+					if (FALSE !== ($line = $CI->lang->line(strtolower('ut_'.$val), FALSE)))
+					{
+						$val = $line;
+					}
+				}
+
+				$temp[$CI->lang->line('ut_'.$key, FALSE)] = $val;
+			}
+
+			$retval[] = $temp;
+		}
+
+		return $retval;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Set the template
+	 *
+	 * This lets us set the template to be used to display results
+	 *
+	 * @param	string
+	 * @return	void
+	 */
+	public function set_template($template)
+	{
+		$this->_template = $template;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Generate a backtrace
+	 *
+	 * This lets us show file names and line numbers
+	 *
+	 * @return	array
+	 */
+	protected function _backtrace()
+	{
+		$back = debug_backtrace();
+		return array(
+			'file' => (isset($back[1]['file']) ? $back[1]['file'] : ''),
+			'line' => (isset($back[1]['line']) ? $back[1]['line'] : '')
+		);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Get Default Template
+	 *
+	 * @return	string
+	 */
+	protected function _default_template()
+	{
+		$this->_template = "\n".'<table style="width:100%; font-size:small; margin:10px 0; border-collapse:collapse; border:1px solid #CCC;">{rows}'."\n</table>";
+
+		$this->_template_rows = "\n\t<tr>\n\t\t".'<th style="text-align: left; border-bottom:1px solid #CCC;">{item}</th>'
+					."\n\t\t".'<td style="border-bottom:1px solid #CCC;">{result}</td>'."\n\t</tr>";
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Parse Template
+	 *
+	 * Harvests the data within the template {pseudo-variables}
+	 *
+	 * @return	void
+	 */
+	protected function _parse_template()
+	{
+		if ($this->_template_rows !== NULL)
+		{
+			return;
+		}
+
+		if ($this->_template === NULL OR ! preg_match('/\{rows\}(.*?)\{\/rows\}/si', $this->_template, $match))
+		{
+			$this->_default_template();
+			return;
+		}
+
+		$this->_template_rows = $match[1];
+		$this->_template = str_replace($match[0], '{rows}', $this->_template);
+	}
+
+}
+
+/**
+ * Helper function to test boolean TRUE
+ *
+ * @param	mixed	$test
+ * @return	bool
+ */
+function is_true($test)
+{
+	return ($test === TRUE);
+}
+
+/**
+ * Helper function to test boolean FALSE
+ *
+ * @param	mixed	$test
+ * @return	bool
+ */
+function is_false($test)
+{
+	return ($test === FALSE);
+}

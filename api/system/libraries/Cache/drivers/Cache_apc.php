@@ -1,65 +1,217 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-xTVYxm==
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 2.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * CodeIgniter APC Caching Class
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	Core
+ * @author		EllisLab Dev Team
+ * @link
+ */
+class CI_Cache_apc extends CI_Driver {
+
+	/**
+	 * Class constructor
+	 *
+	 * Only present so that an error message is logged
+	 * if APC is not available.
+	 *
+	 * @return	void
+	 */
+	public function __construct()
+	{
+		if ( ! $this->is_supported())
+		{
+			log_message('error', 'Cache: Failed to initialize APC; extension not loaded/enabled?');
+		}
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Get
+	 *
+	 * Look for a value in the cache. If it exists, return the data
+	 * if not, return FALSE
+	 *
+	 * @param	string
+	 * @return	mixed	value that is stored/FALSE on failure
+	 */
+	public function get($id)
+	{
+		$success = FALSE;
+		$data = apc_fetch($id, $success);
+
+		return ($success === TRUE) ? $data : FALSE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Cache Save
+	 *
+	 * @param	string	$id	Cache ID
+	 * @param	mixed	$data	Data to store
+	 * @param	int	$ttl	Length of time (in seconds) to cache the data
+	 * @param	bool	$raw	Whether to store the raw value (unused)
+	 * @return	bool	TRUE on success, FALSE on failure
+	 */
+	public function save($id, $data, $ttl = 60, $raw = FALSE)
+	{
+		return apc_store($id, $data, (int) $ttl);
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Delete from Cache
+	 *
+	 * @param	mixed	unique identifier of the item in the cache
+	 * @return	bool	true on success/false on failure
+	 */
+	public function delete($id)
+	{
+		return apc_delete($id);
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Increment a raw value
+	 *
+	 * @param	string	$id	Cache ID
+	 * @param	int	$offset	Step/value to add
+	 * @return	mixed	New value on success or FALSE on failure
+	 */
+	public function increment($id, $offset = 1)
+	{
+		return apc_inc($id, $offset);
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Decrement a raw value
+	 *
+	 * @param	string	$id	Cache ID
+	 * @param	int	$offset	Step/value to reduce by
+	 * @return	mixed	New value on success or FALSE on failure
+	 */
+	public function decrement($id, $offset = 1)
+	{
+		return apc_dec($id, $offset);
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Clean the cache
+	 *
+	 * @return	bool	false on failure/true on success
+	 */
+	public function clean()
+	{
+		return apc_clear_cache('user');
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Cache Info
+	 *
+	 * @param	string	user/filehits
+	 * @return	mixed	array on success, false on failure
+	 */
+	 public function cache_info($type = NULL)
+	 {
+		 return apc_cache_info($type);
+	 }
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Get Cache Metadata
+	 *
+	 * @param	mixed	key to get cache metadata on
+	 * @return	mixed	array on success/false on failure
+	 */
+	public function get_metadata($id)
+	{
+		$cache_info = apc_cache_info('user', FALSE);
+		if (empty($cache_info) OR empty($cache_info['cache_list']))
+		{
+			return FALSE;
+		}
+
+		foreach ($cache_info['cache_list'] as &$entry)
+		{
+			if ($entry['info'] !== $id)
+			{
+				continue;
+			}
+
+			$success  = FALSE;
+			$metadata = array(
+				'expire' => ($entry['ttl'] ? $entry['mtime'] + $entry['ttl'] : 0),
+				'mtime'  => $entry['ttl'],
+				'data'   => apc_fetch($id, $success)
+			);
+
+			return ($success === TRUE) ? $metadata : FALSE;
+		}
+
+		return FALSE;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * is_supported()
+	 *
+	 * Check to see if APC is available on this system, bail if it isn't.
+	 *
+	 * @return	bool
+	 */
+	public function is_supported()
+	{
+		return (extension_loaded('apc') && ini_get('apc.enabled'));
+	}
+}

@@ -1,77 +1,209 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-R367UTjXO+eFrh+RCMgD9x/OUwy9
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 3.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * PDO CUBRID Database Adapter Class
+ *
+ * Note: _DB is an extender class that the app controller
+ * creates dynamically based on whether the query builder
+ * class is being used or not.
+ *
+ * @package		CodeIgniter
+ * @subpackage	Drivers
+ * @category	Database
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/database/
+ */
+class CI_DB_pdo_cubrid_driver extends CI_DB_pdo_driver {
+
+	/**
+	 * Sub-driver
+	 *
+	 * @var	string
+	 */
+	public $subdriver = 'cubrid';
+
+	/**
+	 * Identifier escape character
+	 *
+	 * @var	string
+	 */
+	protected $_escape_char = '`';
+
+	/**
+	 * ORDER BY random keyword
+	 *
+	 * @var array
+	 */
+	protected $_random_keyword = array('RANDOM()', 'RANDOM(%d)');
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Class constructor
+	 *
+	 * Builds the DSN if not already set.
+	 *
+	 * @param	array	$params
+	 * @return	void
+	 */
+	public function __construct($params)
+	{
+		parent::__construct($params);
+
+		if (empty($this->dsn))
+		{
+			$this->dsn = 'cubrid:host='.(empty($this->hostname) ? '127.0.0.1' : $this->hostname);
+
+			empty($this->port) OR $this->dsn .= ';port='.$this->port;
+			empty($this->database) OR $this->dsn .= ';dbname='.$this->database;
+			empty($this->char_set) OR $this->dsn .= ';charset='.$this->char_set;
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Show table query
+	 *
+	 * Generates a platform-specific query string so that the table names can be fetched
+	 *
+	 * @param	bool	$prefix_limit
+	 * @return	string
+	 */
+	protected function _list_tables($prefix_limit = FALSE)
+	{
+		$sql = 'SHOW TABLES';
+
+		if ($prefix_limit === TRUE && $this->dbprefix !== '')
+		{
+			return $sql." LIKE '".$this->escape_like_str($this->dbprefix)."%'";
+		}
+
+		return $sql;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Show column query
+	 *
+	 * Generates a platform-specific query string so that the column names can be fetched
+	 *
+	 * @param	string	$table
+	 * @return	string
+	 */
+	protected function _list_columns($table = '')
+	{
+		return 'SHOW COLUMNS FROM '.$this->protect_identifiers($table, TRUE, NULL, FALSE);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Returns an object with field data
+	 *
+	 * @param	string	$table
+	 * @return	array
+	 */
+	public function field_data($table)
+	{
+		if (($query = $this->query('SHOW COLUMNS FROM '.$this->protect_identifiers($table, TRUE, NULL, FALSE))) === FALSE)
+		{
+			return FALSE;
+		}
+		$query = $query->result_object();
+
+		$retval = array();
+		for ($i = 0, $c = count($query); $i < $c; $i++)
+		{
+			$retval[$i]			= new stdClass();
+			$retval[$i]->name		= $query[$i]->Field;
+
+			sscanf($query[$i]->Type, '%[a-z](%d)',
+				$retval[$i]->type,
+				$retval[$i]->max_length
+			);
+
+			$retval[$i]->default		= $query[$i]->Default;
+			$retval[$i]->primary_key	= (int) ($query[$i]->Key === 'PRI');
+		}
+
+		return $retval;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Truncate statement
+	 *
+	 * Generates a platform-specific truncate string from the supplied data
+	 *
+	 * If the database does not support the TRUNCATE statement,
+	 * then this method maps to 'DELETE FROM table'
+	 *
+	 * @param	string	$table
+	 * @return	string
+	 */
+	protected function _truncate($table)
+	{
+		return 'TRUNCATE '.$table;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * FROM tables
+	 *
+	 * Groups tables in FROM clauses if needed, so there is no confusion
+	 * about operator precedence.
+	 *
+	 * @return	string
+	 */
+	protected function _from_tables()
+	{
+		if ( ! empty($this->qb_join) && count($this->qb_from) > 1)
+		{
+			return '('.implode(', ', $this->qb_from).')';
+		}
+
+		return implode(', ', $this->qb_from);
+	}
+
+}

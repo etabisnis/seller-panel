@@ -1,35 +1,133 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-uB79ZdzP
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Benchmark Class
+ *
+ * This class enables you to mark points and calculate the time difference
+ * between them. Memory consumption can also be displayed.
+ *
+ * @package		CodeIgniter
+ * @subpackage	Libraries
+ * @category	Libraries
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/libraries/benchmark.html
+ */
+class CI_Benchmark {
+
+	/**
+	 * List of all benchmark markers
+	 *
+	 * @var	array
+	 */
+	public $marker = array();
+
+	/**
+	 * Set a benchmark marker
+	 *
+	 * Multiple calls to this function can be made so that several
+	 * execution points can be timed.
+	 *
+	 * @param	string	$name	Marker name
+	 * @return	void
+	 */
+	public function mark($name)
+	{
+		$this->marker[$name] = microtime(TRUE);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Elapsed time
+	 *
+	 * Calculates the time difference between two marked points.
+	 *
+	 * If the first parameter is empty this function instead returns the
+	 * {elapsed_time} pseudo-variable. This permits the full system
+	 * execution time to be shown in a template. The output class will
+	 * swap the real value for this variable.
+	 *
+	 * @param	string	$point1		A particular marked point
+	 * @param	string	$point2		A particular marked point
+	 * @param	int	$decimals	Number of decimal places
+	 *
+	 * @return	string	Calculated elapsed time on success,
+	 *			an '{elapsed_string}' if $point1 is empty
+	 *			or an empty string if $point1 is not found.
+	 */
+	public function elapsed_time($point1 = '', $point2 = '', $decimals = 4)
+	{
+		if ($point1 === '')
+		{
+			return '{elapsed_time}';
+		}
+
+		if ( ! isset($this->marker[$point1]))
+		{
+			return '';
+		}
+
+		if ( ! isset($this->marker[$point2]))
+		{
+			$this->marker[$point2] = microtime(TRUE);
+		}
+
+		return number_format($this->marker[$point2] - $this->marker[$point1], $decimals);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Memory Usage
+	 *
+	 * Simply returns the {memory_usage} marker.
+	 *
+	 * This permits it to be put it anywhere in a template
+	 * without the memory being calculated until the end.
+	 * The output class will swap the real value for this variable.
+	 *
+	 * @return	string	'{memory_usage}'
+	 */
+	public function memory_usage()
+	{
+		return '{memory_usage}';
+	}
+
+}

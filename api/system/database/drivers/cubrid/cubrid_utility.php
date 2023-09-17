@@ -1,33 +1,79 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
-EbKSG4fuywHgS50vECwHXUr5JgzgpQ19T5+c
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 2.1.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * CUBRID Utility Class
+ *
+ * @category	Database
+ * @author		Esen Sagynov
+ * @link		https://codeigniter.com/user_guide/database/
+ */
+class CI_DB_cubrid_utility extends CI_DB_utility {
+
+	/**
+	 * List databases
+	 *
+	 * @return	array
+	 */
+	public function list_databases()
+	{
+		if (isset($this->db->data_cache['db_names']))
+		{
+			return $this->db->data_cache['db_names'];
+		}
+
+		return $this->db->data_cache['db_names'] = cubrid_list_dbs($this->db->conn_id);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * CUBRID Export
+	 *
+	 * @param	array	Preferences
+	 * @return	mixed
+	 */
+	protected function _backup($params = array())
+	{
+		// No SQL based support in CUBRID as of version 8.4.0. Database or
+		// table backup can be performed using CUBRID Manager
+		// database administration tool.
+		return $this->db->display_error('db_unsupported_feature');
+	}
+}

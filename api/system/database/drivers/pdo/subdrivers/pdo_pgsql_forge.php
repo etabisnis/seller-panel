@@ -1,93 +1,210 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
-?>
-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
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
+ * @link	https://codeigniter.com
+ * @since	Version 3.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * PDO PostgreSQL Forge Class
+ *
+ * @category	Database
+ * @author		EllisLab Dev Team
+ * @link		https://codeigniter.com/user_guide/database/
+ */
+class CI_DB_pdo_pgsql_forge extends CI_DB_pdo_forge {
+
+	/**
+	 * DROP TABLE IF statement
+	 *
+	 * @var	string
+	 */
+	protected $_drop_table_if	= 'DROP TABLE IF EXISTS';
+
+	/**
+	 * UNSIGNED support
+	 *
+	 * @var	array
+	 */
+	protected $_unsigned		= array(
+		'INT2'		=> 'INTEGER',
+		'SMALLINT'	=> 'INTEGER',
+		'INT'		=> 'BIGINT',
+		'INT4'		=> 'BIGINT',
+		'INTEGER'	=> 'BIGINT',
+		'INT8'		=> 'NUMERIC',
+		'BIGINT'	=> 'NUMERIC',
+		'REAL'		=> 'DOUBLE PRECISION',
+		'FLOAT'		=> 'DOUBLE PRECISION'
+	);
+
+	/**
+	 * NULL value representation in CREATE/ALTER TABLE statements
+	 *
+	 * @var	string
+	 */
+	protected $_null = 'NULL';
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Class constructor
+	 *
+	 * @param	object	&$db	Database object
+	 * @return	void
+	 */
+	public function __construct(&$db)
+	{
+		parent::__construct($db);
+
+		if (version_compare($this->db->version(), '9.0', '>'))
+		{
+			$this->create_table_if = 'CREATE TABLE IF NOT EXISTS';
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * ALTER TABLE
+	 *
+	 * @param	string	$alter_type	ALTER type
+	 * @param	string	$table		Table name
+	 * @param	mixed	$field		Column definition
+	 * @return	string|string[]
+	 */
+	protected function _alter_table($alter_type, $table, $field)
+ 	{
+		if (in_array($alter_type, array('DROP', 'ADD'), TRUE))
+		{
+			return parent::_alter_table($alter_type, $table, $field);
+		}
+
+		$sql = 'ALTER TABLE '.$this->db->escape_identifiers($table);
+		$sqls = array();
+		for ($i = 0, $c = count($field); $i < $c; $i++)
+		{
+			if ($field[$i]['_literal'] !== FALSE)
+			{
+				return FALSE;
+			}
+
+			if (version_compare($this->db->version(), '8', '>=') && isset($field[$i]['type']))
+			{
+				$sqls[] = $sql.' ALTER COLUMN '.$this->db->escape_identifiers($field[$i]['name'])
+					.' TYPE '.$field[$i]['type'].$field[$i]['length'];
+			}
+
+			if ( ! empty($field[$i]['default']))
+			{
+				$sqls[] = $sql.' ALTER COLUMN '.$this->db->escape_identifiers($field[$i]['name'])
+					.' SET '.$field[$i]['default'];
+			}
+
+			if (isset($field[$i]['null']))
+			{
+				$sqls[] = $sql.' ALTER COLUMN '.$this->db->escape_identifiers($field[$i]['name'])
+					.(trim($field[$i]['null']) === $this->_null ? ' DROP NOT NULL' : ' SET NOT NULL');
+			}
+
+			if ( ! empty($field[$i]['new_name']))
+			{
+				$sqls[] = $sql.' RENAME COLUMN '.$this->db->escape_identifiers($field[$i]['name'])
+					.' TO '.$this->db->escape_identifiers($field[$i]['new_name']);
+			}
+
+			if ( ! empty($field[$i]['comment']))
+			{
+				$sqls[] = 'COMMENT ON COLUMN '
+					.$this->db->escape_identifiers($table).'.'.$this->db->escape_identifiers($field[$i]['name'])
+					.' IS '.$field[$i]['comment'];
+			}
+		}
+
+		return $sqls;
+ 	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Field attribute TYPE
+	 *
+	 * Performs a data type mapping between different databases.
+	 *
+	 * @param	array	&$attributes
+	 * @return	void
+	 */
+	protected function _attr_type(&$attributes)
+	{
+		// Reset field lengths for data types that don't support it
+		if (isset($attributes['CONSTRAINT']) && stripos($attributes['TYPE'], 'int') !== FALSE)
+		{
+			$attributes['CONSTRAINT'] = NULL;
+		}
+
+		switch (strtoupper($attributes['TYPE']))
+		{
+			case 'TINYINT':
+				$attributes['TYPE'] = 'SMALLINT';
+				$attributes['UNSIGNED'] = FALSE;
+				return;
+			case 'MEDIUMINT':
+				$attributes['TYPE'] = 'INTEGER';
+				$attributes['UNSIGNED'] = FALSE;
+				return;
+			default: return;
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Field attribute AUTO_INCREMENT
+	 *
+	 * @param	array	&$attributes
+	 * @param	array	&$field
+	 * @return	void
+	 */
+	protected function _attr_auto_increment(&$attributes, &$field)
+	{
+		if ( ! empty($attributes['AUTO_INCREMENT']) && $attributes['AUTO_INCREMENT'] === TRUE)
+		{
+			$field['type'] = ($field['type'] === 'NUMERIC')
+				? 'BIGSERIAL'
+				: 'SERIAL';
+		}
+	}
+
+}
