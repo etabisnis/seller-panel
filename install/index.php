@@ -122,7 +122,7 @@ require_once('header.php');
 								<?php } ?>
 								<fieldset>
 									<div class="bg-light p-3 mb-4">
-										<h4>Step 1 / 5</h4>
+										<h4>Step 1 / 3</h4>
 										<p class="mb-0">Startup</p>
 									</div>
 									<h6 class="mb-4"><b>Note:</b> Press next button to complete the below steps.</h6>
@@ -130,7 +130,7 @@ require_once('header.php');
 								<fieldset>
 									<div class="form-top">
 										<div class="bg-light p-3 mb-4">
-											<h4>Step 2 / 5</h4>
+											<h4>Step 2 / 3</h4>
 											<p class="mb-0">Setup Requirements</p>
 										</div>
 										<div class="mb-3">
@@ -257,7 +257,7 @@ require_once('header.php');
 								<fieldset>
 									<div class="form-top">
 										<div class="bg-light p-3 mb-4">
-											<h4>Step 3 / 5</h4>
+											<h4>Step 3 / 3</h4>
 											<p class="mb-0">Database Setup</p>
 										</div>
 										<div class="mb-4 mt-2 text-center">
@@ -307,44 +307,6 @@ require_once('header.php');
 									</div>
 									<div class="text-right">
 										<input type="button" id="chk_submit" class="btn btn-sm btn-danger" value="Test Connection">
-									</div>
-								</fieldset>
-								<fieldset>
-									<div class="form-top">
-										<div class="bg-light p-3 mb-4">
-											<h4>Step 4 / 5</h4>
-											<p class="mb-0">Administrator Setup</p>
-										</div>
-										<div class="mb-4">
-											<div class="row d-flex align-items-center">
-												<div class="col-lg-4">
-													<label for="adminname">Admin Username <span class="text-danger">*</span></label>
-												</div>
-												<div class="col-lg-8">
-													<input type="text" name="adminname" id="adminname" class="form-control" placeholder="Admin Username" autocomplete="off" />
-												</div>
-											</div>
-										</div>
-										<div class="mb-4">
-											<div class="row d-flex align-items-center">
-												<div class="col-lg-4">
-													<label for="email">Admin Email <span class="text-danger">*</span></label>
-												</div>
-												<div class="col-lg-8">
-													<input type="email" name="email" id="email" class="form-control" placeholder="admin@admin.com" autocomplete="off" />
-												</div>
-											</div>
-										</div>
-										<div class="mb-4">
-											<div class="row d-flex align-items-center">
-												<div class="col-lg-4">
-													<label for="syspassword">Admin Password <span class="text-danger">*</span></label>
-												</div>
-												<div class="col-lg-8">
-													<input type="password" name="syspassword" id="syspassword" class="form-control" placeholder="admin123#" autocomplete="off" />
-												</div>
-											</div>
-										</div>
 									</div>
 								</fieldset>
 							</form>
