@@ -30,6 +30,9 @@ function pdo_installed(){
 		return false;
 	}
 }
+function is_ioncube_installed() {
+    return extension_loaded('ionCube Loader');
+}
 
 // get tokent
 $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

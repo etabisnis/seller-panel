@@ -1,37 +1,32 @@
-<?php //004fb
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-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
-h2JZIVi=
+
+<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
+
+<h4>An uncaught Exception was encountered</h4>
+
+<p>Type: <?php echo get_class($exception); ?></p>
+<p>Message: <?php echo $message; ?></p>
+<p>Filename: <?php echo $exception->getFile(); ?></p>
+<p>Line Number: <?php echo $exception->getLine(); ?></p>
+
+<?php if (defined('SHOW_DEBUG_BACKTRACE') && SHOW_DEBUG_BACKTRACE === TRUE): ?>
+
+	<p>Backtrace:</p>
+	<?php foreach ($exception->getTrace() as $error): ?>
+
+		<?php if (isset($error['file']) && strpos($error['file'], realpath(BASEPATH)) !== 0): ?>
+
+			<p style="margin-left:10px">
+			File: <?php echo $error['file']; ?><br />
+			Line: <?php echo $error['line']; ?><br />
+			Function: <?php echo $error['function']; ?>
+			</p>
+		<?php endif ?>
+
+	<?php endforeach ?>
+
+<?php endif ?>
+
+</div>

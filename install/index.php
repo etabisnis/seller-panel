@@ -122,7 +122,7 @@ require_once('header.php');
 								<?php } ?>
 								<fieldset>
 									<div class="bg-light p-3 mb-4">
-										<h4>Step 1 / 3</h4>
+										<h4>Step 1 / 4</h4>
 										<p class="mb-0">Startup</p>
 									</div>
 									<h6 class="mb-4"><b>Note:</b> Press next button to complete the below steps.</h6>
@@ -130,7 +130,7 @@ require_once('header.php');
 								<fieldset>
 									<div class="form-top">
 										<div class="bg-light p-3 mb-4">
-											<h4>Step 2 / 3</h4>
+											<h4>Step 2 / 4</h4>
 											<p class="mb-0">Setup Requirements</p>
 										</div>
 										<div class="mb-3">
@@ -139,7 +139,7 @@ require_once('header.php');
 											</div>
 											<div>
 												<label class="mr-3">Build Date</label>
-												<label class="badge badge-secondary">17-August-2023</label>
+												<label class="badge badge-secondary">11-November-2023</label>
 											</div>
 											<div>
 												<label class="mr-3">Application Version</label>
@@ -257,7 +257,7 @@ require_once('header.php');
 								<fieldset>
 									<div class="form-top">
 										<div class="bg-light p-3 mb-4">
-											<h4>Step 3 / 3</h4>
+											<h4>Step 3 / 4</h4>
 											<p class="mb-0">Database Setup</p>
 										</div>
 										<div class="mb-4 mt-2 text-center">
@@ -308,6 +308,8 @@ require_once('header.php');
 									<div class="text-right">
 										<input type="button" id="chk_submit" class="btn btn-sm btn-danger" value="Test Connection">
 									</div>
+								</fieldset>
+								<fieldset>
 								</fieldset>
 							</form>
 						<?php }} ?>

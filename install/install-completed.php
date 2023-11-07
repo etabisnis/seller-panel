@@ -35,7 +35,7 @@ require_once('header.php');
 							</div>
 							<form method="post">
 								<div class="bg-light p-3 mb-4">
-									<h4>Step 5 / 5</h4>
+									<h4>Step 4 / 4</h4>
 									<p class="mb-0">Completed</p>
 								</div>
 								<div class="alert alert-success"><i class="mdi mdi-check-circle-outline"></i> Application is successfully installed, please click here to login now.</div>
