@@ -1,187 +1,47 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 3.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter Session Driver Class
- *
- * @package	CodeIgniter
- * @subpackage	Libraries
- * @category	Sessions
- * @author	Andrey Andreev
- * @link	https://codeigniter.com/user_guide/libraries/sessions.html
- */
-abstract class CI_Session_driver implements SessionHandlerInterface {
-
-	protected $_config;
-
-	/**
-	 * Data fingerprint
-	 *
-	 * @var	bool
-	 */
-	protected $_fingerprint;
-
-	/**
-	 * Lock placeholder
-	 *
-	 * @var	mixed
-	 */
-	protected $_lock = FALSE;
-
-	/**
-	 * Read session ID
-	 *
-	 * Used to detect session_regenerate_id() calls because PHP only calls
-	 * write() after regenerating the ID.
-	 *
-	 * @var	string
-	 */
-	protected $_session_id;
-
-	/**
-	 * Success and failure return values
-	 *
-	 * Necessary due to a bug in all PHP 5 versions where return values
-	 * from userspace handlers are not handled properly. PHP 7 fixes the
-	 * bug, so we need to return different values depending on the version.
-	 *
-	 * @see	https://wiki.php.net/rfc/session.user.return-value
-	 * @var	mixed
-	 */
-	protected $_success, $_failure;
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Class constructor
-	 *
-	 * @param	array	$params	Configuration parameters
-	 * @return	void
-	 */
-	public function __construct(&$params)
-	{
-		$this->_config =& $params;
-
-		if (is_php('7'))
-		{
-			$this->_success = TRUE;
-			$this->_failure = FALSE;
-		}
-		else
-		{
-			$this->_success = 0;
-			$this->_failure = -1;
-		}
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * PHP 5.x validate ID
-	 *
-	 * Enforces session.use_strict_mode
-	 *
-	 * @return	void
-	 */
-	public function php5_validate_id()
-	{
-		if (isset($_COOKIE[$this->_config['cookie_name']]) && ! $this->validateSessionId($_COOKIE[$this->_config['cookie_name']]))
-		{
-			unset($_COOKIE[$this->_config['cookie_name']]);
-		}
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Cookie destroy
-	 *
-	 * Internal method to force removal of a cookie by the client
-	 * when session_destroy() is called.
-	 *
-	 * @return	bool
-	 */
-	protected function _cookie_destroy()
-	{
-		return setcookie(
-			$this->_config['cookie_name'],
-			NULL,
-			1,
-			$this->_config['cookie_path'],
-			$this->_config['cookie_domain'],
-			$this->_config['cookie_secure'],
-			TRUE
-		);
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Get lock
-	 *
-	 * A dummy method allowing drivers with no locking functionality
-	 * (databases other than PostgreSQL and MySQL) to act as if they
-	 * do acquire a lock.
-	 *
-	 * @param	string	$session_id
-	 * @return	bool
-	 */
-	protected function _get_lock($session_id)
-	{
-		$this->_lock = TRUE;
-		return TRUE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Release lock
-	 *
-	 * @return	bool
-	 */
-	protected function _release_lock()
-	{
-		if ($this->_lock)
-		{
-			$this->_lock = FALSE;
-		}
-
-		return TRUE;
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+FjlNtCKhkr/c0sz1sagxhyJsEEcq+soM00==

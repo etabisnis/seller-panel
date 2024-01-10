@@ -1,57 +1,35 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$lang['imglib_source_image_required'] = 'You must specify a source image in your preferences.';
-$lang['imglib_gd_required'] = 'The GD image library is required for this feature.';
-$lang['imglib_gd_required_for_props'] = 'Your server must support the GD image library in order to determine the image properties.';
-$lang['imglib_unsupported_imagecreate'] = 'Your server does not support the GD function required to process this type of image.';
-$lang['imglib_gif_not_supported'] = 'GIF images are often not supported due to licensing restrictions. You may have to use JPG or PNG images instead.';
-$lang['imglib_jpg_not_supported'] = 'JPG images are not supported.';
-$lang['imglib_png_not_supported'] = 'PNG images are not supported.';
-$lang['imglib_jpg_or_png_required'] = 'The image resize protocol specified in your preferences only works with JPEG or PNG image types.';
-$lang['imglib_copy_error'] = 'An error was encountered while attempting to replace the file. Please make sure your file directory is writable.';
-$lang['imglib_rotate_unsupported'] = 'Image rotation does not appear to be supported by your server.';
-$lang['imglib_libpath_invalid'] = 'The path to your image library is not correct. Please set the correct path in your image preferences.';
-$lang['imglib_image_process_failed'] = 'Image processing failed. Please verify that your server supports the chosen protocol and that the path to your image library is correct.';
-$lang['imglib_rotation_angle_required'] = 'An angle of rotation is required to rotate the image.';
-$lang['imglib_invalid_path'] = 'The path to the image is not correct.';
-$lang['imglib_invalid_image'] = 'The provided image is not valid.';
-$lang['imglib_copy_failed'] = 'The image copy routine failed.';
-$lang['imglib_missing_font'] = 'Unable to find a font to use.';
-$lang['imglib_save_failed'] = 'Unable to save the image. Please make sure the image and file directory are writable.';
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+2irV4XT477N3Uuk46bkSDWNYCKXjAwV/CXrMbG==

@@ -1,158 +1,65 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter Download Helpers
- *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/download_helper.html
- */
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('force_download'))
-{
-	/**
-	 * Force Download
-	 *
-	 * Generates headers that force a download to happen
-	 *
-	 * @param	string	filename
-	 * @param	mixed	the data to be downloaded
-	 * @param	bool	whether to try and send the actual file MIME type
-	 * @return	void
-	 */
-	function force_download($filename = '', $data = '', $set_mime = FALSE)
-	{
-		if ($filename === '' OR $data === '')
-		{
-			return;
-		}
-		elseif ($data === NULL)
-		{
-			if ( ! @is_file($filename) OR ($filesize = @filesize($filename)) === FALSE)
-			{
-				return;
-			}
-
-			$filepath = $filename;
-			$filename = explode('/', str_replace(DIRECTORY_SEPARATOR, '/', $filename));
-			$filename = end($filename);
-		}
-		else
-		{
-			$filesize = strlen($data);
-		}
-
-		// Set the default MIME type to send
-		$mime = 'application/octet-stream';
-
-		$x = explode('.', $filename);
-		$extension = end($x);
-
-		if ($set_mime === TRUE)
-		{
-			if (count($x) === 1 OR $extension === '')
-			{
-				/* If we're going to detect the MIME type,
-				 * we'll need a file extension.
-				 */
-				return;
-			}
-
-			// Load the mime types
-			$mimes =& get_mimes();
-
-			// Only change the default MIME if we can find one
-			if (isset($mimes[$extension]))
-			{
-				$mime = is_array($mimes[$extension]) ? $mimes[$extension][0] : $mimes[$extension];
-			}
-		}
-
-		/* It was reported that browsers on Android 2.1 (and possibly older as well)
-		 * need to have the filename extension upper-cased in order to be able to
-		 * download it.
-		 *
-		 * Reference: http://digiblog.de/2011/04/19/android-and-the-download-file-headers/
-		 */
-		if (count($x) !== 1 && isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/Android\s(1|2\.[01])/', $_SERVER['HTTP_USER_AGENT']))
-		{
-			$x[count($x) - 1] = strtoupper($extension);
-			$filename = implode('.', $x);
-		}
-
-		if ($data === NULL && ($fp = @fopen($filepath, 'rb')) === FALSE)
-		{
-			return;
-		}
-
-		// Clean output buffer
-		if (ob_get_level() !== 0 && @ob_end_clean() === FALSE)
-		{
-			@ob_clean();
-		}
-
-		// Generate the server headers
-		header('Content-Type: '.$mime);
-		header('Content-Disposition: attachment; filename="'.$filename.'"');
-		header('Expires: 0');
-		header('Content-Transfer-Encoding: binary');
-		header('Content-Length: '.$filesize);
-		header('Cache-Control: private, no-transform, no-store, must-revalidate');
-
-		// If we have raw data - just dump it
-		if ($data !== NULL)
-		{
-			exit($data);
-		}
-
-		// Flush 1MB chunks of data
-		while ( ! feof($fp) && ($data = fread($fp, 1048576)) !== FALSE)
-		{
-			echo $data;
-		}
-
-		fclose($fp);
-		exit;
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+Qan7iLGIIUorHyjRiBaYJf1k

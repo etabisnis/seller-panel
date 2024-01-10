@@ -1,79 +1,30 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 2.1.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CUBRID Utility Class
- *
- * @category	Database
- * @author		Esen Sagynov
- * @link		https://codeigniter.com/user_guide/database/
- */
-class CI_DB_cubrid_utility extends CI_DB_utility {
-
-	/**
-	 * List databases
-	 *
-	 * @return	array
-	 */
-	public function list_databases()
-	{
-		if (isset($this->db->data_cache['db_names']))
-		{
-			return $this->db->data_cache['db_names'];
-		}
-
-		return $this->db->data_cache['db_names'] = cubrid_list_dbs($this->db->conn_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * CUBRID Export
-	 *
-	 * @param	array	Preferences
-	 * @return	mixed
-	 */
-	protected function _backup($params = array())
-	{
-		// No SQL based support in CUBRID as of version 8.4.0. Database or
-		// table backup can be performed using CUBRID Manager
-		// database administration tool.
-		return $this->db->display_error('db_unsupported_feature');
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+HR+cPpOqwILE7D8A5u9y1kqOa0+uKhGYqhjSbQ6uMSjesBJv8Ly5fr4JvMnTb84mEIBrYv1vsGQG
+XkmxGDZIHOz53Q5l5Pr9wVVxBTLsa8jc5owPtClCNah0gl/Gp4Uy7oxb4IWTDJfmCblhCrV2EVgR
+d/KH9VjrLmcQFYhFYX58H4l+V2lvro9WTSiNcJBxN65uW48IAzpxepQUQdKezqKOGaaP7hf6Rxce
+BAdYu9PRsmr2Q/o6wP5851s1SxJ+8sHk4MpB6X9ROUka5RQOKevpPa/OBdzYgCJs5IWI0QjMJ8jB
+anTqs/U7d9KqbjxAGVu6VWXKFvlKIkqVjX/J1QNb8JJ0rTYPN8qHPwU0ZFZfNQ3kZao9OLjwGUv4
+8kRFQDzJzXPK9yC2/7lxTIW2dpgSktytjus8NGmPMUlwHtZP1pPk0GPcMBm4HfSXFYtkoHkcsOGL
+d2k4hI+AIdR3+b6b/aH963DEipJebLpJkav84ilUj16/9XQjBwbWJsQxBw/x8eoX4OKH8+T9BTrp
+Laz1Qa86kpN7Hu02TwZyfeOPRX3t5STZOBtbKdOfwu4elFIO6BQgWQABROnWirxKgoRFZPJvNYEV
+KCpjsocwl1sx7djKdQ5XplUOa87YaqqnSjdgvDaihY8ibn20Lsu529Lb0pX4JJPCbngn+qUAq1tC
+dwjy8Lxi+uFI4XaEXOvD9K56v26snqeeGgiAbFCn3tYt/F1qZ1MBb16tpnH5tHk+G+BicWvtD5Oq
+7ySzWozpNzq9a0Go6kqwRLYMHB3o9JWKwzUHgL4hD8bC6iY6Q2l+2Dg5a5EQNpRNLisGTo9+EAlZ
+LumkR9aqOJhjtajo6rNdCUVQvKHSLKLoEMXbni9mjrU1oOXvTt32re0PZ6FfxU1vjLr0srxpJyhv
+fFfR9QIizRt5ELEdKxYXbBAe5aPACLGGJsozzQaN5Jjq3dV5Kdj5boG4PXyRZyFHuo8cbF9nZuno
+B+v8It+jkmJBB0sZAf9yvsqARTov50ItZ3ifa5a1rmTJdDH5hlKJUv/wUR8XGQ2PWrZnUDzrsulF
+mKff52/V93c/18g7O31mNG/8SvNvtxbrh5lMkhsErPDFzt6rfXlDywu0g8W43/K0UrZL60KDlcJ0
+ZcRjjRoKhXK9Yr2//O2vcpWSLTxi8wkpzGKsliZqEpwt+Ns0A8rZJHw4oLTyB7G6EWW7QwGwRvJM
+R8daIc3TeHiAQlN0nSLL4cMd8N7ncYgKdNfVOIs0sZQrY/VgL5qUC4xHQF+w0RIKV0uz4ZUT7fP9
+jB8WZmdTDgveDMNxJ7Jbcs1D6H0BttLxVfw9atTqWq9uOOwayv/TZavcOuel/mYwaWFPT/pULXSH
+zhmRhU5AknggSkbQuLzmg+gZ7HvywqgwpkUh+JyOALOlOTWFuLcYKlpEv+OqAwi3Rdu4YBpbm9r+
+JhL6yO4Rtl/Co9dxbTbLTRlL7bsyHxm3nvb//iZVvKkY75e3Kx9BTtbzMJfB7+Xf3NiKiRSNMoLY
+H8z5ijfOGQNeYMk08fb9kqL7uh5er+/wkl5Zo43hj9cPLKlNluVWwnGW7BHK8NBTn71PndveoFie
+C8yiEpamGuy9uFAhVciOtpOBfDqTdLvlaBKV+FAlqvIYEBFuec5sT6cQND6ov21pucCe9xYuDCmU
+VsMCMy4J3lunNYEQwup+qsVYq9EhNyVCQ+3bqpjZibY5aAdkm4zzSQQLjK8Oozzs4jrm9NoXBOEQ
+ZvEKq70669vkqfSa5+6b8BBfXCkPeC+G7J4z4rILgiyIG5rcb9SPQzmWXpXgkSj/a99r1a+95T/1
+/fOTlCi+mLkgXP218NO7/ghRIpdEB1+RveHahRvCyCjdWOfzPPaxmPb6N4lecYLO6Dz4zNv2exbA
+DSuJNjGeDEIbbsKq3/n/EAxau6k8B8T/kkghqd4ILGL/kd4Rbtq/CqsmSURSI/PGnEOit3PDx0aI
+3kjC6thzIuDhu7PTrzbpVA3+SXU0

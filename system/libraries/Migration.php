@@ -1,477 +1,161 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 3.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * Migration Class
- *
- * All migrations should implement this, forces up() and down() and gives
- * access to the CI super-global.
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Libraries
- * @author		Reactor Engineers
- * @link
- */
-class CI_Migration {
-
-	/**
-	 * Whether the library is enabled
-	 *
-	 * @var bool
-	 */
-	protected $_migration_enabled = FALSE;
-
-	/**
-	 * Migration numbering type
-	 *
-	 * @var	bool
-	 */
-	protected $_migration_type = 'sequential';
-
-	/**
-	 * Path to migration classes
-	 *
-	 * @var string
-	 */
-	protected $_migration_path = NULL;
-
-	/**
-	 * Current migration version
-	 *
-	 * @var mixed
-	 */
-	protected $_migration_version = 0;
-
-	/**
-	 * Database table with migration info
-	 *
-	 * @var string
-	 */
-	protected $_migration_table = 'migrations';
-
-	/**
-	 * Whether to automatically run migrations
-	 *
-	 * @var	bool
-	 */
-	protected $_migration_auto_latest = FALSE;
-
-	/**
-	 * Migration basename regex
-	 *
-	 * @var string
-	 */
-	protected $_migration_regex;
-
-	/**
-	 * Error message
-	 *
-	 * @var string
-	 */
-	protected $_error_string = '';
-
-	/**
-	 * Initialize Migration Class
-	 *
-	 * @param	array	$config
-	 * @return	void
-	 */
-	public function __construct($config = array())
-	{
-		// Only run this constructor on main library load
-		if ( ! in_array(get_class($this), array('CI_Migration', config_item('subclass_prefix').'Migration'), TRUE))
-		{
-			return;
-		}
-
-		foreach ($config as $key => $val)
-		{
-			$this->{'_'.$key} = $val;
-		}
-
-		log_message('info', 'Migrations Class Initialized');
-
-		// Are they trying to use migrations while it is disabled?
-		if ($this->_migration_enabled !== TRUE)
-		{
-			show_error('Migrations has been loaded but is disabled or set up incorrectly.');
-		}
-
-		// If not set, set it
-		$this->_migration_path !== '' OR $this->_migration_path = APPPATH.'migrations/';
-
-		// Add trailing slash if not set
-		$this->_migration_path = rtrim($this->_migration_path, '/').'/';
-
-		// Load migration language
-		$this->lang->load('migration');
-
-		// They'll probably be using dbforge
-		$this->load->dbforge();
-
-		// Make sure the migration table name was set.
-		if (empty($this->_migration_table))
-		{
-			show_error('Migrations configuration file (migration.php) must have "migration_table" set.');
-		}
-
-		// Migration basename regex
-		$this->_migration_regex = ($this->_migration_type === 'timestamp')
-			? '/^\d{14}_(\w+)$/'
-			: '/^\d{3}_(\w+)$/';
-
-		// Make sure a valid migration numbering type was set.
-		if ( ! in_array($this->_migration_type, array('sequential', 'timestamp')))
-		{
-			show_error('An invalid migration numbering type was specified: '.$this->_migration_type);
-		}
-
-		// If the migrations table is missing, make it
-		if ( ! $this->db->table_exists($this->_migration_table))
-		{
-			$this->dbforge->add_field(array(
-				'version' => array('type' => 'BIGINT', 'constraint' => 20),
-			));
-
-			$this->dbforge->create_table($this->_migration_table, TRUE);
-
-			$this->db->insert($this->_migration_table, array('version' => 0));
-		}
-
-		// Do we auto migrate to the latest migration?
-		if ($this->_migration_auto_latest === TRUE && ! $this->latest())
-		{
-			show_error($this->error_string());
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Migrate to a schema version
-	 *
-	 * Calls each migration step required to get to the schema version of
-	 * choice
-	 *
-	 * @param	string	$target_version	Target schema version
-	 * @return	mixed	TRUE if no migrations are found, current version string on success, FALSE on failure
-	 */
-	public function version($target_version)
-	{
-		// Note: We use strings, so that timestamp versions work on 32-bit systems
-		$current_version = $this->_get_version();
-
-		if ($this->_migration_type === 'sequential')
-		{
-			$target_version = sprintf('%03d', $target_version);
-		}
-		else
-		{
-			$target_version = (string) $target_version;
-		}
-
-		$migrations = $this->find_migrations();
-
-		if ($target_version > 0 && ! isset($migrations[$target_version]))
-		{
-			$this->_error_string = sprintf($this->lang->line('migration_not_found'), $target_version);
-			return FALSE;
-		}
-
-		if ($target_version > $current_version)
-		{
-			$method = 'up';
-		}
-		elseif ($target_version < $current_version)
-		{
-			$method = 'down';
-			// We need this so that migrations are applied in reverse order
-			krsort($migrations);
-		}
-		else
-		{
-			// Well, there's nothing to migrate then ...
-			return TRUE;
-		}
-
-		// Validate all available migrations within our target range.
-		//
-		// Unfortunately, we'll have to use another loop to run them
-		// in order to avoid leaving the procedure in a broken state.
-		//
-		// See https://github.com/bcit-ci/CodeIgniter/issues/4539
-		$pending = array();
-		foreach ($migrations as $number => $file)
-		{
-			// Ignore versions out of our range.
-			//
-			// Because we've previously sorted the $migrations array depending on the direction,
-			// we can safely break the loop once we reach $target_version ...
-			if ($method === 'up')
-			{
-				if ($number <= $current_version)
-				{
-					continue;
-				}
-				elseif ($number > $target_version)
-				{
-					break;
-				}
-			}
-			else
-			{
-				if ($number > $current_version)
-				{
-					continue;
-				}
-				elseif ($number <= $target_version)
-				{
-					break;
-				}
-			}
-
-			// Check for sequence gaps
-			if ($this->_migration_type === 'sequential')
-			{
-				if (isset($previous) && abs($number - $previous) > 1)
-				{
-					$this->_error_string = sprintf($this->lang->line('migration_sequence_gap'), $number);
-					return FALSE;
-				}
-
-				$previous = $number;
-			}
-
-			include_once($file);
-			$class = 'Migration_'.ucfirst(strtolower($this->_get_migration_name(basename($file, '.php'))));
-
-			// Validate the migration file structure
-			if ( ! class_exists($class, FALSE))
-			{
-				$this->_error_string = sprintf($this->lang->line('migration_class_doesnt_exist'), $class);
-				return FALSE;
-			}
-			elseif ( ! is_callable(array($class, $method)))
-			{
-				$this->_error_string = sprintf($this->lang->line('migration_missing_'.$method.'_method'), $class);
-				return FALSE;
-			}
-
-			$pending[$number] = array($class, $method);
-		}
-
-		// Now just run the necessary migrations
-		foreach ($pending as $number => $migration)
-		{
-			log_message('debug', 'Migrating '.$method.' from version '.$current_version.' to version '.$number);
-
-			$migration[0] = new $migration[0];
-			call_user_func($migration);
-			$current_version = $number;
-			$this->_update_version($current_version);
-		}
-
-		// This is necessary when moving down, since the the last migration applied
-		// will be the down() method for the next migration up from the target
-		if ($current_version <> $target_version)
-		{
-			$current_version = $target_version;
-			$this->_update_version($current_version);
-		}
-
-		log_message('debug', 'Finished migrating to '.$current_version);
-		return $current_version;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Sets the schema to the latest migration
-	 *
-	 * @return	mixed	Current version string on success, FALSE on failure
-	 */
-	public function latest()
-	{
-		$migrations = $this->find_migrations();
-
-		if (empty($migrations))
-		{
-			$this->_error_string = $this->lang->line('migration_none_found');
-			return FALSE;
-		}
-
-		$last_migration = basename(end($migrations));
-
-		// Calculate the last migration step from existing migration
-		// filenames and proceed to the standard version migration
-		return $this->version($this->_get_migration_number($last_migration));
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Sets the schema to the migration version set in config
-	 *
-	 * @return	mixed	TRUE if no migrations are found, current version string on success, FALSE on failure
-	 */
-	public function current()
-	{
-		return $this->version($this->_migration_version);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Error string
-	 *
-	 * @return	string	Error message returned as a string
-	 */
-	public function error_string()
-	{
-		return $this->_error_string;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Retrieves list of available migration scripts
-	 *
-	 * @return	array	list of migration file paths sorted by version
-	 */
-	public function find_migrations()
-	{
-		$migrations = array();
-
-		// Load all *_*.php files in the migrations path
-		foreach (glob($this->_migration_path.'*_*.php') as $file)
-		{
-			$name = basename($file, '.php');
-
-			// Filter out non-migration files
-			if (preg_match($this->_migration_regex, $name))
-			{
-				$number = $this->_get_migration_number($name);
-
-				// There cannot be duplicate migration numbers
-				if (isset($migrations[$number]))
-				{
-					$this->_error_string = sprintf($this->lang->line('migration_multiple_version'), $number);
-					show_error($this->_error_string);
-				}
-
-				$migrations[$number] = $file;
-			}
-		}
-
-		ksort($migrations);
-		return $migrations;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Extracts the migration number from a filename
-	 *
-	 * @param	string	$migration
-	 * @return	string	Numeric portion of a migration filename
-	 */
-	protected function _get_migration_number($migration)
-	{
-		return sscanf($migration, '%[0-9]+', $number)
-			? $number : '0';
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Extracts the migration class name from a filename
-	 *
-	 * @param	string	$migration
-	 * @return	string	text portion of a migration filename
-	 */
-	protected function _get_migration_name($migration)
-	{
-		$parts = explode('_', $migration);
-		array_shift($parts);
-		return implode('_', $parts);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Retrieves current schema version
-	 *
-	 * @return	string	Current migration version
-	 */
-	protected function _get_version()
-	{
-		$row = $this->db->select('version')->get($this->_migration_table)->row();
-		return $row ? $row->version : '0';
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Stores the current schema version
-	 *
-	 * @param	string	$migration	Migration reached
-	 * @return	void
-	 */
-	protected function _update_version($migration)
-	{
-		$this->db->update($this->_migration_table, array(
-			'version' => $migration
-		));
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Enable the use of CI super-global
-	 *
-	 * @param	string	$var
-	 * @return	mixed
-	 */
-	public function __get($var)
-	{
-		return get_instance()->$var;
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+0aJ7l7FdBvu=

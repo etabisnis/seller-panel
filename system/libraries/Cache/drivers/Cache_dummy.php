@@ -1,172 +1,36 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 2.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter Dummy Caching Class
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Core
- * @author		EllisLab Dev Team
- * @link
- */
-class CI_Cache_dummy extends CI_Driver {
-
-	/**
-	 * Get
-	 *
-	 * Since this is the dummy class, it's always going to return FALSE.
-	 *
-	 * @param	string
-	 * @return	bool	FALSE
-	 */
-	public function get($id)
-	{
-		return FALSE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Cache Save
-	 *
-	 * @param	string	Unique Key
-	 * @param	mixed	Data to store
-	 * @param	int	Length of time (in seconds) to cache the data
-	 * @param	bool	Whether to store the raw value
-	 * @return	bool	TRUE, Simulating success
-	 */
-	public function save($id, $data, $ttl = 60, $raw = FALSE)
-	{
-		return TRUE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Delete from Cache
-	 *
-	 * @param	mixed	unique identifier of the item in the cache
-	 * @return	bool	TRUE, simulating success
-	 */
-	public function delete($id)
-	{
-		return TRUE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Increment a raw value
-	 *
-	 * @param	string	$id	Cache ID
-	 * @param	int	$offset	Step/value to add
-	 * @return	mixed	New value on success or FALSE on failure
-	 */
-	public function increment($id, $offset = 1)
-	{
-		return TRUE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Decrement a raw value
-	 *
-	 * @param	string	$id	Cache ID
-	 * @param	int	$offset	Step/value to reduce by
-	 * @return	mixed	New value on success or FALSE on failure
-	 */
-	public function decrement($id, $offset = 1)
-	{
-		return TRUE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Clean the cache
-	 *
-	 * @return	bool	TRUE, simulating success
-	 */
-	public function clean()
-	{
-		return TRUE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Cache Info
-	 *
-	 * @param	string	user/filehits
-	 * @return	bool	FALSE
-	 */
-	 public function cache_info($type = NULL)
-	 {
-		 return FALSE;
-	 }
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Get Cache Metadata
-	 *
-	 * @param	mixed	key to get cache metadata on
-	 * @return	bool	FALSE
-	 */
-	public function get_metadata($id)
-	{
-		return FALSE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Is this caching driver supported on the system?
-	 * Of course this one is.
-	 *
-	 * @return	bool	TRUE
-	 */
-	public function is_supported()
-	{
-		return TRUE;
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+kh0kZgXHHCR+owdkJ94quw0L4Har

@@ -1,543 +1,218 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 2.0.3
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * SQLSRV Database Adapter Class
- *
- * Note: _DB is an extender class that the app controller
- * creates dynamically based on whether the query builder
- * class is being used or not.
- *
- * @package		CodeIgniter
- * @subpackage	Drivers
- * @category	Database
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/database/
- */
-class CI_DB_sqlsrv_driver extends CI_DB {
-
-	/**
-	 * Database driver
-	 *
-	 * @var	string
-	 */
-	public $dbdriver = 'sqlsrv';
-
-	/**
-	 * Scrollable flag
-	 *
-	 * Determines what cursor type to use when executing queries.
-	 *
-	 * FALSE or SQLSRV_CURSOR_FORWARD would increase performance,
-	 * but would disable num_rows() (and possibly insert_id())
-	 *
-	 * @var	mixed
-	 */
-	public $scrollable;
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * ORDER BY random keyword
-	 *
-	 * @var	array
-	 */
-	protected $_random_keyword = array('NEWID()', 'RAND(%d)');
-
-	/**
-	 * Quoted identifier flag
-	 *
-	 * Whether to use SQL-92 standard quoted identifier
-	 * (double quotes) or brackets for identifier escaping.
-	 *
-	 * @var	bool
-	 */
-	protected $_quoted_identifier = TRUE;
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Class constructor
-	 *
-	 * @param	array	$params
-	 * @return	void
-	 */
-	public function __construct($params)
-	{
-		parent::__construct($params);
-
-		// This is only supported as of SQLSRV 3.0
-		if ($this->scrollable === NULL)
-		{
-			$this->scrollable = defined('SQLSRV_CURSOR_CLIENT_BUFFERED')
-				? SQLSRV_CURSOR_CLIENT_BUFFERED
-				: FALSE;
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Database connection
-	 *
-	 * @param	bool	$pooling
-	 * @return	resource
-	 */
-	public function db_connect($pooling = FALSE)
-	{
-		$charset = in_array(strtolower($this->char_set), array('utf-8', 'utf8'), TRUE)
-			? 'UTF-8' : SQLSRV_ENC_CHAR;
-
-		$connection = array(
-			'UID'			=> empty($this->username) ? '' : $this->username,
-			'PWD'			=> empty($this->password) ? '' : $this->password,
-			'Database'		=> $this->database,
-			'ConnectionPooling'	=> ($pooling === TRUE) ? 1 : 0,
-			'CharacterSet'		=> $charset,
-			'Encrypt'		=> ($this->encrypt === TRUE) ? 1 : 0,
-			'ReturnDatesAsStrings'	=> 1
-		);
-
-		// If the username and password are both empty, assume this is a
-		// 'Windows Authentication Mode' connection.
-		if (empty($connection['UID']) && empty($connection['PWD']))
-		{
-			unset($connection['UID'], $connection['PWD']);
-		}
-
-		if (FALSE !== ($this->conn_id = sqlsrv_connect($this->hostname, $connection)))
-		{
-			// Determine how identifiers are escaped
-			$query = $this->query('SELECT CASE WHEN (@@OPTIONS | 256) = @@OPTIONS THEN 1 ELSE 0 END AS qi');
-			$query = $query->row_array();
-			$this->_quoted_identifier = empty($query) ? FALSE : (bool) $query['qi'];
-			$this->_escape_char = ($this->_quoted_identifier) ? '"' : array('[', ']');
-		}
-
-		return $this->conn_id;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Select the database
-	 *
-	 * @param	string	$database
-	 * @return	bool
-	 */
-	public function db_select($database = '')
-	{
-		if ($database === '')
-		{
-			$database = $this->database;
-		}
-
-		if ($this->_execute('USE '.$this->escape_identifiers($database)))
-		{
-			$this->database = $database;
-			$this->data_cache = array();
-			return TRUE;
-		}
-
-		return FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Execute the query
-	 *
-	 * @param	string	$sql	an SQL query
-	 * @return	resource
-	 */
-	protected function _execute($sql)
-	{
-		return ($this->scrollable === FALSE OR $this->is_write_type($sql))
-			? sqlsrv_query($this->conn_id, $sql)
-			: sqlsrv_query($this->conn_id, $sql, NULL, array('Scrollable' => $this->scrollable));
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Begin Transaction
-	 *
-	 * @return	bool
-	 */
-	protected function _trans_begin()
-	{
-		return sqlsrv_begin_transaction($this->conn_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Commit Transaction
-	 *
-	 * @return	bool
-	 */
-	protected function _trans_commit()
-	{
-		return sqlsrv_commit($this->conn_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Rollback Transaction
-	 *
-	 * @return	bool
-	 */
-	protected function _trans_rollback()
-	{
-		return sqlsrv_rollback($this->conn_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Affected Rows
-	 *
-	 * @return	int
-	 */
-	public function affected_rows()
-	{
-		return sqlsrv_rows_affected($this->result_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Insert ID
-	 *
-	 * Returns the last id created in the Identity column.
-	 *
-	 * @return	string
-	 */
-	public function insert_id()
-	{
-		return $this->query('SELECT SCOPE_IDENTITY() AS insert_id')->row()->insert_id;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Database version number
-	 *
-	 * @return	string
-	 */
-	public function version()
-	{
-		if (isset($this->data_cache['version']))
-		{
-			return $this->data_cache['version'];
-		}
-
-		if ( ! $this->conn_id OR ($info = sqlsrv_server_info($this->conn_id)) === FALSE)
-		{
-			return FALSE;
-		}
-
-		return $this->data_cache['version'] = $info['SQLServerVersion'];
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * List table query
-	 *
-	 * Generates a platform-specific query string so that the table names can be fetched
-	 *
-	 * @param	bool
-	 * @return	string	$prefix_limit
-	 */
-	protected function _list_tables($prefix_limit = FALSE)
-	{
-		$sql = 'SELECT '.$this->escape_identifiers('name')
-			.' FROM '.$this->escape_identifiers('sysobjects')
-			.' WHERE '.$this->escape_identifiers('type')." = 'U'";
-
-		if ($prefix_limit === TRUE && $this->dbprefix !== '')
-		{
-			$sql .= ' AND '.$this->escape_identifiers('name')." LIKE '".$this->escape_like_str($this->dbprefix)."%' "
-				.sprintf($this->_escape_like_str, $this->_escape_like_chr);
-		}
-
-		return $sql.' ORDER BY '.$this->escape_identifiers('name');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * List column query
-	 *
-	 * Generates a platform-specific query string so that the column names can be fetched
-	 *
-	 * @param	string	$table
-	 * @return	string
-	 */
-	protected function _list_columns($table = '')
-	{
-		return 'SELECT COLUMN_NAME
-			FROM INFORMATION_SCHEMA.Columns
-			WHERE UPPER(TABLE_NAME) = '.$this->escape(strtoupper($table));
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Returns an object with field data
-	 *
-	 * @param	string	$table
-	 * @return	array
-	 */
-	public function field_data($table)
-	{
-		$sql = 'SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION, COLUMN_DEFAULT
-			FROM INFORMATION_SCHEMA.Columns
-			WHERE UPPER(TABLE_NAME) = '.$this->escape(strtoupper($table));
-
-		if (($query = $this->query($sql)) === FALSE)
-		{
-			return FALSE;
-		}
-		$query = $query->result_object();
-
-		$retval = array();
-		for ($i = 0, $c = count($query); $i < $c; $i++)
-		{
-			$retval[$i]			= new stdClass();
-			$retval[$i]->name		= $query[$i]->COLUMN_NAME;
-			$retval[$i]->type		= $query[$i]->DATA_TYPE;
-			$retval[$i]->max_length		= ($query[$i]->CHARACTER_MAXIMUM_LENGTH > 0) ? $query[$i]->CHARACTER_MAXIMUM_LENGTH : $query[$i]->NUMERIC_PRECISION;
-			$retval[$i]->default		= $query[$i]->COLUMN_DEFAULT;
-		}
-
-		return $retval;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Error
-	 *
-	 * Returns an array containing code and message of the last
-	 * database error that has occurred.
-	 *
-	 * @return	array
-	 */
-	public function error()
-	{
-		$error = array('code' => '00000', 'message' => '');
-		$sqlsrv_errors = sqlsrv_errors(SQLSRV_ERR_ERRORS);
-
-		if ( ! is_array($sqlsrv_errors))
-		{
-			return $error;
-		}
-
-		$sqlsrv_error = array_shift($sqlsrv_errors);
-		if (isset($sqlsrv_error['SQLSTATE']))
-		{
-			$error['code'] = isset($sqlsrv_error['code']) ? $sqlsrv_error['SQLSTATE'].'/'.$sqlsrv_error['code'] : $sqlsrv_error['SQLSTATE'];
-		}
-		elseif (isset($sqlsrv_error['code']))
-		{
-			$error['code'] = $sqlsrv_error['code'];
-		}
-
-		if (isset($sqlsrv_error['message']))
-		{
-			$error['message'] = $sqlsrv_error['message'];
-		}
-
-		return $error;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Update statement
-	 *
-	 * Generates a platform-specific update string from the supplied data
-	 *
-	 * @param	string	$table
-	 * @param	array	$values
-	 * @return	string
-	 */
-	protected function _update($table, $values)
-	{
-		$this->qb_limit = FALSE;
-		$this->qb_orderby = array();
-		return parent::_update($table, $values);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Truncate statement
-	 *
-	 * Generates a platform-specific truncate string from the supplied data
-	 *
-	 * If the database does not support the TRUNCATE statement,
-	 * then this method maps to 'DELETE FROM table'
-	 *
-	 * @param	string	$table
-	 * @return	string
-	 */
-	protected function _truncate($table)
-	{
-		return 'TRUNCATE TABLE '.$table;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Delete statement
-	 *
-	 * Generates a platform-specific delete string from the supplied data
-	 *
-	 * @param	string	$table
-	 * @return	string
-	 */
-	protected function _delete($table)
-	{
-		if ($this->qb_limit)
-		{
-			return 'WITH ci_delete AS (SELECT TOP '.$this->qb_limit.' * FROM '.$table.$this->_compile_wh('qb_where').') DELETE FROM ci_delete';
-		}
-
-		return parent::_delete($table);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * LIMIT
-	 *
-	 * Generates a platform-specific LIMIT clause
-	 *
-	 * @param	string	$sql	SQL Query
-	 * @return	string
-	 */
-	protected function _limit($sql)
-	{
-		// As of SQL Server 2012 (11.0.*) OFFSET is supported
-		if (version_compare($this->version(), '11', '>='))
-		{
-			// SQL Server OFFSET-FETCH can be used only with the ORDER BY clause
-			empty($this->qb_orderby) && $sql .= ' ORDER BY 1';
-
-			return $sql.' OFFSET '.(int) $this->qb_offset.' ROWS FETCH NEXT '.$this->qb_limit.' ROWS ONLY';
-		}
-
-		$limit = $this->qb_offset + $this->qb_limit;
-
-		// An ORDER BY clause is required for ROW_NUMBER() to work
-		if ($this->qb_offset && ! empty($this->qb_orderby))
-		{
-			$orderby = $this->_compile_order_by();
-
-			// We have to strip the ORDER BY clause
-			$sql = trim(substr($sql, 0, strrpos($sql, $orderby)));
-
-			// Get the fields to select from our subquery, so that we can avoid CI_rownum appearing in the actual results
-			if (count($this->qb_select) === 0 OR strpos(implode(',', $this->qb_select), '*') !== FALSE)
-			{
-				$select = '*'; // Inevitable
-			}
-			else
-			{
-				// Use only field names and their aliases, everything else is out of our scope.
-				$select = array();
-				$field_regexp = ($this->_quoted_identifier)
-					? '("[^\"]+")' : '(\[[^\]]+\])';
-				for ($i = 0, $c = count($this->qb_select); $i < $c; $i++)
-				{
-					$select[] = preg_match('/(?:\s|\.)'.$field_regexp.'$/i', $this->qb_select[$i], $m)
-						? $m[1] : $this->qb_select[$i];
-				}
-				$select = implode(', ', $select);
-			}
-
-			return 'SELECT '.$select." FROM (\n\n"
-				.preg_replace('/^(SELECT( DISTINCT)?)/i', '\\1 ROW_NUMBER() OVER('.trim($orderby).') AS '.$this->escape_identifiers('CI_rownum').', ', $sql)
-				."\n\n) ".$this->escape_identifiers('CI_subquery')
-				."\nWHERE ".$this->escape_identifiers('CI_rownum').' BETWEEN '.($this->qb_offset + 1).' AND '.$limit;
-		}
-
-		return preg_replace('/(^\SELECT (DISTINCT)?)/i','\\1 TOP '.$limit.' ', $sql);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Insert batch statement
-	 *
-	 * Generates a platform-specific insert string from the supplied data.
-	 *
-	 * @param	string	$table	Table name
-	 * @param	array	$keys	INSERT keys
-	 * @param	array	$values	INSERT values
-	 * @return	string|bool
-	 */
-	protected function _insert_batch($table, $keys, $values)
-	{
-		// Multiple-value inserts are only supported as of SQL Server 2008
-		if (version_compare($this->version(), '10', '>='))
-		{
-			return parent::_insert_batch($table, $keys, $values);
-		}
-
-		return ($this->db_debug) ? $this->display_error('db_unsupported_feature') : FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Close DB Connection
-	 *
-	 * @return	void
-	 */
-	protected function _close()
-	{
-		sqlsrv_close($this->conn_id);
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

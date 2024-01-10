@@ -1,459 +1,181 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 3.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter Session Redis Driver
- *
- * @package	CodeIgniter
- * @subpackage	Libraries
- * @category	Sessions
- * @author	Andrey Andreev
- * @link	https://codeigniter.com/user_guide/libraries/sessions.html
- */
-class CI_Session_redis_driver extends CI_Session_driver implements SessionHandlerInterface {
-
-	/**
-	 * phpRedis instance
-	 *
-	 * @var	Redis
-	 */
-	protected $_redis;
-
-	/**
-	 * Key prefix
-	 *
-	 * @var	string
-	 */
-	protected $_key_prefix = 'ci_session:';
-
-	/**
-	 * Lock key
-	 *
-	 * @var	string
-	 */
-	protected $_lock_key;
-
-	/**
-	 * Key exists flag
-	 *
-	 * @var bool
-	 */
-	protected $_key_exists = FALSE;
-
-	/**
-	 * Name of setTimeout() method in phpRedis
-	 *
-	 * Due to some deprecated methods in phpRedis, we need to call the
-	 * specific methods depending on the version of phpRedis.
-	 *
-	 * @var string
-	 */
-	protected $_setTimeout_name;
-
-	/**
-	 * Name of delete() method in phpRedis
-	 *
-	 * Due to some deprecated methods in phpRedis, we need to call the
-	 * specific methods depending on the version of phpRedis.
-	 *
-	 * @var string
-	 */
-	protected $_delete_name;
-
-	/**
-	 * Success return value of ping() method in phpRedis
-	 *
-	 * @var mixed
-	 */
-	protected $_ping_success;
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Class constructor
-	 *
-	 * @param	array	$params	Configuration parameters
-	 * @return	void
-	 */
-	public function __construct(&$params)
-	{
-		parent::__construct($params);
-
-		// Detect the names of some methods in phpRedis instance
-		if (version_compare(phpversion('redis'), '5', '>='))
-		{
-			$this->_setTimeout_name = 'expire';
-			$this->_delete_name = 'del';
-			$this->_ping_success = TRUE;
-		}
-		else
-		{
-			$this->_setTimeout_name = 'setTimeout';
-			$this->_delete_name = 'delete';
-			$this->_ping_success = '+PONG';
-		}
-
-		if (empty($this->_config['save_path']))
-		{
-			log_message('error', 'Session: No Redis save path configured.');
-		}
-		elseif (preg_match('#(?:tcp://)?([^:?]+)(?:\:(\d+))?(\?.+)?#', $this->_config['save_path'], $matches))
-		{
-			isset($matches[3]) OR $matches[3] = ''; // Just to avoid undefined index notices below
-			$this->_config['save_path'] = array(
-				'host' => $matches[1],
-				'port' => empty($matches[2]) ? NULL : $matches[2],
-				'password' => preg_match('#auth=([^\s&]+)#', $matches[3], $match) ? $match[1] : NULL,
-				'database' => preg_match('#database=(\d+)#', $matches[3], $match) ? (int) $match[1] : NULL,
-				'timeout' => preg_match('#timeout=(\d+\.\d+)#', $matches[3], $match) ? (float) $match[1] : NULL
-			);
-
-			preg_match('#prefix=([^\s&]+)#', $matches[3], $match) && $this->_key_prefix = $match[1];
-		}
-		else
-		{
-			log_message('error', 'Session: Invalid Redis save path format: '.$this->_config['save_path']);
-		}
-
-		if ($this->_config['match_ip'] === TRUE)
-		{
-			$this->_key_prefix .= $_SERVER['REMOTE_ADDR'].':';
-		}
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Open
-	 *
-	 * Sanitizes save_path and initializes connection.
-	 *
-	 * @param	string	$save_path	Server path
-	 * @param	string	$name		Session cookie name, unused
-	 * @return	bool
-	 */
-	public function open($save_path, $name)
-	{
-		if (empty($this->_config['save_path']))
-		{
-			return $this->_failure;
-		}
-
-		$redis = new Redis();
-		if ( ! $redis->connect($this->_config['save_path']['host'], $this->_config['save_path']['port'], $this->_config['save_path']['timeout']))
-		{
-			log_message('error', 'Session: Unable to connect to Redis with the configured settings.');
-		}
-		elseif (isset($this->_config['save_path']['password']) && ! $redis->auth($this->_config['save_path']['password']))
-		{
-			log_message('error', 'Session: Unable to authenticate to Redis instance.');
-		}
-		elseif (isset($this->_config['save_path']['database']) && ! $redis->select($this->_config['save_path']['database']))
-		{
-			log_message('error', 'Session: Unable to select Redis database with index '.$this->_config['save_path']['database']);
-		}
-		else
-		{
-			$this->_redis = $redis;
-			$this->php5_validate_id();
-			return $this->_success;
-		}
-
-		return $this->_failure;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Read
-	 *
-	 * Reads session data and acquires a lock
-	 *
-	 * @param	string	$session_id	Session ID
-	 * @return	string	Serialized session data
-	 */
-	public function read($session_id)
-	{
-		if (isset($this->_redis) && $this->_get_lock($session_id))
-		{
-			// Needed by write() to detect session_regenerate_id() calls
-			$this->_session_id = $session_id;
-
-			$session_data = $this->_redis->get($this->_key_prefix.$session_id);
-
-			is_string($session_data)
-				? $this->_key_exists = TRUE
-				: $session_data = '';
-
-			$this->_fingerprint = md5($session_data);
-			return $session_data;
-		}
-
-		return $this->_failure;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Write
-	 *
-	 * Writes (create / update) session data
-	 *
-	 * @param	string	$session_id	Session ID
-	 * @param	string	$session_data	Serialized session data
-	 * @return	bool
-	 */
-	public function write($session_id, $session_data)
-	{
-		if ( ! isset($this->_redis, $this->_lock_key))
-		{
-			return $this->_failure;
-		}
-		// Was the ID regenerated?
-		elseif ($session_id !== $this->_session_id)
-		{
-			if ( ! $this->_release_lock() OR ! $this->_get_lock($session_id))
-			{
-				return $this->_failure;
-			}
-
-			$this->_key_exists = FALSE;
-			$this->_session_id = $session_id;
-		}
-
-		$this->_redis->{$this->_setTimeout_name}($this->_lock_key, 300);
-		if ($this->_fingerprint !== ($fingerprint = md5($session_data)) OR $this->_key_exists === FALSE)
-		{
-			if ($this->_redis->set($this->_key_prefix.$session_id, $session_data, $this->_config['expiration']))
-			{
-				$this->_fingerprint = $fingerprint;
-				$this->_key_exists = TRUE;
-				return $this->_success;
-			}
-
-			return $this->_failure;
-		}
-
-		return ($this->_redis->{$this->_setTimeout_name}($this->_key_prefix.$session_id, $this->_config['expiration']))
-			? $this->_success
-			: $this->_failure;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Close
-	 *
-	 * Releases locks and closes connection.
-	 *
-	 * @return	bool
-	 */
-	public function close()
-	{
-		if (isset($this->_redis))
-		{
-			try {
-				if ($this->_redis->ping() === $this->_ping_success)
-				{
-					$this->_release_lock();
-					if ($this->_redis->close() === FALSE)
-					{
-						return $this->_failure;
-					}
-				}
-			}
-			catch (RedisException $e)
-			{
-				log_message('error', 'Session: Got RedisException on close(): '.$e->getMessage());
-			}
-
-			$this->_redis = NULL;
-			return $this->_success;
-		}
-
-		return $this->_success;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Destroy
-	 *
-	 * Destroys the current session.
-	 *
-	 * @param	string	$session_id	Session ID
-	 * @return	bool
-	 */
-	public function destroy($session_id)
-	{
-		if (isset($this->_redis, $this->_lock_key))
-		{
-			if (($result = $this->_redis->{$this->_delete_name}($this->_key_prefix.$session_id)) !== 1)
-			{
-				log_message('debug', 'Session: Redis::'.$this->_delete_name.'() expected to return 1, got '.var_export($result, TRUE).' instead.');
-			}
-
-			$this->_cookie_destroy();
-			return $this->_success;
-		}
-
-		return $this->_failure;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Garbage Collector
-	 *
-	 * Deletes expired sessions
-	 *
-	 * @param	int 	$maxlifetime	Maximum lifetime of sessions
-	 * @return	bool
-	 */
-	public function gc($maxlifetime)
-	{
-		// Not necessary, Redis takes care of that.
-		return $this->_success;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Validate ID
-	 *
-	 * Checks whether a session ID record exists server-side,
-	 * to enforce session.use_strict_mode.
-	 *
-	 * @param	string	$id
-	 * @return	bool
-	 */
-	public function validateSessionId($id)
-	{
-		return (bool) $this->_redis->exists($this->_key_prefix.$id);
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Get lock
-	 *
-	 * Acquires an (emulated) lock.
-	 *
-	 * @param	string	$session_id	Session ID
-	 * @return	bool
-	 */
-	protected function _get_lock($session_id)
-	{
-		// PHP 7 reuses the SessionHandler object on regeneration,
-		// so we need to check here if the lock key is for the
-		// correct session ID.
-		if ($this->_lock_key === $this->_key_prefix.$session_id.':lock')
-		{
-			return $this->_redis->{$this->_setTimeout_name}($this->_lock_key, 300);
-		}
-
-		// 30 attempts to obtain a lock, in case another request already has it
-		$lock_key = $this->_key_prefix.$session_id.':lock';
-		$attempt = 0;
-		do
-		{
-			if (($ttl = $this->_redis->ttl($lock_key)) > 0)
-			{
-				sleep(1);
-				continue;
-			}
-
-			if ($ttl === -2 && ! $this->_redis->set($lock_key, time(), array('nx', 'ex' => 300)))
-			{
-				// Sleep for 1s to wait for lock releases.
-				sleep(1);
-				continue;
-			}
-			elseif ( ! $this->_redis->setex($lock_key, 300, time()))
-			{
-				log_message('error', 'Session: Error while trying to obtain lock for '.$this->_key_prefix.$session_id);
-				return FALSE;
-			}
-
-			$this->_lock_key = $lock_key;
-			break;
-		}
-		while (++$attempt < 30);
-
-		if ($attempt === 30)
-		{
-			log_message('error', 'Session: Unable to obtain lock for '.$this->_key_prefix.$session_id.' after 30 attempts, aborting.');
-			return FALSE;
-		}
-		elseif ($ttl === -1)
-		{
-			log_message('debug', 'Session: Lock for '.$this->_key_prefix.$session_id.' had no TTL, overriding.');
-		}
-
-		$this->_lock = TRUE;
-		return TRUE;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Release lock
-	 *
-	 * Releases a previously acquired lock
-	 *
-	 * @return	bool
-	 */
-	protected function _release_lock()
-	{
-		if (isset($this->_redis, $this->_lock_key) && $this->_lock)
-		{
-			if ( ! $this->_redis->{$this->_delete_name}($this->_lock_key))
-			{
-				log_message('error', 'Session: Error while trying to free lock for '.$this->_lock_key);
-				return FALSE;
-			}
-
-			$this->_lock_key = NULL;
-			$this->_lock = FALSE;
-		}
-
-		return TRUE;
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

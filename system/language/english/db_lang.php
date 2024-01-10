@@ -1,63 +1,39 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$lang['db_invalid_connection_str'] = 'Unable to determine the database settings based on the connection string you submitted.';
-$lang['db_unable_to_connect'] = 'Unable to connect to your database server using the provided settings.';
-$lang['db_unable_to_select'] = 'Unable to select the specified database: %s';
-$lang['db_unable_to_create'] = 'Unable to create the specified database: %s';
-$lang['db_invalid_query'] = 'The query you submitted is not valid.';
-$lang['db_must_set_table'] = 'You must set the database table to be used with your query.';
-$lang['db_must_use_set'] = 'You must use the "set" method to update an entry.';
-$lang['db_must_use_index'] = 'You must specify an index to match on for batch updates.';
-$lang['db_batch_missing_index'] = 'One or more rows submitted for batch updating is missing the specified index.';
-$lang['db_must_use_where'] = 'Updates are not allowed unless they contain a "where" clause.';
-$lang['db_del_must_use_where'] = 'Deletes are not allowed unless they contain a "where" or "like" clause.';
-$lang['db_field_param_missing'] = 'To fetch fields requires the name of the table as a parameter.';
-$lang['db_unsupported_function'] = 'This feature is not available for the database you are using.';
-$lang['db_transaction_failure'] = 'Transaction failure: Rollback performed.';
-$lang['db_unable_to_drop'] = 'Unable to drop the specified database.';
-$lang['db_unsupported_feature'] = 'Unsupported feature of the database platform you are using.';
-$lang['db_unsupported_compression'] = 'The file compression format you chose is not supported by your server.';
-$lang['db_filepath_error'] = 'Unable to write data to the file path you have submitted.';
-$lang['db_invalid_cache_path'] = 'The cache path you submitted is not valid or writable.';
-$lang['db_table_name_required'] = 'A table name is required for that operation.';
-$lang['db_column_name_required'] = 'A column name is required for that operation.';
-$lang['db_column_definition_required'] = 'A column definition is required for that operation.';
-$lang['db_unable_to_set_charset'] = 'Unable to set client connection character set: %s';
-$lang['db_error_heading'] = 'A Database Error Occurred';
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+s2vnuHklvY0FKyOzwozA9OadCiAaSdW+90==

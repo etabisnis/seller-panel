@@ -3,18 +3,18 @@
 <head>
 
 	<!-- Browser Bar Icon -->
-	<link rel="shortcut icon" href="favicon.png" />
+	<link rel="shortcut icon" href="../wagw.png" />
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/common/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style2.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style1.css">
-	<link rel="stylesheet" type="text/css" href="assets/common/css/jquery-confirm.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/theme-responsive.css">
-	<link rel="stylesheet" type="text/css" href="assets/font/css/materialdesignicons.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/common/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../assets/common/css/jquery-confirm.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/theme-responsive.css">
+	<link rel="stylesheet" type="text/css" href="../assets/font/css/materialdesignicons.min.css">
 
 	<title><?php if ( defined('APP_TITLE') ){ echo APP_TITLE; } ?></title>
 </head>
@@ -26,5 +26,5 @@
 				<div class="col-lg-12">
 					<div>
 						<div class="text-center">
-							<img src="../<?php echo APP_DEFAULT_LOGO; ?>" alt="" class="mb-4" />
+							<img src="../<?php echo APP_DEFAULT_LOGO; ?>" width="20%" alt="" class="mb-4" />
 						</div>

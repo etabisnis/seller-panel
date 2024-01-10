@@ -1,55 +1,31 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$lang['upload_userfile_not_set'] = 'Unable to find a post variable called userfile.';
-$lang['upload_file_exceeds_limit'] = 'The uploaded file exceeds the maximum allowed size in your PHP configuration file.';
-$lang['upload_file_exceeds_form_limit'] = 'The uploaded file exceeds the maximum size allowed by the submission form.';
-$lang['upload_file_partial'] = 'The file was only partially uploaded.';
-$lang['upload_no_temp_directory'] = 'The temporary folder is missing.';
-$lang['upload_unable_to_write_file'] = 'The file could not be written to disk.';
-$lang['upload_stopped_by_extension'] = 'The file upload was stopped by extension.';
-$lang['upload_no_file_selected'] = 'You did not select a file to upload.';
-$lang['upload_invalid_filetype'] = 'The filetype you are attempting to upload is not allowed.';
-$lang['upload_invalid_filesize'] = 'The file you are attempting to upload is larger than the permitted size.';
-$lang['upload_invalid_dimensions'] = 'The image you are attempting to upload doesn\'t fit into the allowed dimensions.';
-$lang['upload_destination_error'] = 'A problem was encountered while attempting to move the uploaded file to the final destination.';
-$lang['upload_no_filepath'] = 'The upload path does not appear to be valid.';
-$lang['upload_no_file_types'] = 'You have not specified any allowed file types.';
-$lang['upload_bad_filename'] = 'The file name you submitted already exists on the server.';
-$lang['upload_not_writable'] = 'The upload destination folder does not appear to be writable.';
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

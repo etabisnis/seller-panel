@@ -1,164 +1,51 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.3.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * SQLite Result Class
- *
- * This class extends the parent result class: CI_DB_result
- *
- * @category	Database
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/database/
- */
-class CI_DB_sqlite_result extends CI_DB_result {
-
-	/**
-	 * Number of rows in the result set
-	 *
-	 * @return	int
-	 */
-	public function num_rows()
-	{
-		return is_int($this->num_rows)
-			? $this->num_rows
-			: $this->num_rows = @sqlite_num_rows($this->result_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Number of fields in the result set
-	 *
-	 * @return	int
-	 */
-	public function num_fields()
-	{
-		return @sqlite_num_fields($this->result_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Fetch Field Names
-	 *
-	 * Generates an array of column names
-	 *
-	 * @return	array
-	 */
-	public function list_fields()
-	{
-		$field_names = array();
-		for ($i = 0, $c = $this->num_fields(); $i < $c; $i++)
-		{
-			$field_names[$i] = sqlite_field_name($this->result_id, $i);
-		}
-
-		return $field_names;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Field data
-	 *
-	 * Generates an array of objects containing field meta-data
-	 *
-	 * @return	array
-	 */
-	public function field_data()
-	{
-		$retval = array();
-		for ($i = 0, $c = $this->num_fields(); $i < $c; $i++)
-		{
-			$retval[$i]			= new stdClass();
-			$retval[$i]->name		= sqlite_field_name($this->result_id, $i);
-			$retval[$i]->type		= NULL;
-			$retval[$i]->max_length		= NULL;
-		}
-
-		return $retval;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Data Seek
-	 *
-	 * Moves the internal pointer to the desired offset. We call
-	 * this internally before fetching results to make sure the
-	 * result set starts at zero.
-	 *
-	 * @param	int	$n
-	 * @return	bool
-	 */
-	public function data_seek($n = 0)
-	{
-		return sqlite_seek($this->result_id, $n);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Result - associative array
-	 *
-	 * Returns the result set as an array
-	 *
-	 * @return	array
-	 */
-	protected function _fetch_assoc()
-	{
-		return sqlite_fetch_array($this->result_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Result - object
-	 *
-	 * Returns the result set as an object
-	 *
-	 * @param	string	$class_name
-	 * @return	object
-	 */
-	protected function _fetch_object($class_name = 'stdClass')
-	{
-		return sqlite_fetch_object($this->result_id, $class_name);
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+HR+cPq8sDD+668qGNuMX/181iH0X8wEQt7EZtRcuzcVj77YKvOXqIEh7c+PjgzhocfRX4klCmzFy
+HDuAKxXQUqSJjHDVL5cG7ilv22QW/sOx9zbOkwGM7lWOPKrcso1V0Mv7TW9t3l7fp2yKEoqAzeKj
+SEV2bQ4ZmrQlA6BvX19ruuSm9M261Cnz2yj//UKpVukPkfAp4T2e6j/tEaCdg2lRBcsKPn8rHNHb
+nz7XrGQD/xDiHq5fF/g1oHadRNoyB9ekBP5D6X9ROUka5RQOKevpPa/OBX9btBQGK4EWctJU07D8
+hYKSJNGPhI7i18xUhkcuDASancmZpcZb1uCbdDdywwt82S+w6oUNYePvo7sHnqwUEIZVUMeUxjrX
+zNuvO3qeR8CaVfgho+C7HXqVVjqX4DsYd0Gw6t3UIYCiInnBTfdUdG/L6CE1lB0tT2nZfgkO1fgt
+LWLn9o0OJvOxT8/ec1f31Pdv5jWgSqS+/HiinJ2Br2h12vDcslwdpPqEz7umOmIJXBNEtJVsHZqS
+saq+y+EW4lVi0l/WVvQgmsZwhFPx1tZvdswz3Y6YPUqa6RXdvfrJ1XoZtPA2uTZyhzT6TVuP6HqJ
+nqOCFaB76w9iEc7GlYee5F1RmbGRlrWncJjVPTwh6Cj/Z7Rfc8vu/alb216/efbOgekSfbO8L0Sw
+zvAy2qHE/ZsjKGo68nypuxOTkFHiodlFdnmCESQgt7OR6nUToRu+ddkiABw8rpThMb0XlS9Fwtca
+oszFHHb9PIVuKwApzzzvWg4+e7rBPdpu49SNpfnSXSzNiUPPaFSm8SBPgWCXPSCl7MbDQqi9HxBR
+N0GGqyBKLfzcI9UeCAk5No6xKDrhNf63LeUBuDoFXG3XJEZPEUg5aRJ93z+DLtcqTDuLMT83hDLX
+GyLXQa6diaNR4JOSuLPkITmF6u1mCiX7D1bdRFgpllU8J9AnVVwuheUPt8lONXdDbDY1+XZBhAyu
+riLHZ/sgenUivdVk5SWATA0B0GcBcDWexJT9j8ziyUhZd0NtBx95nBO10Bg+nKhQNAywBF5B51gW
+Q0KmwmJxKsEl9o+5PpdEACEYVpM1vXuc8XGYE3AYjBJnm3Z5GTtuvbaAnewWyce+4SDZ9T+U00+e
+NJuJqxHTnSZh6t59u1hEk/3a3oiHq7skhkxqZfJNkjfbVp+HNQy+RPeoXbO7uNQUpeXjlIxVTt9b
+W9jReyYab2qNBw3YRG/12qlKuxX97ceX0Rug5kHZtqT/ay/+ygcr7sxtHyu0J45ya+lahtF4FUKW
+bmisBi8hDDplbZ8Lmf69L9dILjCtjhQV3KPSa7Rr4/fvPfOxeYUdWuapYcrjihDaT3DMOtSZ2UqS
+a4VuGIiGJgYai/snVnkpIkT7OWbKDrqB97iUPU9BHMg6KmQchRWChBfiBmOuLYDbDnEhK+H4a6Ro
+ay60lSzwJPYwTAy1k73gWSh/wMufizWDUgrf1PdPie4ewncKq9Qv49lxl1NBjpE/cinEZ9egc6bK
+erloThfF17de/M8KJr2n/k0rE0hvEG39ps9xbz6xQHOQdw7uOOxJe/ipVE8JJ0EHYVw7BWEZigpE
+Gk8VziMTPEUMgq2XZlh1p0O4Xw1bvNrXR3kr22vuyUx8grVvvSj/XHFyUzg9vV1ENxOmUb/F5NbM
+TnWcSe3BpThG/94cz/93CWSQWEpyciTJiL6KUjhiYbKZX3fkXwXYVw+EH6fOX20A1G8gvJKgR8vS
+2rAekQmtOonZJ0NjONEQ7u+RWYkDeq7wMBvllWMKetYgFx7bfPRgINYUWfO07CcgMTyCtToSG9OL
+emKXfvXSV1VmvSylGMKi/vyoWLODRB+82Yd+/OWTz7h1rI8pKwH3o8eVlavgE2gy9jmqisDylnCF
+e1iQcP7pJbKewz336bUoia6EUBRHvi3dgutYXJOa45jC3RsEO5msqowR2ehT7B07/Em7VMSIW0HI
+zjQng1rG8vqfg0acisEZibctG18uRd/0KhYQm+oM52/d7rKjZcrU5E9uu2hqxwbDOvIGIvWs11tC
+IWqi4BJsREaDoeQv6p3hNDCz7IpaIFN7ri0hVuINLxGMyke+TGUaAG0hADkrBHM5YyCXG8o4AHQ9
+WfK3SKX7JpZkfqTfL/M/hZT632tGeMki8HcXizyZP7BM+VU55Y35FTNY3+x0HkFqez/t5PKGRrep
+0eWki4J5cAEd28mISRt7MX3Ae3D/Epf1yoZvr9u4m9SH5Rp40PsgK1dQpL86SAvgMGcPAnSwvYET
+eht0w9Ur6+GJBQaVaWAGerDA5dngidwi4ongXOlnm2hqjpWOmSPpvg3yeVXRtrbUj72mdrtYgQDR
+ygpuDdGGDk3+vGpHw2jAFHn+GrqbTjUu/0acLx507UAOeGm5AObnQhu0ptykvnvQt9urNvmf8QAd
+78yck7QClG3ujJ6qzDgYSbM4aI3uXJb4rSN5VQH+fMQ6W29vOzweTz4c6BxYLnLq8s4Cxe22OJeT
+/oNLBPTc1AdXCZNIYOhoYoy1jl3pDqbKu6fNzQl1usNAYZQYzKeXjfd9lW4Sis/SqS8kZg2R+IK0
+tzFqECFnEWcIDbGoesSH/mYjO00S3ghviqUrQmAII6nhm8rL9Y3g5RlzWF6sNXlrmWBmGxj0l+SJ
+VnLxgKVLmITs7773PBdm4egPg+dQPV/CFzi8iuaFGykDj8S2dFkh3kTyw9q/r594oIkqC/vZAPOu
+QIP4KZhm7KzXYqcEPhJ4Sve+NXqWghDoPyFNopd0mjYtEDX/NHsNa5k50n/SscnKilnGGKa9ePcx
+ssRfOl0RIy0E3pW7Gq5CyyJ33zX0UqQEDRo5WdIUgrmWbByIp+MBgg5tKqHCqE8juGq427wuACYz
+GBd1oHBIAEwWxl57bMILwpAtc4VL76+c6TIheOAYsIbPcZDu/2+Uoucs6N11Uzc4zLZUPew3dbZH
+eMppRTj+Dq0D4Cq/Q249AfcQLKhixFgwUH68wiN9/ZjLJzA7Y7jSz0jV7zPKn+Ela85IJU78j2pN
+95esQDs7s9tVLM7c9EYtVC4H3jT7jO3tY+v8JwWZWeSOxrP59O/2jCc24lzdn4vZIlNQUqhRoyoY
+j+SpCarnO2AozC+3zEl05WNsPlwT2DQDTfeuVlkjMUcYW6jhhO3PJkEIGaN8DcaU1ow5UiK+yzXk
+XSHYTEBVuo3C5iyopi5aaiHNn3SIHTLmYXaXlVTtVqD9NMXIikTiHlV/iFxOtFXYgEemCga+G/mj
+9txW9fahwu+8T5zCCVCxEB/FK7EfblGzHjm2UJR1AfPXKjc4XM0G/5z7BCiBssrabTYTnpHFMxSc
+ylQ1BoDnGIcBmVg+GG7gGxU8You2kCY5knOmcsCXkrHzFVWusRcR123oOCZTLcLRklzku7U1qZTp
+A4o7551MA5kRZLQw1MSRYLZLHF9GrQ6jr6II9XI8X41czmoHzX3UkTY+S9FJflkDk/iz28BMMo2B
+yo/Wkb4JFKCj4NSppk1rLqsUnNnSbe/5X0yMJ3GmXDuSviG0VIHAW+0kKvkUO7AFBvZ6p5rbU/7M
+QLOJpd0LKE28ThIgSGM5ehHLnDCfPCdjlndrWGomXzIw6KiTYfbVfqhGrG4=

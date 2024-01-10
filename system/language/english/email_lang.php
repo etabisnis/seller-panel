@@ -1,58 +1,34 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$lang['email_must_be_array'] = 'The email validation method must be passed an array.';
-$lang['email_invalid_address'] = 'Invalid email address: %s';
-$lang['email_attachment_missing'] = 'Unable to locate the following email attachment: %s';
-$lang['email_attachment_unreadable'] = 'Unable to open this attachment: %s';
-$lang['email_no_from'] = 'Cannot send mail with no "From" header.';
-$lang['email_no_recipients'] = 'You must include recipients: To, Cc, or Bcc';
-$lang['email_send_failure_phpmail'] = 'Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.';
-$lang['email_send_failure_sendmail'] = 'Unable to send email using PHP Sendmail. Your server might not be configured to send mail using this method.';
-$lang['email_send_failure_smtp'] = 'Unable to send email using PHP SMTP. Your server might not be configured to send mail using this method.';
-$lang['email_sent'] = 'Your message has been successfully sent using the following protocol: %s';
-$lang['email_no_socket'] = 'Unable to open a socket to Sendmail. Please check settings.';
-$lang['email_no_hostname'] = 'You did not specify a SMTP hostname.';
-$lang['email_smtp_error'] = 'The following SMTP error was encountered: %s';
-$lang['email_no_smtp_unpw'] = 'Error: You must assign a SMTP username and password.';
-$lang['email_failed_smtp_login'] = 'Failed to send AUTH LOGIN command. Error: %s';
-$lang['email_smtp_auth_un'] = 'Failed to authenticate username. Error: %s';
-$lang['email_smtp_auth_pw'] = 'Failed to authenticate password. Error: %s';
-$lang['email_smtp_data_failure'] = 'Unable to send data: %s';
-$lang['email_exit_status'] = 'Exit status code: %s';
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+IBgTDZ+k3w00rANl

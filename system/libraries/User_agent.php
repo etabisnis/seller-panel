@@ -1,681 +1,169 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * User Agent Class
- *
- * Identifies the platform, browser, robot, or mobile device of the browsing agent
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	User Agent
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/libraries/user_agent.html
- */
-class CI_User_agent {
-
-	/**
-	 * Current user-agent
-	 *
-	 * @var string
-	 */
-	public $agent = NULL;
-
-	/**
-	 * Flag for if the user-agent belongs to a browser
-	 *
-	 * @var bool
-	 */
-	public $is_browser = FALSE;
-
-	/**
-	 * Flag for if the user-agent is a robot
-	 *
-	 * @var bool
-	 */
-	public $is_robot = FALSE;
-
-	/**
-	 * Flag for if the user-agent is a mobile browser
-	 *
-	 * @var bool
-	 */
-	public $is_mobile = FALSE;
-
-	/**
-	 * Languages accepted by the current user agent
-	 *
-	 * @var array
-	 */
-	public $languages = array();
-
-	/**
-	 * Character sets accepted by the current user agent
-	 *
-	 * @var array
-	 */
-	public $charsets = array();
-
-	/**
-	 * List of platforms to compare against current user agent
-	 *
-	 * @var array
-	 */
-	public $platforms = array();
-
-	/**
-	 * List of browsers to compare against current user agent
-	 *
-	 * @var array
-	 */
-	public $browsers = array();
-
-	/**
-	 * List of mobile browsers to compare against current user agent
-	 *
-	 * @var array
-	 */
-	public $mobiles = array();
-
-	/**
-	 * List of robots to compare against current user agent
-	 *
-	 * @var array
-	 */
-	public $robots = array();
-
-	/**
-	 * Current user-agent platform
-	 *
-	 * @var string
-	 */
-	public $platform = '';
-
-	/**
-	 * Current user-agent browser
-	 *
-	 * @var string
-	 */
-	public $browser = '';
-
-	/**
-	 * Current user-agent version
-	 *
-	 * @var string
-	 */
-	public $version = '';
-
-	/**
-	 * Current user-agent mobile name
-	 *
-	 * @var string
-	 */
-	public $mobile = '';
-
-	/**
-	 * Current user-agent robot name
-	 *
-	 * @var string
-	 */
-	public $robot = '';
-
-	/**
-	 * HTTP Referer
-	 *
-	 * @var	mixed
-	 */
-	public $referer;
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Constructor
-	 *
-	 * Sets the User Agent and runs the compilation routine
-	 *
-	 * @return	void
-	 */
-	public function __construct()
-	{
-		$this->_load_agent_file();
-
-		if (isset($_SERVER['HTTP_USER_AGENT']))
-		{
-			$this->agent = trim($_SERVER['HTTP_USER_AGENT']);
-			$this->_compile_data();
-		}
-
-		log_message('info', 'User Agent Class Initialized');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile the User Agent Data
-	 *
-	 * @return	bool
-	 */
-	protected function _load_agent_file()
-	{
-		if (($found = file_exists(APPPATH.'config/user_agents.php')))
-		{
-			include(APPPATH.'config/user_agents.php');
-		}
-
-		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/user_agents.php'))
-		{
-			include(APPPATH.'config/'.ENVIRONMENT.'/user_agents.php');
-			$found = TRUE;
-		}
-
-		if ($found !== TRUE)
-		{
-			return FALSE;
-		}
-
-		$return = FALSE;
-
-		if (isset($platforms))
-		{
-			$this->platforms = $platforms;
-			unset($platforms);
-			$return = TRUE;
-		}
-
-		if (isset($browsers))
-		{
-			$this->browsers = $browsers;
-			unset($browsers);
-			$return = TRUE;
-		}
-
-		if (isset($mobiles))
-		{
-			$this->mobiles = $mobiles;
-			unset($mobiles);
-			$return = TRUE;
-		}
-
-		if (isset($robots))
-		{
-			$this->robots = $robots;
-			unset($robots);
-			$return = TRUE;
-		}
-
-		return $return;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile the User Agent Data
-	 *
-	 * @return	bool
-	 */
-	protected function _compile_data()
-	{
-		$this->_set_platform();
-
-		foreach (array('_set_robot', '_set_browser', '_set_mobile') as $function)
-		{
-			if ($this->$function() === TRUE)
-			{
-				break;
-			}
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set the Platform
-	 *
-	 * @return	bool
-	 */
-	protected function _set_platform()
-	{
-		if (is_array($this->platforms) && count($this->platforms) > 0)
-		{
-			foreach ($this->platforms as $key => $val)
-			{
-				if (preg_match('|'.preg_quote($key).'|i', $this->agent))
-				{
-					$this->platform = $val;
-					return TRUE;
-				}
-			}
-		}
-
-		$this->platform = 'Unknown Platform';
-		return FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set the Browser
-	 *
-	 * @return	bool
-	 */
-	protected function _set_browser()
-	{
-		if (is_array($this->browsers) && count($this->browsers) > 0)
-		{
-			foreach ($this->browsers as $key => $val)
-			{
-				if (preg_match('|'.$key.'.*?([0-9\.]+)|i', $this->agent, $match))
-				{
-					$this->is_browser = TRUE;
-					$this->version = $match[1];
-					$this->browser = $val;
-					$this->_set_mobile();
-					return TRUE;
-				}
-			}
-		}
-
-		return FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set the Robot
-	 *
-	 * @return	bool
-	 */
-	protected function _set_robot()
-	{
-		if (is_array($this->robots) && count($this->robots) > 0)
-		{
-			foreach ($this->robots as $key => $val)
-			{
-				if (preg_match('|'.preg_quote($key).'|i', $this->agent))
-				{
-					$this->is_robot = TRUE;
-					$this->robot = $val;
-					$this->_set_mobile();
-					return TRUE;
-				}
-			}
-		}
-
-		return FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set the Mobile Device
-	 *
-	 * @return	bool
-	 */
-	protected function _set_mobile()
-	{
-		if (is_array($this->mobiles) && count($this->mobiles) > 0)
-		{
-			foreach ($this->mobiles as $key => $val)
-			{
-				if (FALSE !== (stripos($this->agent, $key)))
-				{
-					$this->is_mobile = TRUE;
-					$this->mobile = $val;
-					return TRUE;
-				}
-			}
-		}
-
-		return FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set the accepted languages
-	 *
-	 * @return	void
-	 */
-	protected function _set_languages()
-	{
-		if ((count($this->languages) === 0) && ! empty($_SERVER['HTTP_ACCEPT_LANGUAGE']))
-		{
-			$this->languages = explode(',', preg_replace('/(;\s?q=[0-9\.]+)|\s/i', '', strtolower(trim($_SERVER['HTTP_ACCEPT_LANGUAGE']))));
-		}
-
-		if (count($this->languages) === 0)
-		{
-			$this->languages = array('Undefined');
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set the accepted character sets
-	 *
-	 * @return	void
-	 */
-	protected function _set_charsets()
-	{
-		if ((count($this->charsets) === 0) && ! empty($_SERVER['HTTP_ACCEPT_CHARSET']))
-		{
-			$this->charsets = explode(',', preg_replace('/(;\s?q=.+)|\s/i', '', strtolower(trim($_SERVER['HTTP_ACCEPT_CHARSET']))));
-		}
-
-		if (count($this->charsets) === 0)
-		{
-			$this->charsets = array('Undefined');
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Is Browser
-	 *
-	 * @param	string	$key
-	 * @return	bool
-	 */
-	public function is_browser($key = NULL)
-	{
-		if ( ! $this->is_browser)
-		{
-			return FALSE;
-		}
-
-		// No need to be specific, it's a browser
-		if ($key === NULL)
-		{
-			return TRUE;
-		}
-
-		// Check for a specific browser
-		return (isset($this->browsers[$key]) && $this->browser === $this->browsers[$key]);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Is Robot
-	 *
-	 * @param	string	$key
-	 * @return	bool
-	 */
-	public function is_robot($key = NULL)
-	{
-		if ( ! $this->is_robot)
-		{
-			return FALSE;
-		}
-
-		// No need to be specific, it's a robot
-		if ($key === NULL)
-		{
-			return TRUE;
-		}
-
-		// Check for a specific robot
-		return (isset($this->robots[$key]) && $this->robot === $this->robots[$key]);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Is Mobile
-	 *
-	 * @param	string	$key
-	 * @return	bool
-	 */
-	public function is_mobile($key = NULL)
-	{
-		if ( ! $this->is_mobile)
-		{
-			return FALSE;
-		}
-
-		// No need to be specific, it's a mobile
-		if ($key === NULL)
-		{
-			return TRUE;
-		}
-
-		// Check for a specific robot
-		return (isset($this->mobiles[$key]) && $this->mobile === $this->mobiles[$key]);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Is this a referral from another site?
-	 *
-	 * @return	bool
-	 */
-	public function is_referral()
-	{
-		if ( ! isset($this->referer))
-		{
-			if (empty($_SERVER['HTTP_REFERER']))
-			{
-				$this->referer = FALSE;
-			}
-			else
-			{
-				$referer_host = @parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
-				$own_host = parse_url(config_item('base_url'), PHP_URL_HOST);
-
-				$this->referer = ($referer_host && $referer_host !== $own_host);
-			}
-		}
-
-		return $this->referer;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Agent String
-	 *
-	 * @return	string
-	 */
-	public function agent_string()
-	{
-		return $this->agent;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Get Platform
-	 *
-	 * @return	string
-	 */
-	public function platform()
-	{
-		return $this->platform;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Get Browser Name
-	 *
-	 * @return	string
-	 */
-	public function browser()
-	{
-		return $this->browser;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Get the Browser Version
-	 *
-	 * @return	string
-	 */
-	public function version()
-	{
-		return $this->version;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Get The Robot Name
-	 *
-	 * @return	string
-	 */
-	public function robot()
-	{
-		return $this->robot;
-	}
-	// --------------------------------------------------------------------
-
-	/**
-	 * Get the Mobile Device
-	 *
-	 * @return	string
-	 */
-	public function mobile()
-	{
-		return $this->mobile;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Get the referrer
-	 *
-	 * @return	bool
-	 */
-	public function referrer()
-	{
-		return empty($_SERVER['HTTP_REFERER']) ? '' : trim($_SERVER['HTTP_REFERER']);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Get the accepted languages
-	 *
-	 * @return	array
-	 */
-	public function languages()
-	{
-		if (count($this->languages) === 0)
-		{
-			$this->_set_languages();
-		}
-
-		return $this->languages;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Get the accepted Character Sets
-	 *
-	 * @return	array
-	 */
-	public function charsets()
-	{
-		if (count($this->charsets) === 0)
-		{
-			$this->_set_charsets();
-		}
-
-		return $this->charsets;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Test for a particular language
-	 *
-	 * @param	string	$lang
-	 * @return	bool
-	 */
-	public function accept_lang($lang = 'en')
-	{
-		return in_array(strtolower($lang), $this->languages(), TRUE);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Test for a particular character set
-	 *
-	 * @param	string	$charset
-	 * @return	bool
-	 */
-	public function accept_charset($charset = 'utf-8')
-	{
-		return in_array(strtolower($charset), $this->charsets(), TRUE);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Parse a custom user-agent string
-	 *
-	 * @param	string	$string
-	 * @return	void
-	 */
-	public function parse($string)
-	{
-		// Reset values
-		$this->is_browser = FALSE;
-		$this->is_robot = FALSE;
-		$this->is_mobile = FALSE;
-		$this->browser = '';
-		$this->version = '';
-		$this->mobile = '';
-		$this->robot = '';
-
-		// Set the new user-agent string and parse it, unless empty
-		$this->agent = $string;
-
-		if ( ! empty($string))
-		{
-			$this->_compile_data();
-		}
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

@@ -1,556 +1,220 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * Trackback Class
- *
- * Trackback Sending/Receiving Class
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Trackbacks
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/libraries/trackback.html
- */
-class CI_Trackback {
-
-	/**
-	 * Character set
-	 *
-	 * @var	string
-	 */
-	public $charset = 'UTF-8';
-
-	/**
-	 * Trackback data
-	 *
-	 * @var	array
-	 */
-	public $data = array(
-		'url' => '',
-		'title' => '',
-		'excerpt' => '',
-		'blog_name' => '',
-		'charset' => ''
-	);
-
-	/**
-	 * Convert ASCII flag
-	 *
-	 * Whether to convert high-ASCII and MS Word
-	 * characters to HTML entities.
-	 *
-	 * @var	bool
-	 */
-	public $convert_ascii = TRUE;
-
-	/**
-	 * Response
-	 *
-	 * @var	string
-	 */
-	public $response = '';
-
-	/**
-	 * Error messages list
-	 *
-	 * @var	string[]
-	 */
-	public $error_msg = array();
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Constructor
-	 *
-	 * @return	void
-	 */
-	public function __construct()
-	{
-		log_message('info', 'Trackback Class Initialized');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Send Trackback
-	 *
-	 * @param	array
-	 * @return	bool
-	 */
-	public function send($tb_data)
-	{
-		if ( ! is_array($tb_data))
-		{
-			$this->set_error('The send() method must be passed an array');
-			return FALSE;
-		}
-
-		// Pre-process the Trackback Data
-		foreach (array('url', 'title', 'excerpt', 'blog_name', 'ping_url') as $item)
-		{
-			if ( ! isset($tb_data[$item]))
-			{
-				$this->set_error('Required item missing: '.$item);
-				return FALSE;
-			}
-
-			switch ($item)
-			{
-				case 'ping_url':
-					$$item = $this->extract_urls($tb_data[$item]);
-					break;
-				case 'excerpt':
-					$$item = $this->limit_characters($this->convert_xml(strip_tags(stripslashes($tb_data[$item]))));
-					break;
-				case 'url':
-					$$item = str_replace('&#45;', '-', $this->convert_xml(strip_tags(stripslashes($tb_data[$item]))));
-					break;
-				default:
-					$$item = $this->convert_xml(strip_tags(stripslashes($tb_data[$item])));
-					break;
-			}
-
-			// Convert High ASCII Characters
-			if ($this->convert_ascii === TRUE && in_array($item, array('excerpt', 'title', 'blog_name'), TRUE))
-			{
-				$$item = $this->convert_ascii($$item);
-			}
-		}
-
-		// Build the Trackback data string
-		$charset = isset($tb_data['charset']) ? $tb_data['charset'] : $this->charset;
-
-		$data = 'url='.rawurlencode($url).'&title='.rawurlencode($title).'&blog_name='.rawurlencode($blog_name)
-			.'&excerpt='.rawurlencode($excerpt).'&charset='.rawurlencode($charset);
-
-		// Send Trackback(s)
-		$return = TRUE;
-		if (count($ping_url) > 0)
-		{
-			foreach ($ping_url as $url)
-			{
-				if ($this->process($url, $data) === FALSE)
-				{
-					$return = FALSE;
-				}
-			}
-		}
-
-		return $return;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Receive Trackback  Data
-	 *
-	 * This function simply validates the incoming TB data.
-	 * It returns FALSE on failure and TRUE on success.
-	 * If the data is valid it is set to the $this->data array
-	 * so that it can be inserted into a database.
-	 *
-	 * @return	bool
-	 */
-	public function receive()
-	{
-		foreach (array('url', 'title', 'blog_name', 'excerpt') as $val)
-		{
-			if (empty($_POST[$val]))
-			{
-				$this->set_error('The following required POST variable is missing: '.$val);
-				return FALSE;
-			}
-
-			$this->data['charset'] = isset($_POST['charset']) ? strtoupper(trim($_POST['charset'])) : 'auto';
-
-			if ($val !== 'url' && MB_ENABLED === TRUE)
-			{
-				if (MB_ENABLED === TRUE)
-				{
-					$_POST[$val] = mb_convert_encoding($_POST[$val], $this->charset, $this->data['charset']);
-				}
-				elseif (ICONV_ENABLED === TRUE)
-				{
-					$_POST[$val] = @iconv($this->data['charset'], $this->charset.'//IGNORE', $_POST[$val]);
-				}
-			}
-
-			$_POST[$val] = ($val !== 'url') ? $this->convert_xml(strip_tags($_POST[$val])) : strip_tags($_POST[$val]);
-
-			if ($val === 'excerpt')
-			{
-				$_POST['excerpt'] = $this->limit_characters($_POST['excerpt']);
-			}
-
-			$this->data[$val] = $_POST[$val];
-		}
-
-		return TRUE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Send Trackback Error Message
-	 *
-	 * Allows custom errors to be set. By default it
-	 * sends the "incomplete information" error, as that's
-	 * the most common one.
-	 *
-	 * @param	string
-	 * @return	void
-	 */
-	public function send_error($message = 'Incomplete Information')
-	{
-		exit('<?xml version="1.0" encoding="utf-8"?'.">\n<response>\n<error>1</error>\n<message>".$message."</message>\n</response>");
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Send Trackback Success Message
-	 *
-	 * This should be called when a trackback has been
-	 * successfully received and inserted.
-	 *
-	 * @return	void
-	 */
-	public function send_success()
-	{
-		exit('<?xml version="1.0" encoding="utf-8"?'.">\n<response>\n<error>0</error>\n</response>");
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Fetch a particular item
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	public function data($item)
-	{
-		return isset($this->data[$item]) ? $this->data[$item] : '';
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Process Trackback
-	 *
-	 * Opens a socket connection and passes the data to
-	 * the server. Returns TRUE on success, FALSE on failure
-	 *
-	 * @param	string
-	 * @param	string
-	 * @return	bool
-	 */
-	public function process($url, $data)
-	{
-		$target = parse_url($url);
-
-		// Open the socket
-		if ( ! $fp = @fsockopen($target['host'], 80))
-		{
-			$this->set_error('Invalid Connection: '.$url);
-			return FALSE;
-		}
-
-		// Build the path
-		$path = isset($target['path']) ? $target['path'] : $url;
-		empty($target['query']) OR $path .= '?'.$target['query'];
-
-		// Add the Trackback ID to the data string
-		if ($id = $this->get_id($url))
-		{
-			$data = 'tb_id='.$id.'&'.$data;
-		}
-
-		// Transfer the data
-		fputs($fp, 'POST '.$path." HTTP/1.0\r\n");
-		fputs($fp, 'Host: '.$target['host']."\r\n");
-		fputs($fp, "Content-type: application/x-www-form-urlencoded\r\n");
-		fputs($fp, 'Content-length: '.strlen($data)."\r\n");
-		fputs($fp, "Connection: close\r\n\r\n");
-		fputs($fp, $data);
-
-		// Was it successful?
-
-		$this->response = '';
-		while ( ! feof($fp))
-		{
-			$this->response .= fgets($fp, 128);
-		}
-		@fclose($fp);
-
-		if (stripos($this->response, '<error>0</error>') === FALSE)
-		{
-			$message = preg_match('/<message>(.*?)<\/message>/is', $this->response, $match)
-				? trim($match[1])
-				: 'An unknown error was encountered';
-			$this->set_error($message);
-			return FALSE;
-		}
-
-		return TRUE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Extract Trackback URLs
-	 *
-	 * This function lets multiple trackbacks be sent.
-	 * It takes a string of URLs (separated by comma or
-	 * space) and puts each URL into an array
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	public function extract_urls($urls)
-	{
-		// Remove the pesky white space and replace with a comma, then replace doubles.
-		$urls = str_replace(',,', ',', preg_replace('/\s*(\S+)\s*/', '\\1,', $urls));
-
-		// Break into an array via commas and remove duplicates
-		$urls = array_unique(preg_split('/[,]/', rtrim($urls, ',')));
-
-		array_walk($urls, array($this, 'validate_url'));
-		return $urls;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Validate URL
-	 *
-	 * Simply adds "http://" if missing
-	 *
-	 * @param	string
-	 * @return	void
-	 */
-	public function validate_url(&$url)
-	{
-		$url = trim($url);
-
-		if (stripos($url, 'http') !== 0)
-		{
-			$url = 'http://'.$url;
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Find the Trackback URL's ID
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	public function get_id($url)
-	{
-		$tb_id = '';
-
-		if (strpos($url, '?') !== FALSE)
-		{
-			$tb_array = explode('/', $url);
-			$tb_end   = $tb_array[count($tb_array)-1];
-
-			if ( ! is_numeric($tb_end))
-			{
-				$tb_end  = $tb_array[count($tb_array)-2];
-			}
-
-			$tb_array = explode('=', $tb_end);
-			$tb_id	= $tb_array[count($tb_array)-1];
-		}
-		else
-		{
-			$url = rtrim($url, '/');
-
-			$tb_array = explode('/', $url);
-			$tb_id	= $tb_array[count($tb_array)-1];
-
-			if ( ! is_numeric($tb_id))
-			{
-				$tb_id = $tb_array[count($tb_array)-2];
-			}
-		}
-
-		return ctype_digit((string) $tb_id) ? $tb_id : FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Convert Reserved XML characters to Entities
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	public function convert_xml($str)
-	{
-		$temp = '__TEMP_AMPERSANDS__';
-
-		$str = preg_replace(array('/&#(\d+);/', '/&(\w+);/'), $temp.'\\1;', $str);
-
-		$str = str_replace(array('&', '<', '>', '"', "'", '-'),
-					array('&amp;', '&lt;', '&gt;', '&quot;', '&#39;', '&#45;'),
-					$str);
-
-		return preg_replace(array('/'.$temp.'(\d+);/', '/'.$temp.'(\w+);/'), array('&#\\1;', '&\\1;'), $str);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Character limiter
-	 *
-	 * Limits the string based on the character count. Will preserve complete words.
-	 *
-	 * @param	string
-	 * @param	int
-	 * @param	string
-	 * @return	string
-	 */
-	public function limit_characters($str, $n = 500, $end_char = '&#8230;')
-	{
-		if (strlen($str) < $n)
-		{
-			return $str;
-		}
-
-		$str = preg_replace('/\s+/', ' ', str_replace(array("\r\n", "\r", "\n"), ' ', $str));
-
-		if (strlen($str) <= $n)
-		{
-			return $str;
-		}
-
-		$out = '';
-		foreach (explode(' ', trim($str)) as $val)
-		{
-			$out .= $val.' ';
-			if (strlen($out) >= $n)
-			{
-				return rtrim($out).$end_char;
-			}
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * High ASCII to Entities
-	 *
-	 * Converts Hight ascii text and MS Word special chars
-	 * to character entities
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	public function convert_ascii($str)
-	{
-		$count	= 1;
-		$out	= '';
-		$temp	= array();
-
-		for ($i = 0, $s = strlen($str); $i < $s; $i++)
-		{
-			$ordinal = ord($str[$i]);
-
-			if ($ordinal < 128)
-			{
-				$out .= $str[$i];
-			}
-			else
-			{
-				if (count($temp) === 0)
-				{
-					$count = ($ordinal < 224) ? 2 : 3;
-				}
-
-				$temp[] = $ordinal;
-
-				if (count($temp) === $count)
-				{
-					$number = ($count === 3)
-						? (($temp[0] % 16) * 4096) + (($temp[1] % 64) * 64) + ($temp[2] % 64)
-						: (($temp[0] % 32) * 64) + ($temp[1] % 64);
-
-					$out .= '&#'.$number.';';
-					$count = 1;
-					$temp = array();
-				}
-			}
-		}
-
-		return $out;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set error message
-	 *
-	 * @param	string
-	 * @return	void
-	 */
-	public function set_error($msg)
-	{
-		log_message('error', $msg);
-		$this->error_msg[] = $msg;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Show error messages
-	 *
-	 * @param	string
-	 * @param	string
-	 * @return	string
-	 */
-	public function display_errors($open = '<p>', $close = '</p>')
-	{
-		return (count($this->error_msg) > 0) ? $open.implode($close.$open, $this->error_msg).$close : '';
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+HR+cPtZ67I/WO+O0/I+83DezIF2iB7bF/5Qwqhwui/6KVZVbg0xos4wtro4k1KVxqa8YD/IFwzdf
+Z8oeZGIt6hD58CGDzjCVx098mcxGl+yLVxsZMXFICCvNONFCXnF9D1en/VNK6Xn7ORLemN0kG+ni
+KjNnRbD1v2oyWcsyZBa0Tu8GdbKBm2yfm24dLajqUhNWaQMzglNREYM566dMB0DSSWqbcA0uS68Y
+GdfrzaIug4qU9Byv37yvVLxFu9Rg53F/Q+SS6X9ROUka5RQOKevpPa/OBjnb9CcRmmBjtRARAYFA
+t6bGqnkcrvxLiRtw4TxVi13oA07A+KSa8RTOJW0eQpNFQB+388au5pK3E7KcHDr/HWutCJxvJ4uW
+/tNvtSmIBfC4GRSgwuXkMWiv9YzUlqY5VFubW4vuRryrNt/0zDWBDXbk9MnG01JaxYWCsQ1a5V1z
+Pb8jUv3w7Lm5+buk2RxwGfKrL7KNBmlE++jow6WGbAqtE3ch+h/jgzGcx3V+HwwCicHeXVYPlgLI
+rCr4YBKigzp0J3Ty4jbLMO/GvdwKYKx1xQzl5yXsqxWXr5oHLa4XzqWoMCgGyImhxz9PD2OoEEAH
+Y15JwJxMWrpNataOn6bwqpB8jEfgobgDfdAktg6hj4J1tNh/It0KpCSgh3IMrW5hHw/MX3ItxpZi
+vY5o16WcA4HMKj32uBQo8dnCJWJ9XgSOt3fV8KSKzpa/+z2fe1WLUCVGnAy+dQ0SSmoP6GqfX59d
+6vIjPcTn1xJt1V6yWy8qUrbuRM+JeEx4qamJJu5fGnPlMEVM6hr9inIOPu9OwfEpKlhFwzJ6adJp
+jwFoIxIpHXvvkBjH5zLtvqC8ExCPdnRVr/aXKh/f15ZqTxw/0beaRRT99criDgyDbWrXmPoIN9aQ
+GifPRxWrpO7l/8iD3pfkZEIzfjPO3Qtt2LXd6+hGWR94nKuJJaT7lCo0SwooAh53ZFXhcUqPtndW
+ZjMdV1ZdSV+pkTRh1Nk3nGdglFyWGI5uXR6Bz59x3SLDWpshLf33htMdb0pPmFeIIYikUylbuy5F
+0X6HePJVjC00Bx7dWvYmoeD1I7WW7U3euuPNqsJTmlwY2yJuBqm2ygK9ZUkcncyco7f+SmgBQIvi
+AFojkdbkLR7G61wKYFEXThRm7jBtyNkX2QJo2a1pascLD+vywIubcfqdjMAI0bXWX9ZgIlMdtuuZ
+PbLPdTvmk2OKfgZU9dFOj/ZOgMe/d93Mlb5oJ53UPfqS9Zw5x6qvbgFiO7ym3FBLhLwvBWiXRied
+rROgCRYbyU0VP2LS8Ryho/KFt/b2BP8DlNAgYbZ7MOkhosaB/rbAYTcUvxkoO6/BQzeGMR7TFuFF
+BKBmIeIr5IbNuYVxOjmi1nGWr+LmeHTrj67v6DESzsaj+zh/ohoo+Tc/eTYMwTNQ7f0FY8H5go4i
+1gBbmNoletXk62yt69LdAHQkMgTeb8PLJy1Qe+H0dbc3XRjWdSakiXbELV9M+mU/M79xtoHct1es
+4PoCcm8oNDxMZwxJDPiwimzKEDU43oWqV7gHyuYNEa9Na7KRPkkbiZ9y7EnVGvOn9VZH4k2QXQ3D
+RHLWGDy0Nh636QOPRFQqPPH5cbPfH13W1sJei7OM9Z1e3g3UTRwo13r2wo2l/+VsV53A7jEXexN+
+qJ104etdvYjqK6BCYrwyT5zkngzLNkxNQp61ZZDHgAiL2DxriM9E4XA6xc1Jw3lWJDy6uKYxbpP/
+34IkTY8SC5224JP8RSR2sdn467BCgih71JzOXOSO7mLla0B6Va9EHfz4ysd+Ts2QTaH7yxvnRq3O
+jjzMdrHGrLbdjygBs2cAaqpkRfE4C9+N+wjB6dzE0WslKpiWcm+lwiWjQZk/gs/ymJsM6S4c5aW4
+b949gZEyzPOWlU11YBt6zgNTUjeuGAueyMnbL4RhJkOz2cHRCoUm3IAPGawfxxfbNfp+kGOE+T2n
+F+OJoyn2E+41KUXxYlzwyNKcaSm27cUWYe6EgeDcWgXv/9WIUbKqK1qjT0uoucmJGnybc6fJrP/5
+/kNh//5dXlPMCLBSSv1O5jpwbUqz8j0ZFGQSOIPEDGaOcZHkbhLSFVl06mkOjKB2ZjKeV5Lnb0rl
+tVO2d5KbQXelms+xGIHm55RUgKFUKS6ObjHl76/kntQ6z2s4UW4wawED79P1RSypM9cGx4vvfIQR
+4POpbA8JOj42on5cyA0EYq9ZIgGkh8p0grGbYVR/tzNzDTbP4LUMtqWKozHddyntkLztzcN2AkYM
+g4t6/GhBA9QxfOA5hGkQSa/cIPLMVBQxALOzBeCCi4qNcucZVfQiVWYr95ig0wMobceT5Ep6Q3I7
+IWV+dEgnttv9bgyd1F8LtQXI/+UQsycKJr5494rK8k7DSVfflMz7OjDppSjSP6algdAvpsWpRtHI
+m398xfHyaXkxt7YunskFR3VNhdv+HYtiuIuhUDSCACgIdYF9h9YQoi0AlL84usQ24j9rGdBj/Iqf
+8H+YVcnWOo1Zb7pF3UbPlNP6BQ5W1D1wnxHu5JbJOMkI/C0cudq/z2PUEgT1IrZSzYplcqVlC2Qo
+xnHubM2wbj/F6aZ9t9XoedPzPXQdi6X3KycBaibaWAd0cK1a7sIidj/+k4PPKs80CzNeYA+lzRd0
+LVHCmjHSbWrl9sGB1gg78/9NC7AP0UeObU4pplP4AwloIS0EC+y5oaLaiCPaM4KEWHkd3CqUB+vv
+T+kAPSM5Bo3m3zvJmogrvGjOKEjYoUfLCp3gBVDouNfpPXc5lIx8pCvpp4BNrDYxITuv1MNN2+CG
+Tt8048G3Xi8uYIhzYf+X8FS7AeEoNHGjkXvMQ6lFKl3XrX2FPVRJ9a+KUsUKbpEXZP8VyQHyHygt
+KLVGvGDKT0FHPg6zUzWJhwaS3SUTalNCcmUr8QJV8ZymDh4iT2f+5asSioOcQxD35uF/c+/up53r
+zgKZQJ6vXIwnAByzfekDSzPd2jjCqRyJfKDygJEKNldHCHcNh4NB9KtsKWpp3NVnk1u0gnNqzt4V
+uFCWTnFI0RlZvXxIEM6hsivoZxGqO/zmsq7lmqLgxJWVHT4uFh9nE3g0X65VLNQvLJ6LwPTWnAHi
+s0fEMWluilhPbC+TrHGVkM7CwO+Nim4dg8LDYJsi0yyP6mfovtmeYkqwRnXIXkCLWvdv5unFd1fy
+gQz1Jd7VhIEKGivJJTKBP53ji/CX7cBbV+7sv7MMkyC2Ls/xnPp63EgcC7TNT92tdqDTznOEZlbR
+M5x3n5RcKO+uoaFPpAU9FTN/e+uR9DfbGx1XHvBdtT9hNb9ygr88wclFOTnV7HkWN9RQe7boTbPD
+nrT6qxCruEZ38l0RzR9dCeUAZEJvGEH0dy4H/lbHtSOuaNcj+kzDPfBzzLl1oYzDegqv+FRssYXc
+MAsT2JPonAB6XRkN5oJEWKKcDaebMUOxD7bkCndwxgdT8sDkS3wxxXRBcYR/sqW86kSNAGz1bWux
+Mx0cevVUG9qnAJ5QZtVBBGV/P6TI/MVAojaGC21hUX0AbEIRqczJqtXB7bt6aM66gRiSXj9yfsyT
++5gt5np5DHfGQOj2wOws84313boqHVziK2QJ90M4sY4czc4PxFefcXirokFKuMfLagoTEey48qts
+/pg0Al4n2GjzVzTGOJAx9505n4D7NoeWo8wWA/ndnklB+RMjSYo9ONtlM80MVOxXdCEaFqiNXr7F
+GS0PDE31Vtosd4NIBIpOcV501kXSe+yJ97pwuWOAauV7Q8+keFDPwafPHddYNb7Xjs50iUDifqta
+t5HvFTE8dzQZ7ICExSgh68tzcAMlQvEL84Z0Qwkc2Mi8kbrAQ4w/9L3GI99+D7301EXrDpCQCXQ8
+5+7x8w9e6UYssp0HtFHmSCBxvsvTzAOiwghR2Z0wFxzCLteHWUeJX2QaOmN7eACnIVYcIZDa+vyG
+uvG/UM0GoPW/3fyJlBNsTXAE+tew3HbknZUW7FkuNRRftJ2Wt5cGxisvaBV1616HVrYfgyxlVOUN
+kr4LQpGnddWKxCHBgtIjS0tV7iWosf3yujFzx/ybiOL53MKvO+a7j9XpzNk4k8mnpPoC9GHgiNUd
+9Fz7nGL0vSqcO6if8cyh821PQXnFtzao/tAiVVEZuHgj8/uGNGjBa7sUH6Eh+1TNHHCFLQJPaxLY
+kSR7vkLdr1S5eqdVmgSKFk1FaZV3JBWpylrnb+LphAwANHorFp+E6bHJqGHNlFHvTjMVQKPs/wjk
+WI6BsTVbTG3S6Vd0Ixui7Lsvusna9/syuvulxINotaWicSd8uss1o77o40bT/UGrI94aaIWRAAGU
+K+/hJRp47+/lpYwRvY2JKteN+9rULWkQw0VdRnc+mkAgvAhh/nTUH5mvQILC/iV2KR4CUNMthmdU
+yyF9sMsd8mm/SWN8IbPfaefEzNiCxA9vzea92OWs1WMD2kXwqPPOKlYtMYDwgCAimKfNz7Fy3nYx
+oExsr6IJ+Lk3NQF3USGSORFpCQHLLSPQQy6wB8wS/0iIa4sWndevq5BcKL87lMV3399i/1e287dZ
+pQSOMmRMO6xCdRREev2JaEKGAmA6zmDbLNMHVUeMQToDk0hLAU+Tt3eFkA7FS0ZgpKFZWzNn5Wch
+mseIWNfVKKC/UfVJefe9hZhM9kEYB15FwO70SrBvFoiVXwblwvvxeuYsi+nr48YJricySw0OI81Y
+zxuFvqOzYqxP7+IBVtRLR0rSubKpImgwlKNrrudjqkwiOYbbY8Rjr6QZB6wwraipzN4+4ThBwJ73
+YtGswb7/1Cgd+KY4cWPL1KR9QPcplfhTUqzXMJDDykWhl0BwQvMgYz5WlraNm5aUQkCbiukvSeae
+CO9IoMAJXQDmhhnP9xlU7+iThIcVi9P9hVJrr8V7jnYKquTEmgPtoHWRbM7VvdjefWbAyaparavF
+xxbp5BPyj5zVkwqeSdWTTUMzptqbZF3kA9kQsW0ciG0/Kq75ZTVjR4bXkLhf1Qd6LYRwAjhk7LMf
+zv7ricFrhPLH8oB+BmCGcUtsRlc5HcTzPYpzBvE+qUvFNnb1FOTBwLcYMAZxKIM7JoxdoEBS7yyi
+fsjAOpMFviYkuwYB07UivaU4eCJcpP0zvcqne6/RdJYiVlyGjwBsoIhbIYPXwFpcj4ht+1LAjU2d
+zdu+Saxva05J05iiYzrtbgSASkd4l3CG5YyIFGhE5xJdPzowhHKPzaiNSoY/Sbe4ZOqRCu133247
+gfbNxqEg4kTbfPIZjUAg7gzHdsvhSkv2oz+4gJv3JrrdwrhFIiLcU3rUMHEnT7y8AkJLfUiHLe/4
+Wh6MVLTHnn/kcz9JUhZ9Z79rbZrxXNaFBj4SImbjQoZ/13QYG9SoGt8h9YiNvMLyRdUqR/cIs3ei
+jw6wVQZyOyWNrdERZnfX7NHT3ATGPEQSCVtAJhFblf0L59K21A+pwbhykKUg4AaPSjqAk4NvIb8N
+UnmOjxHL321AypEDxRIOvb87KfKXGQDAv6iwBGs/hbCOQf5YzesIw+8RcYsySSa5GhV5l/mgTPAX
+gkQQzT3X3hrJgfOsLMXUzFg8BEzP0edJeNF+13PLX5ieC7BRu0RBwgDO/lfV52wZiQQ2vxZ7+u3I
+sY1/pNISB9lh0FHFRsAmZd2NCdNYd1IqSGv8FMU++zRKe1zKLYJRQJ/jS3KkuMP6l63HOYt1EWDP
+wMGuhjkFfSdPdtM8p6aMWRXhJd8jY+lVwXIwaFea1ii0Rg0vxQbVgJ6LfMb2PQzNvwv5lsDSBU8w
+g8C9TPDrqZbO8Ood6qu5WbvTjnYJmKpgR/5PR6V9Z0gx2AHmgJRO4qd/CFt1hQa4rId0z0vNkRRT
+8OfxgLDl+wjT776AZIDibKwXKsOQnz97/V5AwMXAfYNs5nhn4IIlhzWWNjxSwg1d5W9lbmbbZr21
+6BohtfMrzKqStafquGUCXtMLoK/u0xjYwcuWuPjTswrY0kotDk2wpUEW9dACGpymwtQyHL1L9IoM
+sv5QZOwsnp9mIF/7tHfb4hHn5JyGqQ5FDm3HnWk/kT9B5doivezVD2rZL9uwXAdhT7gFPamlb3El
+d/KHzXD24u+a+OcUCuy44rpnQsPTGf2d2PpXMGBeVVaWO7STbZi5x+FZXsUL+xv1nk7qtwsiQJ2y
+UqFn7nQqPdpiV9wTIVySUBUysM4KFYBLXTnf/CLLDBTVV/pREsJbRTEuVOKoJ1XezV7KTQ2dT3+7
+T2v6ftJfiPvu/PMkOwCBOOpOxoGVCSAhGnbDFLHZzEBBnJFvsWhZHnPBwulh/swQghunn5AuSzSc
+E9BISYKGxm6dWfNIZQeg3iy7t0qYlucGOtIGZhQfE9RtP/Sq9wRH+K+YYOCC9OuNR2151cEMySbM
++j6EznpVzim7XNGIBaSZekJZKZIY4KeLb6fN3WEpcnIztbvZmtDKiXPHg/uCsOJLODBJtQ3lIuyE
+Z7u41+zcEn/xPtG8ejbyXUr/NmigJ+CTWv7fxrOdak/50779n13xyNy437Hg6NfTfM8YJ7MlbOHS
+2IK3LqgfKnC87/TckZ0Rx6kezRNtauxUjlV73iawXTIendXY2EzDYOf9SOVoIbmRNLb9Fg/9ZGMh
+oq1t5VNq343xeaosIQu8mi2jgjyI2HEhfvyXR80J3jPq7YnuoVWsX7cru5+VZiWfgERPV5+K50mh
+csyWAjw6FjU1O6oUp6GFt0oMiPLFuIuMcy6uzSJogFh6bdqUqOusX7/hYSn/MX6BNt6NCMpyzn6X
+ILsSPhZVjRCpaju6CTysfkSKotNbsuRnhr4zCp1/IOU/iviCb7F6No5QXzmmtl5Eh5JWZQXlCAsd
+2DN5CXAghRa3APDabv2667cE4Gk+ILPYDAnU0icAzC9TL4TKlDXIvMav/9n7Xvq/1NKJZEYr8vF4
+jOblkNSMG4OdwOItuSwL6DciZKv6xBgQCDjDofIdhK862+G3mOjFHbjk85Btao7TPMepx/jpHj36
+KUD+3Wwp/6YMSIYS+3+EU73XVtUX9KJ9lCFoj38F+vqSji2ppTsoerRq+f6Xc4BPHx34EuMFt6B+
+G+lcbsn5Athns3JW+7dGNtcoOe6GZ7758MbrYNN6RsBt73P99HgCOGsYs9o/kKYh9wMh4kL89zDV
+pAFJBwi+/QjvXj/kQnW7BepX37/iTc4oX3VxLxDn4G6hTgL7BVqLqPI5wA8x7SkTOuF+VBUHRWCx
+oCoE0XYi94J0fDSB2V7eWvwd8L3c+2AsiWIrFxXmL+l0Qn93M5/vuObCLEAE/jXkzMdM959vTrUT
+Hz0lL0ypyANqcIQGTTwVOzkTydTJp16O4MyzjM5M+T8jBaeunM+0fOSxSARenwcHCth+Ikz+hrpm
+cuwEOfR3CI2dWhr33TGABaE9uME1jjEMW6Zz4klpE3H++CCKE8SmKMUZ81EF7727NZGsYefNMZ07
+/0D2EkDcqfXhCqwHyWXg5AE7i5zFSqSVyLsmM4yZ4htLzi7IU+lQBdJR1Hn3qhmL212zSaMyBmaG
+1rNHIFBBKsEZB//T8L2CyWiEmZX0YxxWLPOrqJs0e3DEdIU4MGLLEYvgwv5UxrzqfxaE4JlLmRB6
+4TM3UTudUTzwThw+u1dS+xDDJ/21QaPhHKrjEj6JejQN7PI3Q0bPHuoEcB0nI/ytDNZ5Zg408mzM
+5GkI0ZQZ+lBucMFGTWOuOc+oGNSr2UEQ+0usObGxw4ZPrdoi8TKoRV3CIjh0RhCtqiihw15cXeRq
+iqnwJNOls/+JK/etazRS+h4mgaYE9b5XIFv2pYmkslWP6yCeC04BBV1M8f25A8wxn1gr6IyiAZxz
+BCnlrzFNc/+c59agq4xV7PYOZMuMOGryKTJ/XbScG+BubyVH0wseIuku7UfDgU1BxRmnhd4I+jJY
+RS4xA04AX6t/oVMyy+3Z4q1ru/lcWWOGTJSn5XYQ+AaXpm+Hkct9Z9uP9QbUa6aHYXD0YhgYLnOL
+6u3Ii6jprwMpQ8+N/CXLIqbN0xTLk8K7kOrsTum5ecnWEK8x1smmCHVHEOyuE6F4rz5yy4Fe+Edd
+qlDB6Dfc3lQONw4kriWLOy/n7QP7Mks5hYOrE/vG3iqfTjMOhzr5oCc8OIWCmFV9qLCervIVeJ6d
+DOdBPT7gK5BchQKIOKCQrlPvMf0Xm/806t7h1T30SRlkPgTGJ+96UPKtiVGwd8uqnuD57r+vtBdR
+o0zQb0YC6F5WrTAgI0y+hrSF4Ob+jbmnrgp/+jg3FdBQa0va9QnC9aMZX/v6arb4mMBFkHbLQc7D
+Y3BgX3Rz/9w/bscBkI/kJFH/lnaMNeXlN+M7iNnactsbE2G0VuyOMTzqzfSTz2WLYELKWLfgQ1jH
+mVY4tp50nbRGYcxgqih6OtcePT2vDE4jbvR50cJNCH950UUoUCiD6vZB55nnIMViqZhyyfEtbpHr
+n+lam0UgqaFtcfErsNpCUhLcpXpeNx9zhSkHOEvdsN2TjWv6eUPMXMeKD2bLMJsrymA0yChXMVE+
+oFhCm87jfqYk4Zrica3hykZG+W+GilsgeFhd9cJ0AeKNf7OoQf+KUH4T9CSjmhZtTk+XD021Kqw2
++a+U/6Y23LsErgvLG3bQ/ovieWGQmPxG8ErehEbnldvFTEGigcVnRkvGfNNhJiZU56YMUcWlGGdT
+kTXo3IYxhklqykLnR1q0Ln/z5aMvEj73L+qb4Tm1+4RDmKc8Cr2dnjJO3QkSg0CD60K2z8hFPAB+
+wUR8KnBQV0WaxOJVuBeEJXedT9fGMuXIw7FqS/5q/D8Au/zzMMrLWltKXpT2+lK8p46PTE0XhNxB
+X/MW6rPGzZuwIKxIAfwx2DTJOhvRWgTeFosuY12lbYqVZB8292drZtSz4r0RUqi8Bp7KT6oNv/Lq
+UINhAUJOpu7rYxChuLavq+fQSbwj71I3wnJ3syMo8NezKUu0IeGM/IVpRrbOelqZNAa6CYAUSrDK
+U939LV9kUyPTKc4qLMVurX3ct4BbDA287qS1zJDHrvTu6/3P0ROVL2SO9hZqSLm610HQy8wp3EXq
+yi26WCTKA6egsTFsQ1DUpbD9KPcA3py5ZbGXfEMfLegfvzPxpT8XMUiz0gFvPlcckuEJ6VHYFnBJ
+E0nWTfdMmpk2uaNn7qIEStrl6U4s7ca+5L+DJ+wFV2HcN80fK97sJfFgvX58Rzm9wrr51BV7MCGC
+s9YVRPI37OIsV0XrL7rGMun/niGKtkjS3Kh/Moi/7gEY+q2/mYOvAgK/6Hul4iTOGOTGvddn4/Do
+An7rzBBQuNYCPdBe2kb2YsdzAwmoA/yezB6SB7ogLWoQ6hrh+uEkAaHtYUkllzmD1+mfSLgeCnbs
+zBtQzam2COe+AMf1NFSsBlTBD1Dbantq7asKIBUvrSAPYd+EBe2gXw6N2U650ukwS+ZBavD0h/G8
+QRdfYxHbrG87ZG2KkT58ajCg5i2AJxi/mowCmgCZ3to4rIar2UEjjCaqPm6D6SNU+rezkn4BHG2Q
+HrtFCr/e2iEjGRZCSN0MrPBAatbvw/F0jRsd2hGvY1kJavUP8UQBXicaDkxAvUELqZiocp+PG2+O
+llIIco9HD8Pmk8H/zvUM9WWcCh5yKiTORrvXMUqkibrNVADLAoXJvQgC4OCuQAdkHs0v/v3ouX+n
+n3W9yPMjc4SMnPiO7qtUO9kUL4QgVUA6Vh8Zt30Eh5ES99aZfad//6IJHDhR8KBDR4hJj9oZUwKD
+l6/a1jllEwasUrVnjST9GiVMQrnRN35O/PCMnXp0CewdO2NnNxOF2E76q/wrjXf2PVTBUTsD2Mqw
+gOUUxoYOPas2kdIuulC0wEWj4nLEFciE9GTCWldYL6K3+U4VvqXJR6ZWLxHhOWIlBF0WRbMWVIjX
+TI1jLQwELsONghnEb74m0aDam2zZkZDNKpfIrb0mhr7+wy8d0+jo8gY72rRpEK+tZO6y1v57TLs8
+jc4QUfQeASQQyxHtqCLrydt8oCGIyIHpo3JK45ncWycCkjbgsZRNKN1DFPzDYnP50XSmj30QRfyB
+wTR/jdRCisVZVsakTFI6NjiRMrPsSHnTP996bMhzlpFjaN4k7Pc7yRi417fWrLT9d83DrkU3B4NW
+qlgSCz1B14VqRoaX9QNCculMQFooonSAVOGdUG5JcI9RYPUnmlQ4cBMEuX3PpZlE3R7nPO6LHRic
+A6JGuGqoZz5rUcQDachZXdGJCaX4cN8A1MZey4F+Oarx5p4SHpCuDP5xP/FrmvlXQCOkYAXsP0Dh
+Iq/EUvELBsf0pUT62ssrDVntW437MZQiarDkf4TxHN2bwil2frCDSCJMIUqjvhDtKc7sxmRw/TFd
+SxVkXRhcHPF28/e/C7EphjtTj1mWWy6cl4jjHgwF45yGDBkubzNZV8mS1EZH9y7pBUCElfX1YZUJ
+PBCbsY+W+L3UFaoa84OkS8Zta6jqwT7Kvd7Rg3yvK627GbX0NrtlGYTJd0hm+SXLWbV1Oz8+La2d
+NQtTIH7rfZhMrW2NIzrPQA4Wdcf2qp3+Czmn569p6iMDo6UTiWOXV38xO8qXp+e5KDuSzjbbUkHJ
+RahOVrQyFbXFuTt247MJIq57/XLbxQnSgvFtfRuxUESiGluAb6ny+Dy0VFRqRuAqZ+8/E8rkp2Or
+QjdlG4akmnnAk3lI7c4WkABKZZuSAujK5XBpcdRxfUTA//p6SLo2j2Ru9XEvzfeE7Cg56qQe7vy/
+31D5G9pdGDpkXdGLSQxJdyn6Y8KX52WSj/M7n/dtVv05tqgK7qziqAWFQfiiULqBNCj6Hf8hGZ8i
+fij3ILuplM1ZVtCmfGHV2eaI0zOFJmXqgStcJyWMSx/CiregGurWW4+ZBFRn5GWduEvmlZziJn8v
+mLjGUtBapZSMEAWbYJCO08ZmDwBEAde1GPnvThjthU5SA8qOvW/IQR8TEmfZk/wpZszQSDv8E6vm
+kLSa6+VDjJt4cWSNV/Sm5dvIsUpAYy2+02BoLuyD4YZNOJy4qDwM54Q/yhGzNSuJWDJYM1uR4Sdq
+/B8iq6mKPQe/PNEDvfOsIRe1T8ah8SadS6oCdhaQj3GI1DyYWBXHWUfHZ4GK3AZuZLaDs9UiFZwS
+eNkm+HO824EEm1+UjkQ8J7FUTxtnFYqfQfKhIqsfhpGMyUGFpXGbp2EIu7235uZrHciQ7jCExA09
+0dePSBjyQWsiYmgL+LdWTdrdeDYpxnRonO3Aox7ETmFbcRunOMGlwhm2blIJCN349sZEqT+o4F4U
+pWOexM1XMCiOvGiJ3wdnL3fYfEvuGdx8DDRQ7vFoqKxrE4mm2f+CscQu84RBZZqgZLF1De36ynCF
+30eYn/MT9Y2dGDzcZeVwttve3ynGG/RtRDkwzkAbX3fO2cipeOtTckJf/fGJ/ry7QQe6I0HQUpcX
+py1xPvp8o6YtMjQfny6eznoumcFRbJZYQPhkdulFps8SecDJIznOFw/OhECXg97ZpVpB0VTTz/TB
+IKkjahZKHo2784zig9vY+RRwexqhfrUYleISWMHZP2Q+zKX5IPRdZgCIq6460F7ORO5Prwj33Vyu
+ySTkJmzxqq5mPucLHRel0LcnloZJzPRW19fzrE3JEMcupTQolaQn35zMNFc9Cjubh03saAsQHi+8
+GuYK65bkgihZgTE6sPCbWeHgV5/EreJZBbKe3+wLFoK5vUlWR5MRx5H9so4HrGEcutvhVLX34PF1
+BbxgiyOHYl8fTX3K0z+WIt+dsup1LZI9suz9S/gg2iUfguTa+XIS8MCiUt7UR/RZxjHg3rRrrVK+
+7ljl5MW1orczIcD0qf2rJs226+VSMYIRQgCMYIyepU+AlbAgOYfEqEV+flkVYrUJeDycP9iw874v
+tlnlC7ArGZXPkLvma+DCEUKbiLEK66umzwipA0Mq1vVD7jzOblGu5XN9j11zP+EUhqFMd7L0LUjT
+qEPdZEjQfWm1uRkIvYIV0dPNd9cQktT8HXaj5XFnJYttxutMzFRRsiPHUqzRZZ3G0MQuE37ZndbO
+BzEI2mgJAskXPuzQaoJtnQ+82wW3EtGpBG05wUagbjVW8AYehzveBHyPGnX6TKea0V+BfIg5QyQx
+FNbyDm0hLA3c42XOeKF99sbEFonyV//dU84OcT7hbkR4fjUUm/mZGaR9SEwIwD4ho7Dg7eJCSoMp
+kLeDd3u6lsuShlntIVUJ/IJkSoKbx35OgaP6ZczsVunUk6o5EJYkij3x5u0Wodinps0giPh/wxR8
+CxslNHV81qCbYLCieZvY0Pq7QA/uCD9hf53UfqXrHhKxyabAl6qCTVTjUlYGmKfyU/dH6HU4EyyI
+iiddzVXCe3PHmKKG8zwPtrLRb+brpXqj5WkroBf5LwT5X/HOksyZmcbRHH6kZPQe0tSBqNe1//wJ
+Y939eSiuYpqBSXZb7cIoPCYgQAnD3xfnRS8z6G/otxf3PDSHROsTNUztjIKe0Mo5hP5/rUHLoeEf
+ej3gQuIDJHKAyCNHo+BkPBBR4lcAzbCo8tvAVp44WRSDfbsg53bmkyCT1xtNJn55YQDyvMu8g3Kq
+w/XS8Mpqf8WJU7gYnptDLiG1jVCe116uMG4vdBgmfvV2mgnLS2pemOPrDycGHNXdmqV28ZsUsNf/
+vOO+WKlzqnpuAqbHDFD8x5mdKaxpzGfic+bbD5+jS8GS9iCm3EXe9OZiNF4AFwXtKAMblOftJ1iB
+/QpZ6KJKaLJwIfvS1dNHbd6K2nm9iw4p46osLAgBgFTgVp/X+CHptu0tglKpUXouLiS7XYB/STEp
+PTeV2AVETahTLs/o+Et9qvy128UNcofl73fR1kPxrTTzfKk0Oca9VBHz2xK/+ohkcwIkPE4MhrF0
+8Qg6oghAg0l4Hm2oE4AnhyMzZ04EqfUKzv1DrHQ0gqmLBvhLmf6Pfel6IVt4xSCCD04B57d7tv8c
+s4eDxD3LBHFJ7V6xvLhn9e8Vl8G1DOfAPQxUUK0AGY+7S1PaJ6YICtajEThG3XaZELF82czmxoaU
+wJ4UeeMRzxhY+8mfWvRKgzrvHMTwImuW2JElL/gaapNxDXgMIHOuTYxJP3YpoEj1j9OdS6soGaI0
+5MaKpBlrpahXJiMiKu6EHVJ1ljB7ZqotSkC9o5p1p6Aa4gheGojRC++TazYcpyjoOFo7LNByatTJ
+6UMwousPVJ3PAPEnMGh3Grfe5KiQd69wawrFKLDoaz/gWZqor95p3GTPWVhdltVaUKAhLFwvsM2S
+iwP3DApa/19hav9TnZCcNZPK9jsMKJ1Eo1dQmTheAN/kco7dRYNoYEUxWgh8lsJu3WZvwNVMy2yl
+zs0bBSDsgrvXYpdDy15H756gWlzLR/71yipfUAIWb2hL2NC5rrIS3WXdr5TEczF5hqZyhebqtNhs
+8gvwp8rij316C+QGxH8pvuvItarLQEp8GfACEGhP5nSJfbdkgAhRcKb541lRyLXEb5X8W/O2rHrc
+L8L5/n+yba/LJJLXLph6/VAnfQLwzZqP50UujnQ6kOv+LVtcdempZZgJ1Qbnpf24qSE6UhXc6r68
+k3dJkFbJodsptkhwy/NlZqRwNd2xCWW93t3keRMXDgmVxuxdru1OAyPR5py4VhCAjU+9w9OX7kWz
+Xl2fslzWkyQ9mUimS/xUfsnFhuSFNNKtMd/4jWa1cnun+P6TnD/zzIWjOBl9f93VNfLjRsrd6yBV
+FyhuB9UQU/FV4dWitQDMORehKDZK7RtcJJZy8T8pP9ZRrW2KG5s2OAkUiiL51q4ME8WCQbPHqCZl
+pH6A6PhnAOVNJ08PJjEmf6MZQs4hZ+rTsPqIogOV4KcuKBzmVXYLtVrj7rqjqPE4hSy6TQbk9RTT
+xzHxfYy5O2VyEBTkl+9LCHRW/1J64byhn+pKakawx6isf5AZi+uVs68Qq1/s2u/V/aJdTVM3MhrQ
+88KHsNI/ngD/0abwFHN/xqmnXJ9t0EBcqasitJEo5CxLc53siPNcYH7likicIRkEwlhWg/eii5+S
+iRTPdPN/JyyVRBVvgg65cldIfiuiVYslUXrbYGxbVCjiubHI1xxtAWGcIoAgbudd64Rh2u9W0/y9
+slBhmbRkOcD4btHozUQF/WBx4BcHplRDBSfahPkN/BlcWIY/CY8CMkY04jmxDAjtFuNwdYmAhOqE
+3ZNP/yuXJF+8afQDvH8Kzd4fLx8gXb8aX957ONj8x4Dtya/mJsAk91/jqeeaWj9CV/mspf5ypXhf
+/bL2uP8WQ2RlVQ/cPRgEUMzvR1XzZWZUBekqg+5p2E+za9RJ/kJ22nj8LCQDlgeDDWGa+P7ASwtj
+h8k2JLj9MSDZeyZoOG8KcgchX6rL2ZdbBKoq5P+effnyH0TnR/6pwqAtoR0U78yhZwsOSIQtBNhw
+4an3fYqJbSR6ZJW4CfLEK9/m455gVqgwtWjusSVpCmDo2w7ybs5cE4vzzn548WGLlFqvEJJGmaMK
+RWu/k1v6aFIHUGSZvr0Q0hL8EaplccmVFO6vHZZzeijs0s8fZ8wAzu6ogjL3g0Z6zY26clxCdVl2
+nrlzgjBsZdDSfWXz5tijIuvn22IIV0DN2L5l2A2T81qSLjPEwNTk5JufnO2GdwTAg37B5urtl7yC
+S2C1fw/l0WUhfhlDBa3nNfLO0ohuW3fV6AY9oAeegY8/OOSSZS7cwKtVZs+L+XIpzriWZaB91eog
+cX3x90XPYIrZSWGQygz6GRdqcZ9nheipcBrLZqaonSpC3Sqhyry67Hzbfxv2bsEL1Na7y+wBRLx5
+bO0YzNWZpE0I1FoIAgP9nkl8nXPgRZOSyZrbdGNyag1Qv84GqspnXimTvaDSRRgQX/kU/GWl3pMO
+3FrxBmQpZ+SDCtQFD1rVSNdvMsBb7dS80e0qaz6tHnVpyDc+K+VQS/rUeFmEGDLM7sm+HEgcHurR
+Mf2Vmt5Z3MqDtshsOxU4DaC3kbZf1IPUE7b+/wSiPQtEhIVlPQ5bm0C8GosNhyMs8rAICW735Nyi
+znDnZQy+8kiIwVeOVpaVNncrCrUHo2YMmn/d5wbr2uG5E98mazUX8lYMzr1lHrZNxHDJQOPcK8tS
+7zqbKqRjtgy5toO68O0ZLohleG59SVTrfTnr8xPv52JtGxvB3ZEzFUe78a4Pqjv6nOjACXJ2KYcm
+3aM0n8MuC00AMgR75SOYaTgARcYesdQQ+b6FxXqCmLoOp/c7sme/SrOL9/z+LGG4X/Rte7RLTTfu
+ZrsfIWsBTZCDeBw0uMIOxvZdbHlergpJ6T+ZS0uC44RdRUcpgy3C2tstZewfNl3EHN+XZScqxM6j
+0lvcrmsFnyXQlicalZhMmd9b3/Nh+SRNZNvVDLatVOMqbsjHzH+pe19eCJvCUWeeqt2y4DHRubBu
+68IEDCUjTiGUOG4GxfjbDinHk/dvmjV2HJgKyrB+zQGVGmkIJyBIyFPr3gRNfndBiAUlHfWeCEDU
+D2iuhnGbLxn3TDIH2YSDWCZ/BarHn4L5TSL8QLIQOvilm8+K5zftyERk50d939q+qiQv1rjxVkpO
+ofbphNM6EgdQO63t/RrTMqKo14/9kjmIMvadWP2HQOcTdbi9YJEfzFBJ7X4stg0sKYhgLH3JJUVY
+kKTgoFR5z9QqZzc4T7PQ+/TjUEG7a8VClyORaWJctQR9IuM1UjHQqYg/4NIiy1+XQmITPMkZIBIu
+Rc0gpJXVEUASx0Wd6B058mUByDXXyfD5FhlL1joaiD/4W83qaRNWIwHwsY32nlo0aQiWfJ2xvPq/
+uLup+VjNyGeEAAc/PUBIjUFue2i0BuLf9JHCSWznN1yUkUiBolrbk5xzoTZIzvv7r1GXVzAWPydN
+HlWVxFaRgf75bsHPYkTKnSyPphQdNFktwCQEKZ/IWli6tzQyCdK/sQYboG5rm7z1ScRqSm1tpi55
+tMA4XZKEFNYNkEbxFMMMyJzelbox5pOTqjyPKuE6netqvhUoDdwdlwU21vTGJ5NyUEvpY7gZmzAV
+rc6ExJS7MptjdWfccUzcjPGkTVEwol/bhMllLkT+dJdaxK3m94F6My75LZJtWBiJGCXKIKb18WBU
+diMxXlGG39TK0xY2dL9O+B/6zvhguf4UWFzJBIdTdt28+/Wi8BzriE9bB25T3Se+FYgysdL6YGq/
+x7dk4vS42yS2GfIxLT7yqO7QKdx+wANjnXLBtWRLu8649Yv2yEWGDE6Mk0R4Kvq3Li0LkoAzJ1U1
+AoP1LZIDvyyqFuIyiDAK/6KJbuGdziUrKQyiUCzygkPJG9yMnMM/DErgQmd9CLcDmEq1dM5B+je0
+GSS19s1s+lZ5T7wMBWBKUNSozUApL1nbcS5zLLyuv2Wkl0+1w2IrtPf4DsZbIa9q7EOi/3W20QnU
+S/XRJbPVKICWYbfuANUOZ9EWEVfXDx2NR1CdHhfLPAKGAbhWOaQ/v900AMjXmmUaQh33XKVuEsqd
+BE6XcAyX19sMgQEXv4RXAoKVS7NOXxUO0Qb32Ou/jL2czWy=

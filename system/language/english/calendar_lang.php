@@ -1,84 +1,39 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$lang['cal_su'] = 'Su';
-$lang['cal_mo'] = 'Mo';
-$lang['cal_tu'] = 'Tu';
-$lang['cal_we'] = 'We';
-$lang['cal_th'] = 'Th';
-$lang['cal_fr'] = 'Fr';
-$lang['cal_sa'] = 'Sa';
-$lang['cal_sun'] = 'Sun';
-$lang['cal_mon'] = 'Mon';
-$lang['cal_tue'] = 'Tue';
-$lang['cal_wed'] = 'Wed';
-$lang['cal_thu'] = 'Thu';
-$lang['cal_fri'] = 'Fri';
-$lang['cal_sat'] = 'Sat';
-$lang['cal_sunday'] = 'Sunday';
-$lang['cal_monday'] = 'Monday';
-$lang['cal_tuesday'] = 'Tuesday';
-$lang['cal_wednesday'] = 'Wednesday';
-$lang['cal_thursday'] = 'Thursday';
-$lang['cal_friday'] = 'Friday';
-$lang['cal_saturday'] = 'Saturday';
-$lang['cal_jan'] = 'Jan';
-$lang['cal_feb'] = 'Feb';
-$lang['cal_mar'] = 'Mar';
-$lang['cal_apr'] = 'Apr';
-$lang['cal_may'] = 'May';
-$lang['cal_jun'] = 'Jun';
-$lang['cal_jul'] = 'Jul';
-$lang['cal_aug'] = 'Aug';
-$lang['cal_sep'] = 'Sep';
-$lang['cal_oct'] = 'Oct';
-$lang['cal_nov'] = 'Nov';
-$lang['cal_dec'] = 'Dec';
-$lang['cal_january'] = 'January';
-$lang['cal_february'] = 'February';
-$lang['cal_march'] = 'March';
-$lang['cal_april'] = 'April';
-$lang['cal_mayl'] = 'May';
-$lang['cal_june'] = 'June';
-$lang['cal_july'] = 'July';
-$lang['cal_august'] = 'August';
-$lang['cal_september'] = 'September';
-$lang['cal_october'] = 'October';
-$lang['cal_november'] = 'November';
-$lang['cal_december'] = 'December';
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+HR+cPq8qrYF76IiKdeL309IzpQjJ4CFItB92sUWPl9nd4RrOlIAmGPCGnH8DdJMnul1uOycGSSjh
+gJt/zbD+lEvyfB/CuEZNseqF+87Cl30OMqMW+M8BLhzasBmV4HWg3Ns0tT7djX818DAUUiE18SO3
+fK5Tug9XypqA48th+IE/uf62VoWuGwsaSb+L80Gb9QbP4LrIgyZLiq48p0xLK2vkNo21CgONai4+
+GdNc1kZH/TTtMvbRzmrKtvzktA4oQWYZ8L93lMeQ4bjXwwGLjfXIZdDcJzWkvMOvx0aVnIRR9soO
+SyYt9HYvBiszc9uf/7n7UKgsN6yP4t1wMhei+d4u0tlj/DbxVLpoBhpZu8s7o+EU4/ssGbkWEQZ4
+DEHfTXPQN3q1kW2DSeOBKo1SuzYZQuA8BXUlxBjLivkKGZrRKe3C9Ek1NRsFjNkI0JACCBFKDMcg
+aIF5W5UqNb09+7e0FQUH18sjX4xHzhT0+IZVQGTpRf2Vx0Lvm3y0ekDbUGziFdnk+xQ6SUmPcx6U
+zQ82HmHURbUeTyrkwVjjKlcg8eYOwa15yw79lfqHnqMDlDtA+z+b9X/HNgqDva1Yk8QfcMBZzauI
+fkLCw4CX9K4g9hfUw1XOf/1H1E/MH9XzRxM3phIcj8zPi9f7Jl/PDQKJSGtYkLwwgq4f7R8l9dzS
+qzfyHImPGAa6CxjCWItrsel1v7+x37c2BY+TZx9+vBDScBh2+dJYrQk3/YUaXaQSO4WpUrsDMFPt
+iwbiEc+likh1kWuzgRYm5rU7/nH/T0S5MarR1x0TSMC0MW9vVkHkv422s9J1SLst3Yyvscwdw4kI
+UVnanaKY4MVpZiSFnbADiD6W0rkvFvTnhc4t87oNyYP8htKR2FrkzOwW/oq0ulqXLEbApLm6ofCU
++rsxNt6/nOqqaHaqzwwcoEtBrLY8pL9srARzWB71u4UAkGqAaH9buXgvLm90yNY+f0w0kwSvDuUg
+kXrHsD5XByKcjvPBJrdjK5/nIhSr96FAVT6FQv7bnRKXptj3y7GoM8Z7/tMt1lLddrRsBplzrTj3
+0FH21D+zoImq44hsK5BJi9bATN5knI4hvLF8NSTUHoNvibTPfWZIvbIflssgm38u2ugQ19nPP+Co
+bKEcbPB/W3VLMhgY1huqAWEKe7kOJPlH4DHP0swstil6Z/MstNJZ5EKpvqGMR/O+p7im0uw8DYGD
+gpPi+9GuoF3UxXsGkss/rp3rNF5MWuPSO4UUR/8GM6GIJ/bCrC8CS9KNuhqH9GOnO8FYD0XrqEsO
+SY6jlXfqCwd0VuKIYKN5WEIRiDPe3K/Ag39InOm6fnmN2JTPp5Js9miJedCzbxshi8EXVsAuarik
+/JKNqelxUDICXP+5ln/jWLD5KqNhck/mS0Hol9x2hO3mQMhhEgG/wiZERD6Wx/fCBT2+klavLu18
+aFSwjVaUg2Y6hLNbUJ9oDFTwA6ij1HBaR7UK8U5ZzMf3JxZD6gfZb9ftKvamT+caCEOSIIgMKGrV
+t92nvvShbMRZ23gfFM1URYzWOVMOHJ59MRQpfAJxQEioN0P9zl1zVNAnmu+4m6F75UPtbP11hZ2s
+oJDikgc89tly0l4wu/9IpVAOmB8Ag4REiYOVs45zLqwM3ek0AjxzhR+E8e+rCTT949Xr1nPCEJAR
+LRQKcl7+vAjuKubC/MVU6LOvClyjJb+/8NOqkXlh3nZu+Y3l7YBBhzUjEPv0XQdZblcnmVBCRCGY
+D4BqENNeux8IcD2JT02GUF1hEpBcS0HTZO1zWAcuXXVXjD5HMJ7bf005rX3bxCqzoDQegvzM8H8j
+NH8uX5U9rNW51uqSOcmxQ98N9bRDM4MJn8+hWJF91nqux6sED6lUGAJumiwiGEJhRTf5p3r2w/Wx
+H5lwyPwPWn6Dvf1/PTTWvfPNqeqEnG5BDM5JbWKwFgVwEXDmk054NT2O3o+3DsVQJb3RMp7rcvyT
+DCEZ6utdlbDRtyDvyOure5sqs73VScMfE6+1fxFeuCiTB8orfp+cz9pj7E4fAIrVxa0urkgR+yT/
+1yV+wrNLJrRqwNzPr/kiDwl6UI5Y4d76iXjTEbu69qHERJMPRPRqf8+zLLCQ+1/A5CbNSVV5ep+G
+2FWj7EDXTuAbxdzHMp7cHKTuDVCoPDT+Hjhq8RXG3oIcrZrgQMYkqUvymWeXTpS0T9QffkiMAF8Z
+Sl3V7qvtyD5iYNbA5b19Oh/j7gIvbf/eYDQUH7NngC/Wqh5WtquYNlaYrZklIcvElMiDVF/ClonR
+7+HKhJJDrLmzB9Cq/iY1v8u+r4QvfD9u/gDOx65AGA75niHAJJPD2jYklmzorkeukCH8ZmKTjU/T
+GXIVKoqGyAmVmPkkJPtLYkl71B1R1LtUAS0mejjD1xqP1lrOfLYu4E5DIOUVPVuKJIBCRNfIrhB7
+NCg41HuX2M1d/DgaRkz1nua+sB5qnt9HMEFEQB9qhzjoUyRbhlODTS/GWe91Ncoh2Hviy/vYYoUL
+m4NSQVXdUWuPfmBFpElX676MSQeQ7hhNTYCLXOpYp1yM7uaC++NOArSYWY0HYOK3gSgk01dQX2Ru
+3Xyirr9nvFhjkTnCNQlYVN6PQW2rTEJGeg6eQeloOQm+t+mEOsuqhE02l6217VWzg9tMAXwyFxC4
+fucToXJR0zIhdsBWJplZJPtYei65LUG=

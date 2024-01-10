@@ -1,255 +1,92 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter Smiley Helpers
- *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/smiley_helper.html
- * @deprecated	3.0.0	This helper is too specific for CI.
- */
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('smiley_js'))
-{
-	/**
-	 * Smiley Javascript
-	 *
-	 * Returns the javascript required for the smiley insertion.  Optionally takes
-	 * an array of aliases to loosely couple the smiley array to the view.
-	 *
-	 * @param	mixed	alias name or array of alias->field_id pairs
-	 * @param	string	field_id if alias name was passed in
-	 * @param	bool
-	 * @return	array
-	 */
-	function smiley_js($alias = '', $field_id = '', $inline = TRUE)
-	{
-		static $do_setup = TRUE;
-		$r = '';
-
-		if ($alias !== '' && ! is_array($alias))
-		{
-			$alias = array($alias => $field_id);
-		}
-
-		if ($do_setup === TRUE)
-		{
-			$do_setup = FALSE;
-			$m = array();
-
-			if (is_array($alias))
-			{
-				foreach ($alias as $name => $id)
-				{
-					$m[] = '"'.$name.'" : "'.$id.'"';
-				}
-			}
-
-			$m = '{'.implode(',', $m).'}';
-
-			$r .= <<<EOF
-			var smiley_map = {$m};
-
-			function insert_smiley(smiley, field_id) {
-				var el = document.getElementById(field_id), newStart;
-
-				if ( ! el && smiley_map[field_id]) {
-					el = document.getElementById(smiley_map[field_id]);
-
-					if ( ! el)
-						return false;
-				}
-
-				el.focus();
-				smiley = " " + smiley;
-
-				if ('selectionStart' in el) {
-					newStart = el.selectionStart + smiley.length;
-
-					el.value = el.value.substr(0, el.selectionStart) +
-									smiley +
-									el.value.substr(el.selectionEnd, el.value.length);
-					el.setSelectionRange(newStart, newStart);
-				}
-				else if (document.selection) {
-					document.selection.createRange().text = smiley;
-				}
-			}
-EOF;
-		}
-		elseif (is_array($alias))
-		{
-			foreach ($alias as $name => $id)
-			{
-				$r .= 'smiley_map["'.$name.'"] = "'.$id."\";\n";
-			}
-		}
-
-		return ($inline)
-			? '<script type="text/javascript" charset="utf-8">/*<![CDATA[ */'.$r.'// ]]></script>'
-			: $r;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('get_clickable_smileys'))
-{
-	/**
-	 * Get Clickable Smileys
-	 *
-	 * Returns an array of image tag links that can be clicked to be inserted
-	 * into a form field.
-	 *
-	 * @param	string	the URL to the folder containing the smiley images
-	 * @param	array
-	 * @return	array
-	 */
-	function get_clickable_smileys($image_url, $alias = '')
-	{
-		// For backward compatibility with js_insert_smiley
-		if (is_array($alias))
-		{
-			$smileys = $alias;
-		}
-		elseif (FALSE === ($smileys = _get_smiley_array()))
-		{
-			return FALSE;
-		}
-
-		// Add a trailing slash to the file path if needed
-		$image_url = rtrim($image_url, '/').'/';
-
-		$used = array();
-		foreach ($smileys as $key => $val)
-		{
-			// Keep duplicates from being used, which can happen if the
-			// mapping array contains multiple identical replacements. For example:
-			// :-) and :) might be replaced with the same image so both smileys
-			// will be in the array.
-			if (isset($used[$smileys[$key][0]]))
-			{
-				continue;
-			}
-
-			$link[] = '<a href="javascript:void(0);" onclick="insert_smiley(\''.$key.'\', \''.$alias.'\')"><img src="'.$image_url.$smileys[$key][0].'" alt="'.$smileys[$key][3].'" style="width: '.$smileys[$key][1].'; height: '.$smileys[$key][2].'; border: 0;" /></a>';
-			$used[$smileys[$key][0]] = TRUE;
-		}
-
-		return $link;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('parse_smileys'))
-{
-	/**
-	 * Parse Smileys
-	 *
-	 * Takes a string as input and swaps any contained smileys for the actual image
-	 *
-	 * @param	string	the text to be parsed
-	 * @param	string	the URL to the folder containing the smiley images
-	 * @param	array
-	 * @return	string
-	 */
-	function parse_smileys($str = '', $image_url = '', $smileys = NULL)
-	{
-		if ($image_url === '' OR ( ! is_array($smileys) && FALSE === ($smileys = _get_smiley_array())))
-		{
-			return $str;
-		}
-
-		// Add a trailing slash to the file path if needed
-		$image_url = rtrim($image_url, '/').'/';
-
-		foreach ($smileys as $key => $val)
-		{
-			$str = str_replace($key, '<img src="'.$image_url.$smileys[$key][0].'" alt="'.$smileys[$key][3].'" style="width: '.$smileys[$key][1].'; height: '.$smileys[$key][2].'; border: 0;" />', $str);
-		}
-
-		return $str;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('_get_smiley_array'))
-{
-	/**
-	 * Get Smiley Array
-	 *
-	 * Fetches the config/smiley.php file
-	 *
-	 * @return	mixed
-	 */
-	function _get_smiley_array()
-	{
-		static $_smileys;
-
-		if ( ! is_array($_smileys))
-		{
-			if (file_exists(APPPATH.'config/smileys.php'))
-			{
-				include(APPPATH.'config/smileys.php');
-			}
-
-			if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/smileys.php'))
-			{
-				include(APPPATH.'config/'.ENVIRONMENT.'/smileys.php');
-			}
-
-			if (empty($smileys) OR ! is_array($smileys))
-			{
-				$_smileys = array();
-				return FALSE;
-			}
-
-			$_smileys = $smileys;
-		}
-
-		return $_smileys;
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

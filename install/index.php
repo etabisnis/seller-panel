@@ -139,7 +139,7 @@ require_once('header.php');
 											</div>
 											<div>
 												<label class="mr-3">Build Date</label>
-												<label class="badge badge-secondary">11-November-2023</label>
+												<label class="badge badge-secondary">10-January-2022</label>
 											</div>
 											<div>
 												<label class="mr-3">Application Version</label>
@@ -308,8 +308,6 @@ require_once('header.php');
 									<div class="text-right">
 										<input type="button" id="chk_submit" class="btn btn-sm btn-danger" value="Test Connection">
 									</div>
-								</fieldset>
-								<fieldset>
 								</fieldset>
 							</form>
 						<?php }} ?>

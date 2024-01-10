@@ -1,90 +1,33 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter XML Helpers
- *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/xml_helper.html
- */
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('xml_convert'))
-{
-	/**
-	 * Convert Reserved XML characters to Entities
-	 *
-	 * @param	string
-	 * @param	bool
-	 * @return	string
-	 */
-	function xml_convert($str, $protect_all = FALSE)
-	{
-		$temp = '__TEMP_AMPERSANDS__';
-
-		// Replace entities to temporary markers so that
-		// ampersands won't get messed up
-		$str = preg_replace('/&#(\d+);/', $temp.'\\1;', $str);
-
-		if ($protect_all === TRUE)
-		{
-			$str = preg_replace('/&(\w+);/', $temp.'\\1;', $str);
-		}
-
-		$str = str_replace(
-			array('&', '<', '>', '"', "'", '-'),
-			array('&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#45;'),
-			$str
-		);
-
-		// Decode the temp markers back to entities
-		$str = preg_replace('/'.$temp.'(\d+);/', '&#\\1;', $str);
-
-		if ($protect_all === TRUE)
-		{
-			return preg_replace('/'.$temp.'(\w+);/', '&\\1;', $str);
-		}
-
-		return $str;
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+w17mI0P6QQQ9khuM

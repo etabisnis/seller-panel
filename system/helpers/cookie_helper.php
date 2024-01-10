@@ -1,113 +1,45 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter Cookie Helpers
- *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/cookie_helper.html
- */
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('set_cookie'))
-{
-	/**
-	 * Set cookie
-	 *
-	 * Accepts seven parameters, or you can submit an associative
-	 * array in the first parameter containing all the values.
-	 *
-	 * @param	mixed
-	 * @param	string	the value of the cookie
-	 * @param	string	the number of seconds until expiration
-	 * @param	string	the cookie domain.  Usually:  .yourdomain.com
-	 * @param	string	the cookie path
-	 * @param	string	the cookie prefix
-	 * @param	bool	true makes the cookie secure
-	 * @param	bool	true makes the cookie accessible via http(s) only (no javascript)
-	 * @return	void
-	 */
-	function set_cookie($name, $value = '', $expire = '', $domain = '', $path = '/', $prefix = '', $secure = NULL, $httponly = NULL)
-	{
-		// Set the config file options
-		get_instance()->input->set_cookie($name, $value, $expire, $domain, $path, $prefix, $secure, $httponly);
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('get_cookie'))
-{
-	/**
-	 * Fetch an item from the COOKIE array
-	 *
-	 * @param	string
-	 * @param	bool
-	 * @return	mixed
-	 */
-	function get_cookie($index, $xss_clean = NULL)
-	{
-		is_bool($xss_clean) OR $xss_clean = (config_item('global_xss_filtering') === TRUE);
-		$prefix = isset($_COOKIE[$index]) ? '' : config_item('cookie_prefix');
-		return get_instance()->input->cookie($prefix.$index, $xss_clean);
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('delete_cookie'))
-{
-	/**
-	 * Delete a COOKIE
-	 *
-	 * @param	mixed
-	 * @param	string	the cookie domain. Usually: .yourdomain.com
-	 * @param	string	the cookie path
-	 * @param	string	the cookie prefix
-	 * @return	void
-	 */
-	function delete_cookie($name, $domain = '', $path = '/', $prefix = '')
-	{
-		set_cookie($name, '', '', $domain, $path, $prefix);
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+1fJiUA1X8Mck

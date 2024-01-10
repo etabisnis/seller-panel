@@ -1,266 +1,79 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * Hooks Class
- *
- * Provides a mechanism to extend the base system without hacking.
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Libraries
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/general/hooks.html
- */
-class CI_Hooks {
-
-	/**
-	 * Determines whether hooks are enabled
-	 *
-	 * @var	bool
-	 */
-	public $enabled = FALSE;
-
-	/**
-	 * List of all hooks set in config/hooks.php
-	 *
-	 * @var	array
-	 */
-	public $hooks =	array();
-
-	/**
-	 * Array with class objects to use hooks methods
-	 *
-	 * @var array
-	 */
-	protected $_objects = array();
-
-	/**
-	 * In progress flag
-	 *
-	 * Determines whether hook is in progress, used to prevent infinte loops
-	 *
-	 * @var	bool
-	 */
-	protected $_in_progress = FALSE;
-
-	/**
-	 * Class constructor
-	 *
-	 * @return	void
-	 */
-	public function __construct()
-	{
-		$CFG =& load_class('Config', 'core');
-		log_message('info', 'Hooks Class Initialized');
-
-		// If hooks are not enabled in the config file
-		// there is nothing else to do
-		if ($CFG->item('enable_hooks') === FALSE)
-		{
-			return;
-		}
-
-		// Grab the "hooks" definition file.
-		if (file_exists(APPPATH.'config/hooks.php'))
-		{
-			include(APPPATH.'config/hooks.php');
-		}
-
-		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/hooks.php'))
-		{
-			include(APPPATH.'config/'.ENVIRONMENT.'/hooks.php');
-		}
-
-		// If there are no hooks, we're done.
-		if ( ! isset($hook) OR ! is_array($hook))
-		{
-			return;
-		}
-
-		$this->hooks =& $hook;
-		$this->enabled = TRUE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Call Hook
-	 *
-	 * Calls a particular hook. Called by CodeIgniter.php.
-	 *
-	 * @uses	CI_Hooks::_run_hook()
-	 *
-	 * @param	string	$which	Hook name
-	 * @return	bool	TRUE on success or FALSE on failure
-	 */
-	public function call_hook($which = '')
-	{
-		if ( ! $this->enabled OR ! isset($this->hooks[$which]))
-		{
-			return FALSE;
-		}
-
-		if (is_array($this->hooks[$which]) && ! isset($this->hooks[$which]['function']))
-		{
-			foreach ($this->hooks[$which] as $val)
-			{
-				$this->_run_hook($val);
-			}
-		}
-		else
-		{
-			$this->_run_hook($this->hooks[$which]);
-		}
-
-		return TRUE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Run Hook
-	 *
-	 * Runs a particular hook
-	 *
-	 * @param	array	$data	Hook details
-	 * @return	bool	TRUE on success or FALSE on failure
-	 */
-	protected function _run_hook($data)
-	{
-		// Closures/lambda functions and array($object, 'method') callables
-		if (is_callable($data))
-		{
-			is_array($data)
-				? $data[0]->{$data[1]}()
-				: $data();
-
-			return TRUE;
-		}
-		elseif ( ! is_array($data))
-		{
-			return FALSE;
-		}
-
-		// -----------------------------------
-		// Safety - Prevents run-away loops
-		// -----------------------------------
-
-		// If the script being called happens to have the same
-		// hook call within it a loop can happen
-		if ($this->_in_progress === TRUE)
-		{
-			return;
-		}
-
-		// -----------------------------------
-		// Set file path
-		// -----------------------------------
-
-		if ( ! isset($data['filepath'], $data['filename']))
-		{
-			return FALSE;
-		}
-
-		$filepath = APPPATH.$data['filepath'].'/'.$data['filename'];
-
-		if ( ! file_exists($filepath))
-		{
-			return FALSE;
-		}
-
-		// Determine and class and/or function names
-		$class		= empty($data['class']) ? FALSE : $data['class'];
-		$function	= empty($data['function']) ? FALSE : $data['function'];
-		$params		= isset($data['params']) ? $data['params'] : '';
-
-		if (empty($function))
-		{
-			return FALSE;
-		}
-
-		// Set the _in_progress flag
-		$this->_in_progress = TRUE;
-
-		// Call the requested class and/or function
-		if ($class !== FALSE)
-		{
-			// The object is stored?
-			if (isset($this->_objects[$class]))
-			{
-				if (method_exists($this->_objects[$class], $function))
-				{
-					$this->_objects[$class]->$function($params);
-				}
-				else
-				{
-					return $this->_in_progress = FALSE;
-				}
-			}
-			else
-			{
-				class_exists($class, FALSE) OR require_once($filepath);
-
-				if ( ! class_exists($class, FALSE) OR ! method_exists($class, $function))
-				{
-					return $this->_in_progress = FALSE;
-				}
-
-				// Store the object and execute the method
-				$this->_objects[$class] = new $class();
-				$this->_objects[$class]->$function($params);
-			}
-		}
-		else
-		{
-			function_exists($function) OR require_once($filepath);
-
-			if ( ! function_exists($function))
-			{
-				return $this->_in_progress = FALSE;
-			}
-
-			$function($params);
-		}
-
-		$this->_in_progress = FALSE;
-		return TRUE;
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+HR+cPtjtzRtUqSsofxrWdiAs/YWMQ9chBUbrJz4tfbVSvRCZOiBg0h2y4Tx397IyiiHr6SrPa9fC
+LH3za8ElJxAcfQqOi+glOWXCb9+tLnFANBEQO8U0MzgkdhcvKBYmWldcpLl62w71ZRuM/BfqXhrU
+9U1BM6sYoFmsFJbw1i1NT/SrRN3QQlKTHP9+aiy9vTEIqe7JGNGFbdfHZw46hPa8hpvMR8spU3rx
+I30MmE4EIh4RcFXtm24JNgGseg7tRlCuoroIqneIMs7hf1Msc5AESsPFs2wDRexMwV1prB4FLO2x
+I8uNVx/9UKbvAQMML4nGyMYnXDNea6td+DX6UhMnDNTMko2UxOXNXTY7h0p9gd9mg7MNwN2WMgdR
+zqQvQNQHUQvnYj7vZx5EysKb5LTTiX10SUGo+xq9dZ9ttBPUfvd+XBBpwPzSOtJnckwMG/BJopjg
+fAaU5f9qa3XPgbpDNlYcwq+kvN9MSh2a9MqG7ULAZitbM/hQB3upzLOChLSSSVAepAi4ZYjg41oa
+RzNyek6CPFJ5wLuJ3KZKQTcrGsDLCtV+X9+WV3/W4tXBAMrXvimth23QBnOfiPFtMnm/clqjZJjE
+esqAM4SIqHB4fl8dbPZwCvnVcdElkSziU0Bo4GvLDY3Ok/WUkkl7BC2dAwqFdsj15sFot9iZvq6k
+D3+k4rtpO7SPRiscCCNnPrYzhEtQE78Kowt2bsCl8TxvSRsmZmoQJE/T9tchESEazYlAHs3bkMBK
+Lz6COLKtv8hQK1EOrfCB/Wk5HMHvVTQblZEPnCxZU+SOgyD7hsNO2U1Al+soQOfuNxL1uCPDE8t7
+uzhgqoGfq+d/FdBpdS4vFxLKhiNaOiEoVQYLZ5LmJewOJrVjZys9jn6cN153jmsfLaAQbPwWI4HF
++LXipOW0f/vmJxt547JwS2oV40n3hz1u/9btokd5/iN0f0JpFkB31bMXfboNqh4iXtot3u0qMO/C
+V9DdXrlZak4Dsbl/iNo3fNuO9PqnUfGF52TiLaGIZGFSUaPtMZ5eM6feTm1KfydQgrdVK27yRq1v
+NKheDEcdP+FjHN3deiUB39gYMx2l0rK+W2FrhBEUyrn289+dWGP11I1lUL62+k9e3E6bYcODzBcO
+iBVLQH2vmLN9sDvqIrD7LSYg4ta9L9vlhbgBs9bAN1HoZPtxW21/DNZ2CR8qnW7yFf8ceGpxXaqY
+0iRLVUzRT5Rdd2TtAcvT6uHUT8bHsjiAnKc4+So6hUVuKQ2rae9nZ0LXG0gmOj4PL7+XhNM/Tl5r
+d00wJJTjnV9D+YbQTTl3t5r5bf5z5itBqFePTbMybtFa/QuoV4JuTpD30DlQEfzQ/zYzbG0IMQRL
+ndSAF+ox6xaftIMgI2EBbyQbyZsPWGafzuHeWnDFNcG+HnwNEKBBlrm8oJyCI02mXXfj8Zw6C1aH
+xvLYZbZwlEaEiOHq2ztdMtUStD/gVva8/sFhZ5V2yo1yJ8NU+dVDOTohCWPvNMZOQ4vWawlIYVGJ
+GkoF6yZLKCeC7U2Xx4fDbZHKW37i/v08xtsy8yFPQTVjDaF00Ds8XIr0YtZf5IQCIpbOkTJ0r4uj
+YqSnGCK7HvTcoGR26W+STA1HO087YCxEegv0PDB+fNhd3N0WnJD+DzU6WPIPCSIfh+xKSJsDMkwp
+OYF6s5BKlquKryRKVOmQ/t4p32TDn26gxBF3c7E9RV9hHTYHLnRRu4eOcsoGNtNXlBr0cdWKVIvV
+TZL5nDNEJbwlM/J6Jst7SRLwET92yXKcnbh51lecDyZm3GKUOrAPLJraMRKQudyW9AhivJD3vKDA
+pkamEu8KW7mQbStWsIgyayYaxOtuJfxEd4oggZzpIgBtZqY7a3PM7ZvftMgR5kZT82ihlylHNg6P
+u622HRqQ0kIitySoX0+g2KbZRvKqV15YMLS/Hoe3kyGgXCyexkEJ9hVIn54mjioxUFwsxGgo3edp
+QI8oXS2x2jMVFdGOR2gS2rcZPoWoOa1Ro4s7M/JJBHqQmy5uKs5OCi516ZUWtsHKqlQn3y6NLrdW
+D2miUKLD7SuBnmxrtvSfoydp6knVyO5nXE171ZlFBJN4ZymnyQu9JEsPgM671g2DazxeiYn91j+6
+nmMsWuWQ5ibEDziogzM8ki3zTXJEGB4X//NfSjrQzeERpqqUhLJriPf+cUl5ZUPg1EpbmbLU0JNM
+OMf4jQi6rxce50uRN4wLjQ/XanctTJ5B61fOJb3BPIROqvUX3bwH1tyjCFQuTjAvum7l/w4ZYRm8
+N7OHJjCFn1/Vt30ek3uX3OYQ31b5xNgqWTf+aJMtfqpL2Rngf5kpkiTp2YgnmDMqZ/0NDfnsc4D3
+j6+nfmQqFd15ZMn0MYUkM+FH9lyQRsM4UK64dgQZzbyRZwA6OwBtYOpbdSDQN8PNVJePV8muZl39
+7e5MdxV/RUmxEx5Rv2CmI6+n5XcmRMKIncPz1ITY59+N4Cxq8MD1OrNluqTpkg4IVyc5sNf54qlf
+AeGtJEm6vIYfIeXP+ykghBhZHJKc7GhKW3TWWf1ZUh0uWfxhqlmvH1cGoCV0XI9QbKAAFXucJlY+
++psAjIpLV+9fkYSBZ9Dgwz/Q+n1fUprywYfR/L2dRtTzVR46fA+ueyTpY0aFSVJY3XPKSiYSkg9U
+v3ALixmR2t5x4fRUnHn1xDTS26iWLU/wAjqmHJD6orRSBXKa+jesZfeugqthe2HF0rSNGu+7492u
+0OcYC6oDYm+W1LHzHA2z+vfpQqSOa0rmTYGvRt43Sp6338o8gpZpoN2mZR06xkxTP2/3SgQLENEf
+PXnNL4MjhNek3T+4pXdUkVsdJsU6VLqbHLujrZq4Apj5tCDDJdRv6sMTsg6JfbWolbX0uHLzl74e
+v52ysrQhWMehYZAhgcpR466R0VEOekrfDDOlGQYG07bgdLZz+1tCS5hp9ycB+THfY4A06kBvVVZ5
+dA4TGODjcYds3w1nnoWYd9DjSqpskOUQwoLdTMq+Fs04a44IndSxTF4mQiPRLc+WCFkajNTtZkqx
+fZAGZPX/JNujLPxb8MdQ3RBBrRlFD4loffC3V8HuR4p2V4+qJN67Hd5e4c9Ktz2i5Ngn6oSwolxs
+GERRw2pmOCAkBmRm655fHDOdqlcvcxFS8QZjGV9vJxWqH4u8BVoaLd4uXv2luZeMPk4rOg+ZVqOu
+sLp9SBZImD51gbR5t2euH2awSta2+/tUTJ06LPJR8yevyi2kXv3cNUqsJce9JvMSZ71vifRQ6VMf
+wCYO4JMzH5z4uwCN9kOYKYk31ZHopXiWu2aCpUDxbKZW9Zy/ou0J3KKb8BAksXZzsasynVJpv7wE
+zPzEenVLMWXngRRlyYN/tFA0hnuuWSSavVXITasEr/Ke3rx3Bb0JpyCwUii7lmHqVJdZ7s+rTOgD
+dWRL5kFTBtGLc0GZZ0BTTALdlzq4yebkM5YGX9lxdyFP+7Cow5UnR+Bsdhe5qSwDhebtZoVYvHyw
+cC3948CjJdKf7ptjxReU7HPPfFP6AmnjQ9rk6nW6I+dlB5DdC5Lo4VGu3Z1AgdWK7M9Gz6xqGQ6k
+7WiaACz0YwzCtuj+c//Tsq/+gXM8Xjk9+l3JYKX6Ybg1sobFGwqfPkQyBMT6Fbat4RjPBhOJ5f/z
+WY8rEG75+r14w3E4mShi0RzuDmAyI3cCpfwAGKl+OC3qL/T0hVmLmKNW36LnXkK8APib6K5BUlUv
+YpX9chY1oWJb0WL3n1/CneQQel/nRSrhnNoY7WOZ3UC6GF/hOEi1cdH4xh1Py7DcSSevil7lUsXi
+ZsyZweZB39vCaZDpeE/w6DDqA6+Z6Nbdbf51HDB+OpEHw/hgoLtuJivtA3dhTGmMILLI/ueM3f3s
+rkj5wASNc1OSfkAbiZ9FZwvsLy2zBZD4nn7bKaBQi/5eioOtjwLsvrUI3BmEo7vQfxY3aKQtgwr9
+Nejqne0zy+t5Ik8t4w4DtZdh8JkvixQfUNV+xdju5YaNUnK7ZXX56M9PQ5XrxFWTQ9CaOxWLvgYy
+rw6OYVzZSfu6l+lFNu3VnlEW/DiSDWT/dkrAJoHWEYpujKIACxGduKwMnjvl90dwbviWvX2Wlhz0
+IQoTZJKC/uu7Hk66ex6Ruc2TOYW5/F0IP0ui1z2ceVLGBQ13SvamsF5vQjPUSPwDUu2ZSoHjynZx
+DY/jouFavmjvOK1Y9zOYBMco3tmBqtvXmkPgc8xOz//TJ5BwkavJduYIlUGQ4rYoLgRBpQlD+IP8
+Z5dX9DjpkLOQYqaQQJ4JozNNfk5BPJsIYzGcreR05WQX9F3IwPfTGGdyicaxGoSC9eDEvs7xgZd5
+5/nOkrL3QzwGTQjbtUkMKzPvYqF9palb5TJm4YjIAE4r8YsaS4zS3LU8AaUv7KexTiqQWjel0BCR
+FeGYVRRLpMvLeL0pnQBXv6a9bK+z4lVv76rn0DCqYtXZj3J/3+ilB5vLv40n5gFRGOljcSA3YXQT
+iQ/Prccyr652rjGkJOYp0ojgW/JUQRt7RoyG/6O1kygTLHDMIsk0ut05YCpuJCIXNjW2io0lxwVJ
+aSyx2f3zGTxmh0zSjDMEjSriKqg9cEtoaLvGdJk5xkyq+sm1hGJeYIiLAJXJcrFuBTNf3ERGcvep
+h8yfSAKrg5IFUdrWyPpp8YgewnNwu0FLaUSwN5EaZ8ulWTNAZZW1p0pQeACJwzMiedmF2eMUWCo3
+k1XxnfGdiY1K+AjZwqhjLnqgJWGj2Qe+/UL7dLnLgkO0wx7Y3SuRMjmh0WMlgnAAcXB3SVMyOKcs
+gWStRnxA7tutRF4EOoQi3BneRsvbxo2IzbRKuTKl7C4xeQ9OGkQeUvDIPK0unQnqf06oFi6j8htV
+g+mUfqqE7VAmYTefXkz7u9HOG+Cp7yxIiFpeZAZ05gN0y725cRtefM5Zfcp7VaKhz/EFQlBRcWLf
+pfjqxeMAuOI3n7Ix4kj7JJ0mZ7wVaK20r4sK6AUN0vrxvPgyQ/mrn8Nq1zEn58OXcKOzBic6vFwe
+tj/CO1k9wwKcq8XjcGSWJv4EyhxvqHEaD6AezJQmXGA7atzMcoOmGpI7C+pHhv0vbxgnxeMrlG+m
+uZ7ByNpxPt+GUe4KxIOaJNrJq6QOYxSqoXNlInoeUeWaMzwPuQT+/rT44X6R1/hbrN1JZ1QglKx6
+krdkzVaedTA/Y8BYOuSeTJ1lpcaMU9ZgFog32U4qSP8+SlbGscUnDr390m1xu/7IUk/zTBeSTFru
+Gg9D2YPWIkruTGMCWabn8LXxSKH+QyMpSOlbQKxl7Y3aWCS4amhWb0evRzo/CMNprrzTCwNlLSv2
++XZXgsRwyHovSW13Z14Z/k+JehQrON6gtOJ9vc9tivGLJe4ic8k7d1C4rn9tEhRoVj6mmg6WMiRp
+TUb3rumRcAghLb3bqlVGbOMspp3UtPO/1SNm2ms6VsMYsN5gfgXvpUrGYEK28IM5XnjNYnC4Y/Cs
+mCIwX+ljXIEwuLV9s9pXCA4HvwhYnShJWauEDaANiimJtSalMT7TAtkQtnIogei+b4vGP4ifTJLW
+kD07KiAnPDxiWoy+QczoXq8ZzLEW3pVb17kAi4ZXCf8QTI/FVKOMeC6vimjf0bJFmJ+30q6KYzSD
+pP5rwyFTN0PrUmvomjHapfUefSuw9qYRW5xkiuXrnYgxuAfsVogyc0uqbvOMNLdJari5Dsujb8yU
+EjlYm4FbOXmtJSIVzfmouS/N/PjrfKWQVbgHpg0OUfGduewwbl8icP36kfK7ZTi=

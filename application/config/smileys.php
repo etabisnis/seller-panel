@@ -1,64 +1,41 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/*
-| -------------------------------------------------------------------
-| SMILEYS
-| -------------------------------------------------------------------
-| This file contains an array of smileys for use with the emoticon helper.
-| Individual images can be used to replace multiple smileys.  For example:
-| :-) and :) use the same image replacement.
-|
-| Please see user guide for more info:
-| https://codeigniter.com/user_guide/helpers/smiley_helper.html
-|
-*/
-$smileys = array(
-
-//	smiley			image name						width	height	alt
-
-	':-)'			=>	array('grin.gif',			'19',	'19',	'grin'),
-	':lol:'			=>	array('lol.gif',			'19',	'19',	'LOL'),
-	':cheese:'		=>	array('cheese.gif',			'19',	'19',	'cheese'),
-	':)'			=>	array('smile.gif',			'19',	'19',	'smile'),
-	';-)'			=>	array('wink.gif',			'19',	'19',	'wink'),
-	';)'			=>	array('wink.gif',			'19',	'19',	'wink'),
-	':smirk:'		=>	array('smirk.gif',			'19',	'19',	'smirk'),
-	':roll:'		=>	array('rolleyes.gif',		'19',	'19',	'rolleyes'),
-	':-S'			=>	array('confused.gif',		'19',	'19',	'confused'),
-	':wow:'			=>	array('surprise.gif',		'19',	'19',	'surprised'),
-	':bug:'			=>	array('bigsurprise.gif',	'19',	'19',	'big surprise'),
-	':-P'			=>	array('tongue_laugh.gif',	'19',	'19',	'tongue laugh'),
-	'%-P'			=>	array('tongue_rolleye.gif',	'19',	'19',	'tongue rolleye'),
-	';-P'			=>	array('tongue_wink.gif',	'19',	'19',	'tongue wink'),
-	':P'			=>	array('raspberry.gif',		'19',	'19',	'raspberry'),
-	':blank:'		=>	array('blank.gif',			'19',	'19',	'blank stare'),
-	':long:'		=>	array('longface.gif',		'19',	'19',	'long face'),
-	':ohh:'			=>	array('ohh.gif',			'19',	'19',	'ohh'),
-	':grrr:'		=>	array('grrr.gif',			'19',	'19',	'grrr'),
-	':gulp:'		=>	array('gulp.gif',			'19',	'19',	'gulp'),
-	'8-/'			=>	array('ohoh.gif',			'19',	'19',	'oh oh'),
-	':down:'		=>	array('downer.gif',			'19',	'19',	'downer'),
-	':red:'			=>	array('embarrassed.gif',	'19',	'19',	'red face'),
-	':sick:'		=>	array('sick.gif',			'19',	'19',	'sick'),
-	':shut:'		=>	array('shuteye.gif',		'19',	'19',	'shut eye'),
-	':-/'			=>	array('hmm.gif',			'19',	'19',	'hmmm'),
-	'>:('			=>	array('mad.gif',			'19',	'19',	'mad'),
-	':mad:'			=>	array('mad.gif',			'19',	'19',	'mad'),
-	'>:-('			=>	array('angry.gif',			'19',	'19',	'angry'),
-	':angry:'		=>	array('angry.gif',			'19',	'19',	'angry'),
-	':zip:'			=>	array('zip.gif',			'19',	'19',	'zipper'),
-	':kiss:'		=>	array('kiss.gif',			'19',	'19',	'kiss'),
-	':ahhh:'		=>	array('shock.gif',			'19',	'19',	'shock'),
-	':coolsmile:'	=>	array('shade_smile.gif',	'19',	'19',	'cool smile'),
-	':coolsmirk:'	=>	array('shade_smirk.gif',	'19',	'19',	'cool smirk'),
-	':coolgrin:'	=>	array('shade_grin.gif',		'19',	'19',	'cool grin'),
-	':coolhmm:'		=>	array('shade_hmm.gif',		'19',	'19',	'cool hmm'),
-	':coolmad:'		=>	array('shade_mad.gif',		'19',	'19',	'cool mad'),
-	':coolcheese:'	=>	array('shade_cheese.gif',	'19',	'19',	'cool cheese'),
-	':vampire:'		=>	array('vampire.gif',		'19',	'19',	'vampire'),
-	':snake:'		=>	array('snake.gif',			'19',	'19',	'snake'),
-	':exclaim:'		=>	array('exclaim.gif',		'19',	'19',	'exclaim'),
-	':question:'	=>	array('question.gif',		'19',	'19',	'question')
-
-);
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+HR+cPuXsMDuTsw0HsCVD/PzQiJOBa2ejgVJOYjKEDN6FyEn+66X4AZV47jUOgS7KAx/Cy4eIMM55
+c3yfR09Sq/2m5Y36lniCFcI/jqwp2RPiwDkYxIv7wGAFKvvgXUIVppSWnvz1svxS5CHp6eEyqyEA
+wAOboXMmXyAJDcce1STAaZz0L6xjGfoph8yxWGqkXhmI08A2xXUI9ICU+v5EtZlcnclOcKK0Qifn
+U0ZISZLMkVqP3HsMocJV0elRn2ewoGEeGuBLsXeIMs7hf1Msc5AESsPFs2u/Powt+ijkSSbWDweh
+IEG93F+PdjrOjYWjHrHLMkqoCrwz3uvZfCslAXUNl450elyTybeZI6TM6g3HNOuR1RnQcACXwzWK
+/tqfbIsjUUXjf2RU5BaYFzRKKCSSynGzOrzX9n8QxdYm4JPofW7Ob2XUR9BATZiO/fC4Q6T2kyv2
+DglhWse5St0Bfx5SInqvyMouNifvgRTjg5k8yu52oKhcsUQeWwpoOxZZ+lL8e+BU3xs6KLtAVqzK
+KCXme4QN3bWOa6w5UE2PJ56K+6pMb29waH0wPgNeeNKek+kod34FhA6XDU7Ho0I/BEwpmXCCUWq3
+aUfUG6p17qYQoZg9KpdT/AqTUNrpdxcJgQrjKtFcgD174ZfMq4OwWUdpvh2xQjRY69IRjOTiA+p4
+56yMxSAd/hbt9LqfxJcQnYzEAEhG4ZjOz2qlFc5sAGhLofcIWBNm+31fuIqKJ+e9+VQXfwBQBNTW
+0X/SshzyFLCpADjl53hoGwE5bstqiQ3dWdoZJy9yKXv9grrSfC7GrPYKtS9EcImZURFqE0AWyVEl
+tS89DbJNuuAy1QOiyV0b8Y4NHYHqDUsQyROayGMhfjzVX6ms0ZG9OwrAc+b7Pxr/OHmmos88REg9
+K56s4wz570r42Op8zX4VyVOJi7DqZVMgE4pqbUQ3jRMivkqrJ9OiPDJzTcrkbA6/Lsf4dVVJDRVy
+29yYYbeO/ZCI5IHmePgFGBxyDoILvff7uN0capCBx8puknc/AQXiNEDrqzxTf1sICMAMZhO7ypv/
+ipM/kUuATOqewyD75rlIYtXC9FNRW3QSEqlQXwPO9cibuP6wxnFLomdl0x9ESyRAe6i94BNnDBXG
+DOPBXgguTNx3ur0p9Zk1zocUYHQik8GdxW50XnyIOYsicbZUXKKtxv9puwEdO8zFjv53/apmxOSY
+VXBQ0JX3TFj023i2GNe3nEysAvAd/C7EqsKqQ6BDVF9p+gNq9hRF05YnsMFqVxymJULV1RrZPTg/
+CUvnyaRBIAAa6W36KOcJO7JoLMMwjsW+L3eGpJVETJ03iFrqjAiQC8nlzrFau4BQ38kSrLi0NW4Z
+ag793Vfb9TEmmPiFAlVQMlEbqRL8zM6Qheb+aPUANXETAxzwFPvy2Nik6KTSFh/L2Avb8th1RaQT
+8f1igf1dBO1qFgm3mVLJkw7J9fZehvRearlSrzJnyMeC/r8OMmW5IUEMNLxoLfqGSPO9wNBoQlgA
+dxijEQkAeoMNgf0NFd95PBUhYfj3Z7aDH8P5uNstueMn94eMm+Tb3pIZ6YcgWasTynD/0DougcdL
+3v9ucQX7wrwRB8go7wDzZ1QcPYb2x9noufWFrTc0JAyLbD2fgLjKpVlUf8z4SoWg+tIH55cxI0k4
+3nx8RVZhUNRKpcICvAGX/zbZ4OgfVa76EfGNGuOUQ4vqZT0PttIwfF8kQdrFu48x8AlpBKDYJX/t
+lRdAwBdmM0HFCu1Js5GZxqL1zXAgVlTuEuZRNWwsW7es0mjECTuJ62T5IyVJ8YfojmmWc+bGS7tR
+q4LfRQRVlvAV7E3nOXZAmHn7Gxq/kNX1RzFWU5xVHUjl4LVLRM8ZhywrS56bRW416Z3gjM0t/2Am
+N7h27iIe+d/yfosgTe0qjLV9vhs0Ce3v2f3RbnD8nzGN8y4SPl/fUDSYdpMBQmkFurguvayIBeEe
+zkU58TgxuSkVB9FllpDEnGV68m3yjuELlEwCzWiKlecliQhRWAxkmlzWHMDQ9R0OLD2QLdNkfuQ+
+bKKixwHWLpjQveAHWyjecK13gdeS5ZlAWxZIDU9UKGKHmcnRulu5iO2e8uhd1WOsSlDDfghWNh4E
+0yOht7HD2zyoUtuBVhxsNgedFPueWpXZ8mXab9TVldd633YI9zxPFqrHQaWCCnUOYB4gnPZLFaHL
+qeFKWmvmCUu8s3gIk3O1SlJzmF+1tQcuO1lcBMOP/cueZX5UAw7Vh4gWjOTCHT+GkC4x8o5UY2+G
+TmWdxL8CZmq+aQ/kdAv4gIfwKjZ5hhixXEma1c9+jcCLuKEl9zavWEj0Y2er9WQIbz8wnzrqmRHk
+H0XurTcTX/gS9x3LQOU2nUzdQfpgxUUdZhZ6Hx10aOSwiSUd9zAGaE9ugFDdpPVYqphYobZ/rhiu
+bjlRBoQBx9vr2lxICIWqod1Ncx/5Kw7c77l96JNhkgkHFkh6TnvgRNV4KYb7M5FgOnFovDNmW94J
+8LcPz1Js7Bd2O8U9jsd+T4ZxR+PU4jbBsT+r7u9Pco1I1CZxxqZKs0+V18yWYs8kVHU9vMPHtt6i
+dDfXb0JVVEWlyLOkNdDgH9iptwaqNnW3yk5SGkrP91M2a8Sj2auuNt+liRhFwA5bxlB7OSW9u3wR
+0bgWD0ArxgzUzuAebk9bsUZILzUCtg36i03qPtV4IsbTB2ot3nvEk0qQUoI9Fcxae+cUG+O0Dgvn
+b9aaAV10FXNje+5AERsNhhIYYREC+q4logB4YCNByI+ksWHE3HNPdHKnZRH/XAbmDE9z36utVePh
+YuIPn+nBkESejDXBWZHK3EFuhhxt3sOppQUqwwr5VNW+zomlnkxOpOvSzo+aCiPsvW==

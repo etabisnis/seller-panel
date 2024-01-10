@@ -1,85 +1,58 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/*
-|--------------------------------------------------------------------------
-| Display Debug backtrace
-|--------------------------------------------------------------------------
-|
-| If set to TRUE, a backtrace will be displayed along with php errors. If
-| error_reporting is disabled, the backtrace will not display, regardless
-| of this setting
-|
-*/
-defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
-
-/*
-|--------------------------------------------------------------------------
-| File and Directory Modes
-|--------------------------------------------------------------------------
-|
-| These prefs are used when checking and setting modes when working
-| with the file system.  The defaults are fine on servers with proper
-| security, but you may wish (or even need) to change the values in
-| certain environments (Apache running a separate process for each
-| user, PHP under CGI with Apache suEXEC, etc.).  Octal values should
-| always be used to set the mode correctly.
-|
-*/
-defined('FILE_READ_MODE')  OR define('FILE_READ_MODE', 0644);
-defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0666);
-defined('DIR_READ_MODE')   OR define('DIR_READ_MODE', 0755);
-defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0755);
-
-/*
-|--------------------------------------------------------------------------
-| File Stream Modes
-|--------------------------------------------------------------------------
-|
-| These modes are used when working with fopen()/popen()
-|
-*/
-defined('FOPEN_READ')                           OR define('FOPEN_READ', 'rb');
-defined('FOPEN_READ_WRITE')                     OR define('FOPEN_READ_WRITE', 'r+b');
-defined('FOPEN_WRITE_CREATE_DESTRUCTIVE')       OR define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb'); // truncates existing file data, use with care
-defined('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE')  OR define('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE', 'w+b'); // truncates existing file data, use with care
-defined('FOPEN_WRITE_CREATE')                   OR define('FOPEN_WRITE_CREATE', 'ab');
-defined('FOPEN_READ_WRITE_CREATE')              OR define('FOPEN_READ_WRITE_CREATE', 'a+b');
-defined('FOPEN_WRITE_CREATE_STRICT')            OR define('FOPEN_WRITE_CREATE_STRICT', 'xb');
-defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
-
-/*
-|--------------------------------------------------------------------------
-| Exit Status Codes
-|--------------------------------------------------------------------------
-|
-| Used to indicate the conditions under which the script is exit()ing.
-| While there is no universal standard for error codes, there are some
-| broad conventions.  Three such conventions are mentioned below, for
-| those who wish to make use of them.  The CodeIgniter defaults were
-| chosen for the least overlap with these conventions, while still
-| leaving room for others to be defined in future versions and user
-| applications.
-|
-| The three main conventions used for determining exit status codes
-| are as follows:
-|
-|    Standard C/C++ Library (stdlibc):
-|       http://www.gnu.org/software/libc/manual/html_node/Exit-Status.html
-|       (This link also contains other GNU-specific conventions)
-|    BSD sysexits.h:
-|       http://www.gsp.com/cgi-bin/man.cgi?section=3&topic=sysexits
-|    Bash scripting:
-|       http://tldp.org/LDP/abs/html/exitcodes.html
-|
-*/
-defined('EXIT_SUCCESS')        OR define('EXIT_SUCCESS', 0); // no errors
-defined('EXIT_ERROR')          OR define('EXIT_ERROR', 1); // generic error
-defined('EXIT_CONFIG')         OR define('EXIT_CONFIG', 3); // configuration error
-defined('EXIT_UNKNOWN_FILE')   OR define('EXIT_UNKNOWN_FILE', 4); // file not found
-defined('EXIT_UNKNOWN_CLASS')  OR define('EXIT_UNKNOWN_CLASS', 5); // unknown class
-defined('EXIT_UNKNOWN_METHOD') OR define('EXIT_UNKNOWN_METHOD', 6); // unknown class member
-defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user input
-defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
-defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
-defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

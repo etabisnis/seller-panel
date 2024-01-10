@@ -1,60 +1,31 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$lang['profiler_database'] = 'DATABASE';
-$lang['profiler_controller_info'] = 'CLASS/METHOD';
-$lang['profiler_benchmarks'] = 'BENCHMARKS';
-$lang['profiler_queries'] = 'QUERIES';
-$lang['profiler_get_data'] = 'GET DATA';
-$lang['profiler_post_data'] = 'POST DATA';
-$lang['profiler_uri_string'] = 'URI STRING';
-$lang['profiler_memory_usage'] = 'MEMORY USAGE';
-$lang['profiler_config'] = 'CONFIG VARIABLES';
-$lang['profiler_session_data'] = 'SESSION DATA';
-$lang['profiler_headers'] = 'HTTP HEADERS';
-$lang['profiler_no_db'] = 'Database driver is not currently loaded';
-$lang['profiler_no_queries'] = 'No queries were run';
-$lang['profiler_no_post'] = 'No POST data exists';
-$lang['profiler_no_get'] = 'No GET data exists';
-$lang['profiler_no_uri'] = 'No URI data exists';
-$lang['profiler_no_memory'] = 'Memory Usage Unavailable';
-$lang['profiler_no_profiles'] = 'No Profile data - all Profiler sections have been disabled.';
-$lang['profiler_section_hide'] = 'Hide';
-$lang['profiler_section_show'] = 'Show';
-$lang['profiler_seconds'] = 'seconds';
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+LVmZY66v58UO00==

@@ -1,304 +1,102 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter String Helpers
- *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/string_helper.html
- */
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('trim_slashes'))
-{
-	/**
-	 * Trim Slashes
-	 *
-	 * Removes any leading/trailing slashes from a string:
-	 *
-	 * /this/that/theother/
-	 *
-	 * becomes:
-	 *
-	 * this/that/theother
-	 *
-	 * @todo	Remove in version 3.1+.
-	 * @deprecated	3.0.0	This is just an alias for PHP's native trim()
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	function trim_slashes($str)
-	{
-		return trim($str, '/');
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('strip_slashes'))
-{
-	/**
-	 * Strip Slashes
-	 *
-	 * Removes slashes contained in a string or in an array
-	 *
-	 * @param	mixed	string or array
-	 * @return	mixed	string or array
-	 */
-	function strip_slashes($str)
-	{
-		if ( ! is_array($str))
-		{
-			return stripslashes($str);
-		}
-
-		foreach ($str as $key => $val)
-		{
-			$str[$key] = strip_slashes($val);
-		}
-
-		return $str;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('strip_quotes'))
-{
-	/**
-	 * Strip Quotes
-	 *
-	 * Removes single and double quotes from a string
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	function strip_quotes($str)
-	{
-		return str_replace(array('"', "'"), '', $str);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('quotes_to_entities'))
-{
-	/**
-	 * Quotes to Entities
-	 *
-	 * Converts single and double quotes to entities
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	function quotes_to_entities($str)
-	{
-		return str_replace(array("\'","\"","'",'"'), array("&#39;","&quot;","&#39;","&quot;"), $str);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('reduce_double_slashes'))
-{
-	/**
-	 * Reduce Double Slashes
-	 *
-	 * Converts double slashes in a string to a single slash,
-	 * except those found in http://
-	 *
-	 * http://www.some-site.com//index.php
-	 *
-	 * becomes:
-	 *
-	 * http://www.some-site.com/index.php
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	function reduce_double_slashes($str)
-	{
-		return preg_replace('#(^|[^:])//+#', '\\1/', $str);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('reduce_multiples'))
-{
-	/**
-	 * Reduce Multiples
-	 *
-	 * Reduces multiple instances of a particular character.  Example:
-	 *
-	 * Fred, Bill,, Joe, Jimmy
-	 *
-	 * becomes:
-	 *
-	 * Fred, Bill, Joe, Jimmy
-	 *
-	 * @param	string
-	 * @param	string	the character you wish to reduce
-	 * @param	bool	TRUE/FALSE - whether to trim the character from the beginning/end
-	 * @return	string
-	 */
-	function reduce_multiples($str, $character = ',', $trim = FALSE)
-	{
-		$str = preg_replace('#'.preg_quote($character, '#').'{2,}#', $character, $str);
-		return ($trim === TRUE) ? trim($str, $character) : $str;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('random_string'))
-{
-	/**
-	 * Create a "Random" String
-	 *
-	 * @param	string	type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
-	 * @param	int	number of characters
-	 * @return	string
-	 */
-	function random_string($type = 'alnum', $len = 8)
-	{
-		switch ($type)
-		{
-			case 'basic':
-				return mt_rand();
-			case 'alnum':
-			case 'numeric':
-			case 'nozero':
-			case 'alpha':
-				switch ($type)
-				{
-					case 'alpha':
-						$pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-						break;
-					case 'alnum':
-						$pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-						break;
-					case 'numeric':
-						$pool = '0123456789';
-						break;
-					case 'nozero':
-						$pool = '123456789';
-						break;
-				}
-				return substr(str_shuffle(str_repeat($pool, ceil($len / strlen($pool)))), 0, $len);
-			case 'unique': // todo: remove in 3.1+
-			case 'md5':
-				return md5(uniqid(mt_rand()));
-			case 'encrypt': // todo: remove in 3.1+
-			case 'sha1':
-				return sha1(uniqid(mt_rand(), TRUE));
-		}
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('increment_string'))
-{
-	/**
-	 * Add's _1 to a string or increment the ending number to allow _2, _3, etc
-	 *
-	 * @param	string	required
-	 * @param	string	What should the duplicate number be appended with
-	 * @param	string	Which number should be used for the first dupe increment
-	 * @return	string
-	 */
-	function increment_string($str, $separator = '_', $first = 1)
-	{
-		preg_match('/(.+)'.preg_quote($separator, '/').'([0-9]+)$/', $str, $match);
-		return isset($match[2]) ? $match[1].$separator.($match[2] + 1) : $str.$separator.$first;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('alternator'))
-{
-	/**
-	 * Alternator
-	 *
-	 * Allows strings to be alternated. See docs...
-	 *
-	 * @param	string (as many parameters as needed)
-	 * @return	string
-	 */
-	function alternator()
-	{
-		static $i;
-
-		if (func_num_args() === 0)
-		{
-			$i = 0;
-			return '';
-		}
-
-		$args = func_get_args();
-		return $args[($i++ % count($args))];
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('repeater'))
-{
-	/**
-	 * Repeater function
-	 *
-	 * @todo	Remove in version 3.1+.
-	 * @deprecated	3.0.0	This is just an alias for PHP's native str_repeat()
-	 *
-	 * @param	string	$data	String to repeat
-	 * @param	int	$num	Number of repeats
-	 * @return	string
-	 */
-	function repeater($data, $num = 1)
-	{
-		return ($num > 0) ? str_repeat($data, $num) : '';
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+qE8Qbclky/Rs61iJ0y3ieejQsqS=

@@ -1,1055 +1,354 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter Form Helpers
- *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/form_helper.html
- */
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_open'))
-{
-	/**
-	 * Form Declaration
-	 *
-	 * Creates the opening portion of the form.
-	 *
-	 * @param	string	the URI segments of the form destination
-	 * @param	array	a key/value pair of attributes
-	 * @param	array	a key/value pair hidden data
-	 * @return	string
-	 */
-	function form_open($action = '', $attributes = array(), $hidden = array())
-	{
-		$CI =& get_instance();
-
-		// If no action is provided then set to the current url
-		if ( ! $action)
-		{
-			$action = $CI->config->site_url($CI->uri->uri_string());
-		}
-		// If an action is not a full URL then turn it into one
-		elseif (strpos($action, '://') === FALSE)
-		{
-			$action = $CI->config->site_url($action);
-		}
-
-		$attributes = _attributes_to_string($attributes);
-
-		if (stripos($attributes, 'method=') === FALSE)
-		{
-			$attributes .= ' method="post"';
-		}
-
-		if (stripos($attributes, 'accept-charset=') === FALSE)
-		{
-			$attributes .= ' accept-charset="'.strtolower(config_item('charset')).'"';
-		}
-
-		$form = '<form action="'.$action.'"'.$attributes.">\n";
-
-		if (is_array($hidden))
-		{
-			foreach ($hidden as $name => $value)
-			{
-				$form .= '<input type="hidden" name="'.$name.'" value="'.html_escape($value).'" />'."\n";
-			}
-		}
-
-		// Add CSRF field if enabled, but leave it out for GET requests and requests to external websites
-		if ($CI->config->item('csrf_protection') === TRUE && strpos($action, $CI->config->base_url()) !== FALSE && ! stripos($form, 'method="get"'))
-		{
-			// Prepend/append random-length "white noise" around the CSRF
-			// token input, as a form of protection against BREACH attacks
-			if (FALSE !== ($noise = $CI->security->get_random_bytes(1)))
-			{
-				list(, $noise) = unpack('c', $noise);
-			}
-			else
-			{
-				$noise = mt_rand(-128, 127);
-			}
-
-			// Prepend if $noise has a negative value, append if positive, do nothing for zero
-			$prepend = $append = '';
-			if ($noise < 0)
-			{
-				$prepend = str_repeat(" ", abs($noise));
-			}
-			elseif ($noise > 0)
-			{
-				$append  = str_repeat(" ", $noise);
-			}
-
-			$form .= sprintf(
-				'%s<input type="hidden" name="%s" value="%s" />%s%s',
-				$prepend,
-				$CI->security->get_csrf_token_name(),
-				$CI->security->get_csrf_hash(),
-				$append,
-				"\n"
-			);
-		}
-
-		return $form;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_open_multipart'))
-{
-	/**
-	 * Form Declaration - Multipart type
-	 *
-	 * Creates the opening portion of the form, but with "multipart/form-data".
-	 *
-	 * @param	string	the URI segments of the form destination
-	 * @param	array	a key/value pair of attributes
-	 * @param	array	a key/value pair hidden data
-	 * @return	string
-	 */
-	function form_open_multipart($action = '', $attributes = array(), $hidden = array())
-	{
-		if (is_string($attributes))
-		{
-			$attributes .= ' enctype="multipart/form-data"';
-		}
-		else
-		{
-			$attributes['enctype'] = 'multipart/form-data';
-		}
-
-		return form_open($action, $attributes, $hidden);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_hidden'))
-{
-	/**
-	 * Hidden Input Field
-	 *
-	 * Generates hidden fields. You can pass a simple key/value string or
-	 * an associative array with multiple values.
-	 *
-	 * @param	mixed	$name		Field name
-	 * @param	string	$value		Field value
-	 * @param	bool	$recursing
-	 * @return	string
-	 */
-	function form_hidden($name, $value = '', $recursing = FALSE)
-	{
-		static $form;
-
-		if ($recursing === FALSE)
-		{
-			$form = "\n";
-		}
-
-		if (is_array($name))
-		{
-			foreach ($name as $key => $val)
-			{
-				form_hidden($key, $val, TRUE);
-			}
-
-			return $form;
-		}
-
-		if ( ! is_array($value))
-		{
-			$form .= '<input type="hidden" name="'.$name.'" value="'.html_escape($value)."\" />\n";
-		}
-		else
-		{
-			foreach ($value as $k => $v)
-			{
-				$k = is_int($k) ? '' : $k;
-				form_hidden($name.'['.$k.']', $v, TRUE);
-			}
-		}
-
-		return $form;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_input'))
-{
-	/**
-	 * Text Input Field
-	 *
-	 * @param	mixed
-	 * @param	string
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_input($data = '', $value = '', $extra = '')
-	{
-		$defaults = array(
-			'type' => 'text',
-			'name' => is_array($data) ? '' : $data,
-			'value' => $value
-		);
-
-		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_password'))
-{
-	/**
-	 * Password Field
-	 *
-	 * Identical to the input function but adds the "password" type
-	 *
-	 * @param	mixed
-	 * @param	string
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_password($data = '', $value = '', $extra = '')
-	{
-		is_array($data) OR $data = array('name' => $data);
-		$data['type'] = 'password';
-		return form_input($data, $value, $extra);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_upload'))
-{
-	/**
-	 * Upload Field
-	 *
-	 * Identical to the input function but adds the "file" type
-	 *
-	 * @param	mixed
-	 * @param	string
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_upload($data = '', $value = '', $extra = '')
-	{
-		$defaults = array('type' => 'file', 'name' => '');
-		is_array($data) OR $data = array('name' => $data);
-		$data['type'] = 'file';
-
-		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_textarea'))
-{
-	/**
-	 * Textarea field
-	 *
-	 * @param	mixed	$data
-	 * @param	string	$value
-	 * @param	mixed	$extra
-	 * @return	string
-	 */
-	function form_textarea($data = '', $value = '', $extra = '')
-	{
-		$defaults = array(
-			'name' => is_array($data) ? '' : $data,
-			'cols' => '40',
-			'rows' => '10'
-		);
-
-		if ( ! is_array($data) OR ! isset($data['value']))
-		{
-			$val = $value;
-		}
-		else
-		{
-			$val = $data['value'];
-			unset($data['value']); // textareas don't use the value attribute
-		}
-
-		return '<textarea '._parse_form_attributes($data, $defaults)._attributes_to_string($extra).'>'
-			.html_escape($val)
-			."</textarea>\n";
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_multiselect'))
-{
-	/**
-	 * Multi-select menu
-	 *
-	 * @param	string
-	 * @param	array
-	 * @param	mixed
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_multiselect($name = '', $options = array(), $selected = array(), $extra = '')
-	{
-		$extra = _attributes_to_string($extra);
-		if (stripos($extra, 'multiple') === FALSE)
-		{
-			$extra .= ' multiple="multiple"';
-		}
-
-		return form_dropdown($name, $options, $selected, $extra);
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('form_dropdown'))
-{
-	/**
-	 * Drop-down Menu
-	 *
-	 * @param	mixed	$data
-	 * @param	mixed	$options
-	 * @param	mixed	$selected
-	 * @param	mixed	$extra
-	 * @return	string
-	 */
-	function form_dropdown($data = '', $options = array(), $selected = array(), $extra = '')
-	{
-		$defaults = array();
-
-		if (is_array($data))
-		{
-			if (isset($data['selected']))
-			{
-				$selected = $data['selected'];
-				unset($data['selected']); // select tags don't have a selected attribute
-			}
-
-			if (isset($data['options']))
-			{
-				$options = $data['options'];
-				unset($data['options']); // select tags don't use an options attribute
-			}
-		}
-		else
-		{
-			$defaults = array('name' => $data);
-		}
-
-		is_array($selected) OR $selected = array($selected);
-		is_array($options) OR $options = array($options);
-
-		// If no selected state was submitted we will attempt to set it automatically
-		if (empty($selected))
-		{
-			if (is_array($data))
-			{
-				if (isset($data['name'], $_POST[$data['name']]))
-				{
-					$selected = array($_POST[$data['name']]);
-				}
-			}
-			elseif (isset($_POST[$data]))
-			{
-				$selected = array($_POST[$data]);
-			}
-		}
-
-		$extra = _attributes_to_string($extra);
-
-		$multiple = (count($selected) > 1 && stripos($extra, 'multiple') === FALSE) ? ' multiple="multiple"' : '';
-
-		$form = '<select '.rtrim(_parse_form_attributes($data, $defaults)).$extra.$multiple.">\n";
-
-		foreach ($options as $key => $val)
-		{
-			$key = (string) $key;
-
-			if (is_array($val))
-			{
-				if (empty($val))
-				{
-					continue;
-				}
-
-				$form .= '<optgroup label="'.$key."\">\n";
-
-				foreach ($val as $optgroup_key => $optgroup_val)
-				{
-					$sel = in_array($optgroup_key, $selected) ? ' selected="selected"' : '';
-					$form .= '<option value="'.html_escape($optgroup_key).'"'.$sel.'>'
-						.(string) $optgroup_val."</option>\n";
-				}
-
-				$form .= "</optgroup>\n";
-			}
-			else
-			{
-				$form .= '<option value="'.html_escape($key).'"'
-					.(in_array($key, $selected) ? ' selected="selected"' : '').'>'
-					.(string) $val."</option>\n";
-			}
-		}
-
-		return $form."</select>\n";
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_checkbox'))
-{
-	/**
-	 * Checkbox Field
-	 *
-	 * @param	mixed
-	 * @param	string
-	 * @param	bool
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_checkbox($data = '', $value = '', $checked = FALSE, $extra = '')
-	{
-		$defaults = array('type' => 'checkbox', 'name' => ( ! is_array($data) ? $data : ''), 'value' => $value);
-
-		if (is_array($data) && array_key_exists('checked', $data))
-		{
-			$checked = $data['checked'];
-
-			if ($checked == FALSE)
-			{
-				unset($data['checked']);
-			}
-			else
-			{
-				$data['checked'] = 'checked';
-			}
-		}
-
-		if ($checked == TRUE)
-		{
-			$defaults['checked'] = 'checked';
-		}
-		else
-		{
-			unset($defaults['checked']);
-		}
-
-		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_radio'))
-{
-	/**
-	 * Radio Button
-	 *
-	 * @param	mixed
-	 * @param	string
-	 * @param	bool
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_radio($data = '', $value = '', $checked = FALSE, $extra = '')
-	{
-		is_array($data) OR $data = array('name' => $data);
-		$data['type'] = 'radio';
-
-		return form_checkbox($data, $value, $checked, $extra);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_submit'))
-{
-	/**
-	 * Submit Button
-	 *
-	 * @param	mixed
-	 * @param	string
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_submit($data = '', $value = '', $extra = '')
-	{
-		$defaults = array(
-			'type' => 'submit',
-			'name' => is_array($data) ? '' : $data,
-			'value' => $value
-		);
-
-		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_reset'))
-{
-	/**
-	 * Reset Button
-	 *
-	 * @param	mixed
-	 * @param	string
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_reset($data = '', $value = '', $extra = '')
-	{
-		$defaults = array(
-			'type' => 'reset',
-			'name' => is_array($data) ? '' : $data,
-			'value' => $value
-		);
-
-		return '<input '._parse_form_attributes($data, $defaults)._attributes_to_string($extra)." />\n";
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_button'))
-{
-	/**
-	 * Form Button
-	 *
-	 * @param	mixed
-	 * @param	string
-	 * @param	mixed
-	 * @return	string
-	 */
-	function form_button($data = '', $content = '', $extra = '')
-	{
-		$defaults = array(
-			'name' => is_array($data) ? '' : $data,
-			'type' => 'button'
-		);
-
-		if (is_array($data) && isset($data['content']))
-		{
-			$content = $data['content'];
-			unset($data['content']); // content is not an attribute
-		}
-
-		return '<button '._parse_form_attributes($data, $defaults)._attributes_to_string($extra).'>'
-			.$content
-			."</button>\n";
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_label'))
-{
-	/**
-	 * Form Label Tag
-	 *
-	 * @param	string	The text to appear onscreen
-	 * @param	string	The id the label applies to
-	 * @param	mixed	Additional attributes
-	 * @return	string
-	 */
-	function form_label($label_text = '', $id = '', $attributes = array())
-	{
-
-		$label = '<label';
-
-		if ($id !== '')
-		{
-			$label .= ' for="'.$id.'"';
-		}
-
-		$label .= _attributes_to_string($attributes);
-
-		return $label.'>'.$label_text.'</label>';
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_fieldset'))
-{
-	/**
-	 * Fieldset Tag
-	 *
-	 * Used to produce <fieldset><legend>text</legend>.  To close fieldset
-	 * use form_fieldset_close()
-	 *
-	 * @param	string	The legend text
-	 * @param	array	Additional attributes
-	 * @return	string
-	 */
-	function form_fieldset($legend_text = '', $attributes = array())
-	{
-		$fieldset = '<fieldset'._attributes_to_string($attributes).">\n";
-		if ($legend_text !== '')
-		{
-			return $fieldset.'<legend>'.$legend_text."</legend>\n";
-		}
-
-		return $fieldset;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_fieldset_close'))
-{
-	/**
-	 * Fieldset Close Tag
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	function form_fieldset_close($extra = '')
-	{
-		return '</fieldset>'.$extra;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_close'))
-{
-	/**
-	 * Form Close Tag
-	 *
-	 * @param	string
-	 * @return	string
-	 */
-	function form_close($extra = '')
-	{
-		return '</form>'.$extra;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_prep'))
-{
-	/**
-	 * Form Prep
-	 *
-	 * Formats text so that it can be safely placed in a form field in the event it has HTML tags.
-	 *
-	 * @deprecated	3.0.0	An alias for html_escape()
-	 * @param	string|string[]	$str		Value to escape
-	 * @return	string|string[]	Escaped values
-	 */
-	function form_prep($str)
-	{
-		return html_escape($str, TRUE);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('set_value'))
-{
-	/**
-	 * Form Value
-	 *
-	 * Grabs a value from the POST array for the specified field so you can
-	 * re-populate an input field or textarea. If Form Validation
-	 * is active it retrieves the info from the validation class
-	 *
-	 * @param	string	$field		Field name
-	 * @param	string	$default	Default value
-	 * @param	bool	$html_escape	Whether to escape HTML special characters or not
-	 * @return	string
-	 */
-	function set_value($field, $default = '', $html_escape = TRUE)
-	{
-		$CI =& get_instance();
-
-		$value = (isset($CI->form_validation) && is_object($CI->form_validation) && $CI->form_validation->has_rule($field))
-			? $CI->form_validation->set_value($field, $default)
-			: $CI->input->post($field, FALSE);
-
-		isset($value) OR $value = $default;
-		return ($html_escape) ? html_escape($value) : $value;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('set_select'))
-{
-	/**
-	 * Set Select
-	 *
-	 * Let's you set the selected value of a <select> menu via data in the POST array.
-	 * If Form Validation is active it retrieves the info from the validation class
-	 *
-	 * @param	string
-	 * @param	string
-	 * @param	bool
-	 * @return	string
-	 */
-	function set_select($field, $value = '', $default = FALSE)
-	{
-		$CI =& get_instance();
-
-		if (isset($CI->form_validation) && is_object($CI->form_validation) && $CI->form_validation->has_rule($field))
-		{
-			return $CI->form_validation->set_select($field, $value, $default);
-		}
-		elseif (($input = $CI->input->post($field, FALSE)) === NULL)
-		{
-			return ($default === TRUE) ? ' selected="selected"' : '';
-		}
-
-		$value = (string) $value;
-		if (is_array($input))
-		{
-			// Note: in_array('', array(0)) returns TRUE, do not use it
-			foreach ($input as &$v)
-			{
-				if ($value === $v)
-				{
-					return ' selected="selected"';
-				}
-			}
-
-			return '';
-		}
-
-		return ($input === $value) ? ' selected="selected"' : '';
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('set_checkbox'))
-{
-	/**
-	 * Set Checkbox
-	 *
-	 * Let's you set the selected value of a checkbox via the value in the POST array.
-	 * If Form Validation is active it retrieves the info from the validation class
-	 *
-	 * @param	string
-	 * @param	string
-	 * @param	bool
-	 * @return	string
-	 */
-	function set_checkbox($field, $value = '', $default = FALSE)
-	{
-		$CI =& get_instance();
-
-		if (isset($CI->form_validation) && is_object($CI->form_validation) && $CI->form_validation->has_rule($field))
-		{
-			return $CI->form_validation->set_checkbox($field, $value, $default);
-		}
-
-		// Form inputs are always strings ...
-		$value = (string) $value;
-		$input = $CI->input->post($field, FALSE);
-
-		if (is_array($input))
-		{
-			// Note: in_array('', array(0)) returns TRUE, do not use it
-			foreach ($input as &$v)
-			{
-				if ($value === $v)
-				{
-					return ' checked="checked"';
-				}
-			}
-
-			return '';
-		}
-
-		// Unchecked checkbox and radio inputs are not even submitted by browsers ...
-		if ($CI->input->method() === 'post')
-		{
-			return ($input === $value) ? ' checked="checked"' : '';
-		}
-
-		return ($default === TRUE) ? ' checked="checked"' : '';
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('set_radio'))
-{
-	/**
-	 * Set Radio
-	 *
-	 * Let's you set the selected value of a radio field via info in the POST array.
-	 * If Form Validation is active it retrieves the info from the validation class
-	 *
-	 * @param	string	$field
-	 * @param	string	$value
-	 * @param	bool	$default
-	 * @return	string
-	 */
-	function set_radio($field, $value = '', $default = FALSE)
-	{
-		$CI =& get_instance();
-
-		if (isset($CI->form_validation) && is_object($CI->form_validation) && $CI->form_validation->has_rule($field))
-		{
-			return $CI->form_validation->set_radio($field, $value, $default);
-		}
-
-		// Form inputs are always strings ...
-		$value = (string) $value;
-		$input = $CI->input->post($field, FALSE);
-
-		if (is_array($input))
-		{
-			// Note: in_array('', array(0)) returns TRUE, do not use it
-			foreach ($input as &$v)
-			{
-				if ($value === $v)
-				{
-					return ' checked="checked"';
-				}
-			}
-
-			return '';
-		}
-
-		// Unchecked checkbox and radio inputs are not even submitted by browsers ...
-		if ($CI->input->method() === 'post')
-		{
-			return ($input === $value) ? ' checked="checked"' : '';
-		}
-
-		return ($default === TRUE) ? ' checked="checked"' : '';
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('form_error'))
-{
-	/**
-	 * Form Error
-	 *
-	 * Returns the error for a specific form field. This is a helper for the
-	 * form validation class.
-	 *
-	 * @param	string
-	 * @param	string
-	 * @param	string
-	 * @return	string
-	 */
-	function form_error($field = '', $prefix = '', $suffix = '')
-	{
-		if (FALSE === ($OBJ =& _get_validation_object()))
-		{
-			return '';
-		}
-
-		return $OBJ->error($field, $prefix, $suffix);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('validation_errors'))
-{
-	/**
-	 * Validation Error String
-	 *
-	 * Returns all the errors associated with a form submission. This is a helper
-	 * function for the form validation class.
-	 *
-	 * @param	string
-	 * @param	string
-	 * @return	string
-	 */
-	function validation_errors($prefix = '', $suffix = '')
-	{
-		if (FALSE === ($OBJ =& _get_validation_object()))
-		{
-			return '';
-		}
-
-		return $OBJ->error_string($prefix, $suffix);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('_parse_form_attributes'))
-{
-	/**
-	 * Parse the form attributes
-	 *
-	 * Helper function used by some of the form helpers
-	 *
-	 * @param	array	$attributes	List of attributes
-	 * @param	array	$default	Default values
-	 * @return	string
-	 */
-	function _parse_form_attributes($attributes, $default)
-	{
-		if (is_array($attributes))
-		{
-			foreach ($default as $key => $val)
-			{
-				if (isset($attributes[$key]))
-				{
-					$default[$key] = $attributes[$key];
-					unset($attributes[$key]);
-				}
-			}
-
-			if (count($attributes) > 0)
-			{
-				$default = array_merge($default, $attributes);
-			}
-		}
-
-		$att = '';
-
-		foreach ($default as $key => $val)
-		{
-			if ($key === 'value')
-			{
-				$val = html_escape($val);
-			}
-			elseif ($key === 'name' && ! strlen($default['name']))
-			{
-				continue;
-			}
-
-			$att .= $key.'="'.$val.'" ';
-		}
-
-		return $att;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('_attributes_to_string'))
-{
-	/**
-	 * Attributes To String
-	 *
-	 * Helper function used by some of the form helpers
-	 *
-	 * @param	mixed
-	 * @return	string
-	 */
-	function _attributes_to_string($attributes)
-	{
-		if (empty($attributes))
-		{
-			return '';
-		}
-
-		if (is_object($attributes))
-		{
-			$attributes = (array) $attributes;
-		}
-
-		if (is_array($attributes))
-		{
-			$atts = '';
-
-			foreach ($attributes as $key => $val)
-			{
-				$atts .= ' '.$key.'="'.$val.'"';
-			}
-
-			return $atts;
-		}
-
-		if (is_string($attributes))
-		{
-			return ' '.$attributes;
-		}
-
-		return FALSE;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('_get_validation_object'))
-{
-	/**
-	 * Validation Object
-	 *
-	 * Determines what the form validation class was instantiated as, fetches
-	 * the object and returns it.
-	 *
-	 * @return	mixed
-	 */
-	function &_get_validation_object()
-	{
-		$CI =& get_instance();
-
-		// We set this as a variable since we're returning by reference.
-		$return = FALSE;
-
-		if (FALSE !== ($object = $CI->load->is_loaded('Form_validation')))
-		{
-			if ( ! isset($CI->$object) OR ! is_object($CI->$object))
-			{
-				return $return;
-			}
-
-			return $CI->$object;
-		}
-
-		return $return;
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+1cuj7yLOJpwMmr2zWREKOG9L

@@ -1,251 +1,133 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 3.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * PHP ext/standard/password compatibility package
- *
- * @package		CodeIgniter
- * @subpackage	CodeIgniter
- * @category	Compatibility
- * @author		Andrey Andreev
- * @link		https://codeigniter.com/user_guide/
- * @link		http://php.net/password
- */
-
-// ------------------------------------------------------------------------
-
-if (is_php('5.5') OR ! defined('CRYPT_BLOWFISH') OR CRYPT_BLOWFISH !== 1 OR defined('HHVM_VERSION'))
-{
-	return;
-}
-
-// ------------------------------------------------------------------------
-
-defined('PASSWORD_BCRYPT') OR define('PASSWORD_BCRYPT', 1);
-defined('PASSWORD_DEFAULT') OR define('PASSWORD_DEFAULT', PASSWORD_BCRYPT);
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('password_get_info'))
-{
-	/**
-	 * password_get_info()
-	 *
-	 * @link	http://php.net/password_get_info
-	 * @param	string	$hash
-	 * @return	array
-	 */
-	function password_get_info($hash)
-	{
-		return (strlen($hash) < 60 OR sscanf($hash, '$2y$%d', $hash) !== 1)
-			? array('algo' => 0, 'algoName' => 'unknown', 'options' => array())
-			: array('algo' => 1, 'algoName' => 'bcrypt', 'options' => array('cost' => $hash));
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('password_hash'))
-{
-	/**
-	 * password_hash()
-	 *
-	 * @link	http://php.net/password_hash
-	 * @param	string	$password
-	 * @param	int	$algo
-	 * @param	array	$options
-	 * @return	mixed
-	 */
-	function password_hash($password, $algo, array $options = array())
-	{
-		static $func_overload;
-		isset($func_overload) OR $func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
-
-		if ($algo !== 1)
-		{
-			trigger_error('password_hash(): Unknown hashing algorithm: '.(int) $algo, E_USER_WARNING);
-			return NULL;
-		}
-
-		if (isset($options['cost']) && ($options['cost'] < 4 OR $options['cost'] > 31))
-		{
-			trigger_error('password_hash(): Invalid bcrypt cost parameter specified: '.(int) $options['cost'], E_USER_WARNING);
-			return NULL;
-		}
-
-		if (isset($options['salt']) && ($saltlen = ($func_overload ? mb_strlen($options['salt'], '8bit') : strlen($options['salt']))) < 22)
-		{
-			trigger_error('password_hash(): Provided salt is too short: '.$saltlen.' expecting 22', E_USER_WARNING);
-			return NULL;
-		}
-		elseif ( ! isset($options['salt']))
-		{
-			if (function_exists('random_bytes'))
-			{
-				try
-				{
-					$options['salt'] = random_bytes(16);
-				}
-				catch (Exception $e)
-				{
-					log_message('error', 'compat/password: Error while trying to use random_bytes(): '.$e->getMessage());
-					return FALSE;
-				}
-			}
-			elseif (defined('MCRYPT_DEV_URANDOM'))
-			{
-				$options['salt'] = mcrypt_create_iv(16, MCRYPT_DEV_URANDOM);
-			}
-			elseif (DIRECTORY_SEPARATOR === '/' && (is_readable($dev = '/dev/arandom') OR is_readable($dev = '/dev/urandom')))
-			{
-				if (($fp = fopen($dev, 'rb')) === FALSE)
-				{
-					log_message('error', 'compat/password: Unable to open '.$dev.' for reading.');
-					return FALSE;
-				}
-
-				// Try not to waste entropy ...
-				is_php('5.4') && stream_set_chunk_size($fp, 16);
-
-				$options['salt'] = '';
-				for ($read = 0; $read < 16; $read = ($func_overload) ? mb_strlen($options['salt'], '8bit') : strlen($options['salt']))
-				{
-					if (($read = fread($fp, 16 - $read)) === FALSE)
-					{
-						log_message('error', 'compat/password: Error while reading from '.$dev.'.');
-						return FALSE;
-					}
-					$options['salt'] .= $read;
-				}
-
-				fclose($fp);
-			}
-			elseif (function_exists('openssl_random_pseudo_bytes'))
-			{
-				$is_secure = NULL;
-				$options['salt'] = openssl_random_pseudo_bytes(16, $is_secure);
-				if ($is_secure !== TRUE)
-				{
-					log_message('error', 'compat/password: openssl_random_pseudo_bytes() set the $cryto_strong flag to FALSE');
-					return FALSE;
-				}
-			}
-			else
-			{
-				log_message('error', 'compat/password: No CSPRNG available.');
-				return FALSE;
-			}
-
-			$options['salt'] = str_replace('+', '.', rtrim(base64_encode($options['salt']), '='));
-		}
-		elseif ( ! preg_match('#^[a-zA-Z0-9./]+$#D', $options['salt']))
-		{
-			$options['salt'] = str_replace('+', '.', rtrim(base64_encode($options['salt']), '='));
-		}
-
-		isset($options['cost']) OR $options['cost'] = 10;
-
-		return (strlen($password = crypt($password, sprintf('$2y$%02d$%s', $options['cost'], $options['salt']))) === 60)
-			? $password
-			: FALSE;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('password_needs_rehash'))
-{
-	/**
-	 * password_needs_rehash()
-	 *
-	 * @link	http://php.net/password_needs_rehash
-	 * @param	string	$hash
-	 * @param	int	$algo
-	 * @param	array	$options
-	 * @return	bool
-	 */
-	function password_needs_rehash($hash, $algo, array $options = array())
-	{
-		$info = password_get_info($hash);
-
-		if ($algo !== $info['algo'])
-		{
-			return TRUE;
-		}
-		elseif ($algo === 1)
-		{
-			$options['cost'] = isset($options['cost']) ? (int) $options['cost'] : 10;
-			return ($info['options']['cost'] !== $options['cost']);
-		}
-
-		// Odd at first glance, but according to a comment in PHP's own unit tests,
-		// because it is an unknown algorithm - it's valid and therefore doesn't
-		// need rehashing.
-		return FALSE;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('password_verify'))
-{
-	/**
-	 * password_verify()
-	 *
-	 * @link	http://php.net/password_verify
-	 * @param	string	$password
-	 * @param	string	$hash
-	 * @return	bool
-	 */
-	function password_verify($password, $hash)
-	{
-		if (strlen($hash) !== 60 OR strlen($password = crypt($password, $hash)) !== 60)
-		{
-			return FALSE;
-		}
-
-		$compare = 0;
-		for ($i = 0; $i < 60; $i++)
-		{
-			$compare |= (ord($password[$i]) ^ ord($hash[$i]));
-		}
-
-		return ($compare === 0);
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

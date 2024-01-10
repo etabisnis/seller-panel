@@ -1,453 +1,165 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * CodeIgniter File Helpers
- *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/file_helper.html
- */
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('read_file'))
-{
-	/**
-	 * Read File
-	 *
-	 * Opens the file specified in the path and returns it as a string.
-	 *
-	 * @todo	Remove in version 3.1+.
-	 * @deprecated	3.0.0	It is now just an alias for PHP's native file_get_contents().
-	 * @param	string	$file	Path to file
-	 * @return	string	File contents
-	 */
-	function read_file($file)
-	{
-		return @file_get_contents($file);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('write_file'))
-{
-	/**
-	 * Write File
-	 *
-	 * Writes data to the file specified in the path.
-	 * Creates a new file if non-existent.
-	 *
-	 * @param	string	$path	File path
-	 * @param	string	$data	Data to write
-	 * @param	string	$mode	fopen() mode (default: 'wb')
-	 * @return	bool
-	 */
-	function write_file($path, $data, $mode = 'wb')
-	{
-		if ( ! $fp = @fopen($path, $mode))
-		{
-			return FALSE;
-		}
-
-		flock($fp, LOCK_EX);
-
-		for ($result = $written = 0, $length = strlen($data); $written < $length; $written += $result)
-		{
-			if (($result = fwrite($fp, substr($data, $written))) === FALSE)
-			{
-				break;
-			}
-		}
-
-		flock($fp, LOCK_UN);
-		fclose($fp);
-
-		return is_int($result);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('delete_files'))
-{
-	/**
-	 * Delete Files
-	 *
-	 * Deletes all files contained in the supplied directory path.
-	 * Files must be writable or owned by the system in order to be deleted.
-	 * If the second parameter is set to TRUE, any directories contained
-	 * within the supplied base directory will be nuked as well.
-	 *
-	 * @param	string	$path		File path
-	 * @param	bool	$del_dir	Whether to delete any directories found in the path
-	 * @param	bool	$htdocs		Whether to skip deleting .htaccess and index page files
-	 * @param	int	$_level		Current directory depth level (default: 0; internal use only)
-	 * @return	bool
-	 */
-	function delete_files($path, $del_dir = FALSE, $htdocs = FALSE, $_level = 0)
-	{
-		// Trim the trailing slash
-		$path = rtrim($path, '/\\');
-
-		if ( ! $current_dir = @opendir($path))
-		{
-			return FALSE;
-		}
-
-		while (FALSE !== ($filename = @readdir($current_dir)))
-		{
-			if ($filename !== '.' && $filename !== '..')
-			{
-				$filepath = $path.DIRECTORY_SEPARATOR.$filename;
-
-				if (is_dir($filepath) && $filename[0] !== '.' && ! is_link($filepath))
-				{
-					delete_files($filepath, $del_dir, $htdocs, $_level + 1);
-				}
-				elseif ($htdocs !== TRUE OR ! preg_match('/^(\.htaccess|index\.(html|htm|php)|web\.config)$/i', $filename))
-				{
-					@unlink($filepath);
-				}
-			}
-		}
-
-		closedir($current_dir);
-
-		return ($del_dir === TRUE && $_level > 0)
-			? @rmdir($path)
-			: TRUE;
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('get_filenames'))
-{
-	/**
-	 * Get Filenames
-	 *
-	 * Reads the specified directory and builds an array containing the filenames.
-	 * Any sub-folders contained within the specified path are read as well.
-	 *
-	 * @param	string	path to source
-	 * @param	bool	whether to include the path as part of the filename
-	 * @param	bool	internal variable to determine recursion status - do not use in calls
-	 * @return	array
-	 */
-	function get_filenames($source_dir, $include_path = FALSE, $_recursion = FALSE)
-	{
-		static $_filedata = array();
-
-		if ($fp = @opendir($source_dir))
-		{
-			// reset the array and make sure $source_dir has a trailing slash on the initial call
-			if ($_recursion === FALSE)
-			{
-				$_filedata = array();
-				$source_dir = rtrim(realpath($source_dir), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
-			}
-
-			while (FALSE !== ($file = readdir($fp)))
-			{
-				if (is_dir($source_dir.$file) && $file[0] !== '.')
-				{
-					get_filenames($source_dir.$file.DIRECTORY_SEPARATOR, $include_path, TRUE);
-				}
-				elseif ($file[0] !== '.')
-				{
-					$_filedata[] = ($include_path === TRUE) ? $source_dir.$file : $file;
-				}
-			}
-
-			closedir($fp);
-			return $_filedata;
-		}
-
-		return FALSE;
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('get_dir_file_info'))
-{
-	/**
-	 * Get Directory File Information
-	 *
-	 * Reads the specified directory and builds an array containing the filenames,
-	 * filesize, dates, and permissions
-	 *
-	 * Any sub-folders contained within the specified path are read as well.
-	 *
-	 * @param	string	path to source
-	 * @param	bool	Look only at the top level directory specified?
-	 * @param	bool	internal variable to determine recursion status - do not use in calls
-	 * @return	array
-	 */
-	function get_dir_file_info($source_dir, $top_level_only = TRUE, $_recursion = FALSE)
-	{
-		static $_filedata = array();
-		$relative_path = $source_dir;
-
-		if ($fp = @opendir($source_dir))
-		{
-			// reset the array and make sure $source_dir has a trailing slash on the initial call
-			if ($_recursion === FALSE)
-			{
-				$_filedata = array();
-				$source_dir = rtrim(realpath($source_dir), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
-			}
-
-			// Used to be foreach (scandir($source_dir, 1) as $file), but scandir() is simply not as fast
-			while (FALSE !== ($file = readdir($fp)))
-			{
-				if (is_dir($source_dir.$file) && $file[0] !== '.' && $top_level_only === FALSE)
-				{
-					get_dir_file_info($source_dir.$file.DIRECTORY_SEPARATOR, $top_level_only, TRUE);
-				}
-				elseif ($file[0] !== '.')
-				{
-					$_filedata[$file] = get_file_info($source_dir.$file);
-					$_filedata[$file]['relative_path'] = $relative_path;
-				}
-			}
-
-			closedir($fp);
-			return $_filedata;
-		}
-
-		return FALSE;
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('get_file_info'))
-{
-	/**
-	 * Get File Info
-	 *
-	 * Given a file and path, returns the name, path, size, date modified
-	 * Second parameter allows you to explicitly declare what information you want returned
-	 * Options are: name, server_path, size, date, readable, writable, executable, fileperms
-	 * Returns FALSE if the file cannot be found.
-	 *
-	 * @param	string	path to file
-	 * @param	mixed	array or comma separated string of information returned
-	 * @return	array
-	 */
-	function get_file_info($file, $returned_values = array('name', 'server_path', 'size', 'date'))
-	{
-		if ( ! file_exists($file))
-		{
-			return FALSE;
-		}
-
-		if (is_string($returned_values))
-		{
-			$returned_values = explode(',', $returned_values);
-		}
-
-		foreach ($returned_values as $key)
-		{
-			switch ($key)
-			{
-				case 'name':
-					$fileinfo['name'] = basename($file);
-					break;
-				case 'server_path':
-					$fileinfo['server_path'] = $file;
-					break;
-				case 'size':
-					$fileinfo['size'] = filesize($file);
-					break;
-				case 'date':
-					$fileinfo['date'] = filemtime($file);
-					break;
-				case 'readable':
-					$fileinfo['readable'] = is_readable($file);
-					break;
-				case 'writable':
-					$fileinfo['writable'] = is_really_writable($file);
-					break;
-				case 'executable':
-					$fileinfo['executable'] = is_executable($file);
-					break;
-				case 'fileperms':
-					$fileinfo['fileperms'] = fileperms($file);
-					break;
-			}
-		}
-
-		return $fileinfo;
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('get_mime_by_extension'))
-{
-	/**
-	 * Get Mime by Extension
-	 *
-	 * Translates a file extension into a mime type based on config/mimes.php.
-	 * Returns FALSE if it can't determine the type, or open the mime config file
-	 *
-	 * Note: this is NOT an accurate way of determining file mime types, and is here strictly as a convenience
-	 * It should NOT be trusted, and should certainly NOT be used for security
-	 *
-	 * @param	string	$filename	File name
-	 * @return	string
-	 */
-	function get_mime_by_extension($filename)
-	{
-		static $mimes;
-
-		if ( ! is_array($mimes))
-		{
-			$mimes = get_mimes();
-
-			if (empty($mimes))
-			{
-				return FALSE;
-			}
-		}
-
-		$extension = strtolower(substr(strrchr($filename, '.'), 1));
-
-		if (isset($mimes[$extension]))
-		{
-			return is_array($mimes[$extension])
-				? current($mimes[$extension]) // Multiple mime types, just give the first one
-				: $mimes[$extension];
-		}
-
-		return FALSE;
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('symbolic_permissions'))
-{
-	/**
-	 * Symbolic Permissions
-	 *
-	 * Takes a numeric value representing a file's permissions and returns
-	 * standard symbolic notation representing that value
-	 *
-	 * @param	int	$perms	Permissions
-	 * @return	string
-	 */
-	function symbolic_permissions($perms)
-	{
-		if (($perms & 0xC000) === 0xC000)
-		{
-			$symbolic = 's'; // Socket
-		}
-		elseif (($perms & 0xA000) === 0xA000)
-		{
-			$symbolic = 'l'; // Symbolic Link
-		}
-		elseif (($perms & 0x8000) === 0x8000)
-		{
-			$symbolic = '-'; // Regular
-		}
-		elseif (($perms & 0x6000) === 0x6000)
-		{
-			$symbolic = 'b'; // Block special
-		}
-		elseif (($perms & 0x4000) === 0x4000)
-		{
-			$symbolic = 'd'; // Directory
-		}
-		elseif (($perms & 0x2000) === 0x2000)
-		{
-			$symbolic = 'c'; // Character special
-		}
-		elseif (($perms & 0x1000) === 0x1000)
-		{
-			$symbolic = 'p'; // FIFO pipe
-		}
-		else
-		{
-			$symbolic = 'u'; // Unknown
-		}
-
-		// Owner
-		$symbolic .= (($perms & 0x0100) ? 'r' : '-')
-			.(($perms & 0x0080) ? 'w' : '-')
-			.(($perms & 0x0040) ? (($perms & 0x0800) ? 's' : 'x' ) : (($perms & 0x0800) ? 'S' : '-'));
-
-		// Group
-		$symbolic .= (($perms & 0x0020) ? 'r' : '-')
-			.(($perms & 0x0010) ? 'w' : '-')
-			.(($perms & 0x0008) ? (($perms & 0x0400) ? 's' : 'x' ) : (($perms & 0x0400) ? 'S' : '-'));
-
-		// World
-		$symbolic .= (($perms & 0x0004) ? 'r' : '-')
-			.(($perms & 0x0002) ? 'w' : '-')
-			.(($perms & 0x0001) ? (($perms & 0x0200) ? 't' : 'x' ) : (($perms & 0x0200) ? 'T' : '-'));
-
-		return $symbolic;
-	}
-}
-
-// --------------------------------------------------------------------
-
-if ( ! function_exists('octal_permissions'))
-{
-	/**
-	 * Octal Permissions
-	 *
-	 * Takes a numeric value representing a file's permissions and returns
-	 * a three character string representing the file's octal permissions
-	 *
-	 * @param	int	$perms	Permissions
-	 * @return	string
-	 */
-	function octal_permissions($perms)
-	{
-		return substr(sprintf('%o', $perms), -3);
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

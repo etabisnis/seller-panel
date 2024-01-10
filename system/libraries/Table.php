@@ -1,538 +1,166 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.3.1
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * HTML Table Generating Class
- *
- * Lets you create tables manually or from database result objects, or arrays.
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	HTML Tables
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/libraries/table.html
- */
-class CI_Table {
-
-	/**
-	 * Data for table rows
-	 *
-	 * @var array
-	 */
-	public $rows		= array();
-
-	/**
-	 * Data for table heading
-	 *
-	 * @var array
-	 */
-	public $heading		= array();
-
-	/**
-	 * Whether or not to automatically create the table header
-	 *
-	 * @var bool
-	 */
-	public $auto_heading	= TRUE;
-
-	/**
-	 * Table caption
-	 *
-	 * @var string
-	 */
-	public $caption		= NULL;
-
-	/**
-	 * Table layout template
-	 *
-	 * @var array
-	 */
-	public $template	= NULL;
-
-	/**
-	 * Newline setting
-	 *
-	 * @var string
-	 */
-	public $newline		= "\n";
-
-	/**
-	 * Contents of empty cells
-	 *
-	 * @var string
-	 */
-	public $empty_cells	= '';
-
-	/**
-	 * Callback for custom table layout
-	 *
-	 * @var function
-	 */
-	public $function	= NULL;
-
-	/**
-	 * Set the template from the table config file if it exists
-	 *
-	 * @param	array	$config	(default: array())
-	 * @return	void
-	 */
-	public function __construct($config = array())
-	{
-		// initialize config
-		foreach ($config as $key => $val)
-		{
-			$this->template[$key] = $val;
-		}
-
-		log_message('info', 'Table Class Initialized');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set the template
-	 *
-	 * @param	array	$template
-	 * @return	bool
-	 */
-	public function set_template($template)
-	{
-		if ( ! is_array($template))
-		{
-			return FALSE;
-		}
-
-		$this->template = $template;
-		return TRUE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set the table heading
-	 *
-	 * Can be passed as an array or discreet params
-	 *
-	 * @param	mixed
-	 * @return	CI_Table
-	 */
-	public function set_heading($args = array())
-	{
-		$this->heading = $this->_prep_args(func_get_args());
-		return $this;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set columns. Takes a one-dimensional array as input and creates
-	 * a multi-dimensional array with a depth equal to the number of
-	 * columns. This allows a single array with many elements to be
-	 * displayed in a table that has a fixed column count.
-	 *
-	 * @param	array	$array
-	 * @param	int	$col_limit
-	 * @return	array
-	 */
-	public function make_columns($array = array(), $col_limit = 0)
-	{
-		if ( ! is_array($array) OR count($array) === 0 OR ! is_int($col_limit))
-		{
-			return FALSE;
-		}
-
-		// Turn off the auto-heading feature since it's doubtful we
-		// will want headings from a one-dimensional array
-		$this->auto_heading = FALSE;
-
-		if ($col_limit === 0)
-		{
-			return $array;
-		}
-
-		$new = array();
-		do
-		{
-			$temp = array_splice($array, 0, $col_limit);
-
-			if (count($temp) < $col_limit)
-			{
-				for ($i = count($temp); $i < $col_limit; $i++)
-				{
-					$temp[] = '&nbsp;';
-				}
-			}
-
-			$new[] = $temp;
-		}
-		while (count($array) > 0);
-
-		return $new;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set "empty" cells
-	 *
-	 * Can be passed as an array or discreet params
-	 *
-	 * @param	mixed	$value
-	 * @return	CI_Table
-	 */
-	public function set_empty($value)
-	{
-		$this->empty_cells = $value;
-		return $this;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Add a table row
-	 *
-	 * Can be passed as an array or discreet params
-	 *
-	 * @param	mixed
-	 * @return	CI_Table
-	 */
-	public function add_row($args = array())
-	{
-		$this->rows[] = $this->_prep_args(func_get_args());
-		return $this;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Prep Args
-	 *
-	 * Ensures a standard associative array format for all cell data
-	 *
-	 * @param	array
-	 * @return	array
-	 */
-	protected function _prep_args($args)
-	{
-		// If there is no $args[0], skip this and treat as an associative array
-		// This can happen if there is only a single key, for example this is passed to table->generate
-		// array(array('foo'=>'bar'))
-		if (isset($args[0]) && count($args) === 1 && is_array($args[0]) && ! isset($args[0]['data']))
-		{
-			$args = $args[0];
-		}
-
-		foreach ($args as $key => $val)
-		{
-			is_array($val) OR $args[$key] = array('data' => $val);
-		}
-
-		return $args;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Add a table caption
-	 *
-	 * @param	string	$caption
-	 * @return	CI_Table
-	 */
-	public function set_caption($caption)
-	{
-		$this->caption = $caption;
-		return $this;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Generate the table
-	 *
-	 * @param	mixed	$table_data
-	 * @return	string
-	 */
-	public function generate($table_data = NULL)
-	{
-		// The table data can optionally be passed to this function
-		// either as a database result object or an array
-		if ( ! empty($table_data))
-		{
-			if ($table_data instanceof CI_DB_result)
-			{
-				$this->_set_from_db_result($table_data);
-			}
-			elseif (is_array($table_data))
-			{
-				$this->_set_from_array($table_data);
-			}
-		}
-
-		// Is there anything to display? No? Smite them!
-		if (empty($this->heading) && empty($this->rows))
-		{
-			return 'Undefined table data';
-		}
-
-		// Compile and validate the template date
-		$this->_compile_template();
-
-		// Validate a possibly existing custom cell manipulation function
-		if (isset($this->function) && ! is_callable($this->function))
-		{
-			$this->function = NULL;
-		}
-
-		// Build the table!
-
-		$out = $this->template['table_open'].$this->newline;
-
-		// Add any caption here
-		if ($this->caption)
-		{
-			$out .= '<caption>'.$this->caption.'</caption>'.$this->newline;
-		}
-
-		// Is there a table heading to display?
-		if ( ! empty($this->heading))
-		{
-			$out .= $this->template['thead_open'].$this->newline.$this->template['heading_row_start'].$this->newline;
-
-			foreach ($this->heading as $heading)
-			{
-				$temp = $this->template['heading_cell_start'];
-
-				foreach ($heading as $key => $val)
-				{
-					if ($key !== 'data')
-					{
-						$temp = str_replace('<th', '<th '.$key.'="'.$val.'"', $temp);
-					}
-				}
-
-				$out .= $temp.(isset($heading['data']) ? $heading['data'] : '').$this->template['heading_cell_end'];
-			}
-
-			$out .= $this->template['heading_row_end'].$this->newline.$this->template['thead_close'].$this->newline;
-		}
-
-		// Build the table rows
-		if ( ! empty($this->rows))
-		{
-			$out .= $this->template['tbody_open'].$this->newline;
-
-			$i = 1;
-			foreach ($this->rows as $row)
-			{
-				if ( ! is_array($row))
-				{
-					break;
-				}
-
-				// We use modulus to alternate the row colors
-				$name = fmod($i++, 2) ? '' : 'alt_';
-
-				$out .= $this->template['row_'.$name.'start'].$this->newline;
-
-				foreach ($row as $cell)
-				{
-					$temp = $this->template['cell_'.$name.'start'];
-
-					foreach ($cell as $key => $val)
-					{
-						if ($key !== 'data')
-						{
-							$temp = str_replace('<td', '<td '.$key.'="'.$val.'"', $temp);
-						}
-					}
-
-					$cell = isset($cell['data']) ? $cell['data'] : '';
-					$out .= $temp;
-
-					if ($cell === '' OR $cell === NULL)
-					{
-						$out .= $this->empty_cells;
-					}
-					elseif (isset($this->function))
-					{
-						$out .= call_user_func($this->function, $cell);
-					}
-					else
-					{
-						$out .= $cell;
-					}
-
-					$out .= $this->template['cell_'.$name.'end'];
-				}
-
-				$out .= $this->template['row_'.$name.'end'].$this->newline;
-			}
-
-			$out .= $this->template['tbody_close'].$this->newline;
-		}
-
-		$out .= $this->template['table_close'];
-
-		// Clear table class properties before generating the table
-		$this->clear();
-
-		return $out;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Clears the table arrays.  Useful if multiple tables are being generated
-	 *
-	 * @return	CI_Table
-	 */
-	public function clear()
-	{
-		$this->rows = array();
-		$this->heading = array();
-		$this->auto_heading = TRUE;
-		return $this;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set table data from a database result object
-	 *
-	 * @param	CI_DB_result	$object	Database result object
-	 * @return	void
-	 */
-	protected function _set_from_db_result($object)
-	{
-		// First generate the headings from the table column names
-		if ($this->auto_heading === TRUE && empty($this->heading))
-		{
-			$this->heading = $this->_prep_args($object->list_fields());
-		}
-
-		foreach ($object->result_array() as $row)
-		{
-			$this->rows[] = $this->_prep_args($row);
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set table data from an array
-	 *
-	 * @param	array	$data
-	 * @return	void
-	 */
-	protected function _set_from_array($data)
-	{
-		if ($this->auto_heading === TRUE && empty($this->heading))
-		{
-			$this->heading = $this->_prep_args(array_shift($data));
-		}
-
-		foreach ($data as &$row)
-		{
-			$this->rows[] = $this->_prep_args($row);
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile Template
-	 *
-	 * @return	void
-	 */
-	protected function _compile_template()
-	{
-		if ($this->template === NULL)
-		{
-			$this->template = $this->_default_template();
-			return;
-		}
-
-		$this->temp = $this->_default_template();
-		foreach (array('table_open', 'thead_open', 'thead_close', 'heading_row_start', 'heading_row_end', 'heading_cell_start', 'heading_cell_end', 'tbody_open', 'tbody_close', 'row_start', 'row_end', 'cell_start', 'cell_end', 'row_alt_start', 'row_alt_end', 'cell_alt_start', 'cell_alt_end', 'table_close') as $val)
-		{
-			if ( ! isset($this->template[$val]))
-			{
-				$this->template[$val] = $this->temp[$val];
-			}
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Default Template
-	 *
-	 * @return	array
-	 */
-	protected function _default_template()
-	{
-		return array(
-			'table_open'		=> '<table border="0" cellpadding="4" cellspacing="0">',
-
-			'thead_open'		=> '<thead>',
-			'thead_close'		=> '</thead>',
-
-			'heading_row_start'	=> '<tr>',
-			'heading_row_end'	=> '</tr>',
-			'heading_cell_start'	=> '<th>',
-			'heading_cell_end'	=> '</th>',
-
-			'tbody_open'		=> '<tbody>',
-			'tbody_close'		=> '</tbody>',
-
-			'row_start'		=> '<tr>',
-			'row_end'		=> '</tr>',
-			'cell_start'		=> '<td>',
-			'cell_end'		=> '</td>',
-
-			'row_alt_start'		=> '<tr>',
-			'row_alt_end'		=> '</tr>',
-			'cell_alt_start'	=> '<td>',
-			'cell_alt_end'		=> '</td>',
-
-			'table_close'		=> '</table>'
-		);
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+OW==

@@ -1,193 +1,64 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 2.0.3
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * SQLSRV Result Class
- *
- * This class extends the parent result class: CI_DB_result
- *
- * @category	Database
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/database/
- */
-class CI_DB_sqlsrv_result extends CI_DB_result {
-
-	/**
-	 * Scrollable flag
-	 *
-	 * @var	mixed
-	 */
-	public $scrollable;
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Constructor
-	 *
-	 * @param	object	$driver_object
-	 * @return	void
-	 */
-	public function __construct(&$driver_object)
-	{
-		parent::__construct($driver_object);
-
-		$this->scrollable = $driver_object->scrollable;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Number of rows in the result set
-	 *
-	 * @return	int
-	 */
-	public function num_rows()
-	{
-		// sqlsrv_num_rows() doesn't work with the FORWARD and DYNAMIC cursors (FALSE is the same as FORWARD)
-		if ( ! in_array($this->scrollable, array(FALSE, SQLSRV_CURSOR_FORWARD, SQLSRV_CURSOR_DYNAMIC), TRUE))
-		{
-			return parent::num_rows();
-		}
-
-		return is_int($this->num_rows)
-			? $this->num_rows
-			: $this->num_rows = sqlsrv_num_rows($this->result_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Number of fields in the result set
-	 *
-	 * @return	int
-	 */
-	public function num_fields()
-	{
-		return @sqlsrv_num_fields($this->result_id);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Fetch Field Names
-	 *
-	 * Generates an array of column names
-	 *
-	 * @return	array
-	 */
-	public function list_fields()
-	{
-		$field_names = array();
-		foreach (sqlsrv_field_metadata($this->result_id) as $offset => $field)
-		{
-			$field_names[] = $field['Name'];
-		}
-
-		return $field_names;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Field data
-	 *
-	 * Generates an array of objects containing field meta-data
-	 *
-	 * @return	array
-	 */
-	public function field_data()
-	{
-		$retval = array();
-		foreach (sqlsrv_field_metadata($this->result_id) as $i => $field)
-		{
-			$retval[$i]		= new stdClass();
-			$retval[$i]->name	= $field['Name'];
-			$retval[$i]->type	= $field['Type'];
-			$retval[$i]->max_length	= $field['Size'];
-		}
-
-		return $retval;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Free the result
-	 *
-	 * @return	void
-	 */
-	public function free_result()
-	{
-		if (is_resource($this->result_id))
-		{
-			sqlsrv_free_stmt($this->result_id);
-			$this->result_id = FALSE;
-		}
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Result - associative array
-	 *
-	 * Returns the result set as an array
-	 *
-	 * @return	array
-	 */
-	protected function _fetch_assoc()
-	{
-		return sqlsrv_fetch_array($this->result_id, SQLSRV_FETCH_ASSOC);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Result - object
-	 *
-	 * Returns the result set as an object
-	 *
-	 * @param	string	$class_name
-	 * @return	object
-	 */
-	protected function _fetch_object($class_name = 'stdClass')
-	{
-		return sqlsrv_fetch_object($this->result_id, $class_name);
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+n8uzFuvxMeeLg9FxJniekh4prOqThJTASVi=

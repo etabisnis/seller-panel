@@ -1,133 +1,32 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * Benchmark Class
- *
- * This class enables you to mark points and calculate the time difference
- * between them. Memory consumption can also be displayed.
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Libraries
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/libraries/benchmark.html
- */
-class CI_Benchmark {
-
-	/**
-	 * List of all benchmark markers
-	 *
-	 * @var	array
-	 */
-	public $marker = array();
-
-	/**
-	 * Set a benchmark marker
-	 *
-	 * Multiple calls to this function can be made so that several
-	 * execution points can be timed.
-	 *
-	 * @param	string	$name	Marker name
-	 * @return	void
-	 */
-	public function mark($name)
-	{
-		$this->marker[$name] = microtime(TRUE);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Elapsed time
-	 *
-	 * Calculates the time difference between two marked points.
-	 *
-	 * If the first parameter is empty this function instead returns the
-	 * {elapsed_time} pseudo-variable. This permits the full system
-	 * execution time to be shown in a template. The output class will
-	 * swap the real value for this variable.
-	 *
-	 * @param	string	$point1		A particular marked point
-	 * @param	string	$point2		A particular marked point
-	 * @param	int	$decimals	Number of decimal places
-	 *
-	 * @return	string	Calculated elapsed time on success,
-	 *			an '{elapsed_string}' if $point1 is empty
-	 *			or an empty string if $point1 is not found.
-	 */
-	public function elapsed_time($point1 = '', $point2 = '', $decimals = 4)
-	{
-		if ($point1 === '')
-		{
-			return '{elapsed_time}';
-		}
-
-		if ( ! isset($this->marker[$point1]))
-		{
-			return '';
-		}
-
-		if ( ! isset($this->marker[$point2]))
-		{
-			$this->marker[$point2] = microtime(TRUE);
-		}
-
-		return number_format($this->marker[$point2] - $this->marker[$point1], $decimals);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Memory Usage
-	 *
-	 * Simply returns the {memory_usage} marker.
-	 *
-	 * This permits it to be put it anywhere in a template
-	 * without the memory being calculated until the end.
-	 * The output class will swap the real value for this variable.
-	 *
-	 * @return	string	'{memory_usage}'
-	 */
-	public function memory_usage()
-	{
-		return '{memory_usage}';
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+sO7eziCjCQ2rOvzBQw+2k4Z2

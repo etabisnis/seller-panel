@@ -1,254 +1,93 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 3.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * PHP ext/hash compatibility package
- *
- * @package		CodeIgniter
- * @subpackage	CodeIgniter
- * @category	Compatibility
- * @author		Andrey Andreev
- * @link		https://codeigniter.com/user_guide/
- * @link		http://php.net/hash
- */
-
-// ------------------------------------------------------------------------
-
-if (is_php('5.6'))
-{
-	return;
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('hash_equals'))
-{
-	/**
-	 * hash_equals()
-	 *
-	 * @link	http://php.net/hash_equals
-	 * @param	string	$known_string
-	 * @param	string	$user_string
-	 * @return	bool
-	 */
-	function hash_equals($known_string, $user_string)
-	{
-		if ( ! is_string($known_string))
-		{
-			trigger_error('hash_equals(): Expected known_string to be a string, '.strtolower(gettype($known_string)).' given', E_USER_WARNING);
-			return FALSE;
-		}
-		elseif ( ! is_string($user_string))
-		{
-			trigger_error('hash_equals(): Expected user_string to be a string, '.strtolower(gettype($user_string)).' given', E_USER_WARNING);
-			return FALSE;
-		}
-		elseif (($length = strlen($known_string)) !== strlen($user_string))
-		{
-			return FALSE;
-		}
-
-		$diff = 0;
-		for ($i = 0; $i < $length; $i++)
-		{
-			$diff |= ord($known_string[$i]) ^ ord($user_string[$i]);
-		}
-
-		return ($diff === 0);
-	}
-}
-
-// ------------------------------------------------------------------------
-
-if (is_php('5.5'))
-{
-	return;
-}
-
-// ------------------------------------------------------------------------
-
-if ( ! function_exists('hash_pbkdf2'))
-{
-	/**
-	 * hash_pbkdf2()
-	 *
-	 * @link	http://php.net/hash_pbkdf2
-	 * @param	string	$algo
-	 * @param	string	$password
-	 * @param	string	$salt
-	 * @param	int	$iterations
-	 * @param	int	$length
-	 * @param	bool	$raw_output
-	 * @return	string
-	 */
-	function hash_pbkdf2($algo, $password, $salt, $iterations, $length = 0, $raw_output = FALSE)
-	{
-		if ( ! in_array(strtolower($algo), hash_algos(), TRUE))
-		{
-			trigger_error('hash_pbkdf2(): Unknown hashing algorithm: '.$algo, E_USER_WARNING);
-			return FALSE;
-		}
-
-		if (($type = gettype($iterations)) !== 'integer')
-		{
-			if ($type === 'object' && method_exists($iterations, '__toString'))
-			{
-				$iterations = (string) $iterations;
-			}
-
-			if (is_string($iterations) && is_numeric($iterations))
-			{
-				$iterations = (int) $iterations;
-			}
-			else
-			{
-				trigger_error('hash_pbkdf2() expects parameter 4 to be long, '.$type.' given', E_USER_WARNING);
-				return NULL;
-			}
-		}
-
-		if ($iterations < 1)
-		{
-			trigger_error('hash_pbkdf2(): Iterations must be a positive integer: '.$iterations, E_USER_WARNING);
-			return FALSE;
-		}
-
-		if (($type = gettype($length)) !== 'integer')
-		{
-			if ($type === 'object' && method_exists($length, '__toString'))
-			{
-				$length = (string) $length;
-			}
-
-			if (is_string($length) && is_numeric($length))
-			{
-				$length = (int) $length;
-			}
-			else
-			{
-				trigger_error('hash_pbkdf2() expects parameter 5 to be long, '.$type.' given', E_USER_WARNING);
-				return NULL;
-			}
-		}
-
-		if ($length < 0)
-		{
-			trigger_error('hash_pbkdf2(): Length must be greater than or equal to 0: '.$length, E_USER_WARNING);
-			return FALSE;
-		}
-
-		$hash_length = defined('MB_OVERLOAD_STRING')
-			? mb_strlen(hash($algo, NULL, TRUE), '8bit')
-			: strlen(hash($algo, NULL, TRUE));
-		empty($length) && $length = $hash_length;
-
-		// Pre-hash password inputs longer than the algorithm's block size
-		// (i.e. prepare HMAC key) to mitigate potential DoS attacks.
-		static $block_sizes;
-		empty($block_sizes) && $block_sizes = array(
-			'gost' => 32,
-			'haval128,3' => 128,
-			'haval160,3' => 128,
-			'haval192,3' => 128,
-			'haval224,3' => 128,
-			'haval256,3' => 128,
-			'haval128,4' => 128,
-			'haval160,4' => 128,
-			'haval192,4' => 128,
-			'haval224,4' => 128,
-			'haval256,4' => 128,
-			'haval128,5' => 128,
-			'haval160,5' => 128,
-			'haval192,5' => 128,
-			'haval224,5' => 128,
-			'haval256,5' => 128,
-			'md2' => 16,
-			'md4' => 64,
-			'md5' => 64,
-			'ripemd128' => 64,
-			'ripemd160' => 64,
-			'ripemd256' => 64,
-			'ripemd320' => 64,
-			'salsa10' => 64,
-			'salsa20' => 64,
-			'sha1' => 64,
-			'sha224' => 64,
-			'sha256' => 64,
-			'sha384' => 128,
-			'sha512' => 128,
-			'snefru' => 32,
-			'snefru256' => 32,
-			'tiger128,3' => 64,
-			'tiger160,3' => 64,
-			'tiger192,3' => 64,
-			'tiger128,4' => 64,
-			'tiger160,4' => 64,
-			'tiger192,4' => 64,
-			'whirlpool' => 64
-		);
-
-		if (isset($block_sizes[$algo], $password[$block_sizes[$algo]]))
-		{
-			$password = hash($algo, $password, TRUE);
-		}
-
-		$hash = '';
-		// Note: Blocks are NOT 0-indexed
-		for ($bc = (int) ceil($length / $hash_length), $bi = 1; $bi <= $bc; $bi++)
-		{
-			$key = $derived_key = hash_hmac($algo, $salt.pack('N', $bi), $password, TRUE);
-			for ($i = 1; $i < $iterations; $i++)
-			{
-				$derived_key ^= $key = hash_hmac($algo, $key, $password, TRUE);
-			}
-
-			$hash .= $derived_key;
-		}
-
-		// This is not RFC-compatible, but we're aiming for natural PHP compatibility
-		if ( ! $raw_output)
-		{
-			$hash = bin2hex($hash);
-		}
-
-		return defined('MB_OVERLOAD_STRING')
-			? mb_substr($hash, 0, $length, '8bit')
-			: substr($hash, 0, $length);
-	}
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

@@ -1,94 +1,58 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$lang['date_year'] = 'Year';
-$lang['date_years'] = 'Years';
-$lang['date_month'] = 'Month';
-$lang['date_months'] = 'Months';
-$lang['date_week'] = 'Week';
-$lang['date_weeks'] = 'Weeks';
-$lang['date_day'] = 'Day';
-$lang['date_days'] = 'Days';
-$lang['date_hour'] = 'Hour';
-$lang['date_hours'] = 'Hours';
-$lang['date_minute'] = 'Minute';
-$lang['date_minutes'] = 'Minutes';
-$lang['date_second'] = 'Second';
-$lang['date_seconds'] = 'Seconds';
-
-$lang['UM12']	= '(UTC -12:00) Baker/Howland Island';
-$lang['UM11']	= '(UTC -11:00) Niue';
-$lang['UM10']	= '(UTC -10:00) Hawaii-Aleutian Standard Time, Cook Islands, Tahiti';
-$lang['UM95']	= '(UTC -9:30) Marquesas Islands';
-$lang['UM9']	= '(UTC -9:00) Alaska Standard Time, Gambier Islands';
-$lang['UM8']	= '(UTC -8:00) Pacific Standard Time, Clipperton Island';
-$lang['UM7']	= '(UTC -7:00) Mountain Standard Time';
-$lang['UM6']	= '(UTC -6:00) Central Standard Time';
-$lang['UM5']	= '(UTC -5:00) Eastern Standard Time, Western Caribbean Standard Time';
-$lang['UM45']	= '(UTC -4:30) Venezuelan Standard Time';
-$lang['UM4']	= '(UTC -4:00) Atlantic Standard Time, Eastern Caribbean Standard Time';
-$lang['UM35']	= '(UTC -3:30) Newfoundland Standard Time';
-$lang['UM3']	= '(UTC -3:00) Argentina, Brazil, French Guiana, Uruguay';
-$lang['UM2']	= '(UTC -2:00) South Georgia/South Sandwich Islands';
-$lang['UM1']	= '(UTC -1:00) Azores, Cape Verde Islands';
-$lang['UTC']	= '(UTC) Greenwich Mean Time, Western European Time';
-$lang['UP1']	= '(UTC +1:00) Central European Time, West Africa Time';
-$lang['UP2']	= '(UTC +2:00) Central Africa Time, Eastern European Time, Kaliningrad Time';
-$lang['UP3']	= '(UTC +3:00) Moscow Time, East Africa Time, Arabia Standard Time';
-$lang['UP35']	= '(UTC +3:30) Iran Standard Time';
-$lang['UP4']	= '(UTC +4:00) Azerbaijan Standard Time, Samara Time';
-$lang['UP45']	= '(UTC +4:30) Afghanistan';
-$lang['UP5']	= '(UTC +5:00) Pakistan Standard Time, Yekaterinburg Time';
-$lang['UP55']	= '(UTC +5:30) Indian Standard Time, Sri Lanka Time';
-$lang['UP575']	= '(UTC +5:45) Nepal Time';
-$lang['UP6']	= '(UTC +6:00) Bangladesh Standard Time, Bhutan Time, Omsk Time';
-$lang['UP65']	= '(UTC +6:30) Cocos Islands, Myanmar';
-$lang['UP7']	= '(UTC +7:00) Krasnoyarsk Time, Cambodia, Laos, Thailand, Vietnam';
-$lang['UP8']	= '(UTC +8:00) Australian Western Standard Time, Beijing Time, Irkutsk Time';
-$lang['UP875']	= '(UTC +8:45) Australian Central Western Standard Time';
-$lang['UP9']	= '(UTC +9:00) Japan Standard Time, Korea Standard Time, Yakutsk Time';
-$lang['UP95']	= '(UTC +9:30) Australian Central Standard Time';
-$lang['UP10']	= '(UTC +10:00) Australian Eastern Standard Time, Vladivostok Time';
-$lang['UP105']	= '(UTC +10:30) Lord Howe Island';
-$lang['UP11']	= '(UTC +11:00) Srednekolymsk Time, Solomon Islands, Vanuatu';
-$lang['UP115']	= '(UTC +11:30) Norfolk Island';
-$lang['UP12']	= '(UTC +12:00) Fiji, Gilbert Islands, Kamchatka Time, New Zealand Standard Time';
-$lang['UP1275']	= '(UTC +12:45) Chatham Islands Standard Time';
-$lang['UP13']	= '(UTC +13:00) Samoa Time Zone, Phoenix Islands Time, Tonga';
-$lang['UP14']	= '(UTC +14:00) Line Islands';
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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
+Pxu9hoA9l6W=

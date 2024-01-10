@@ -1,164 +1,53 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2019, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @license	https://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 2.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/**
- * Utf8 Class
- *
- * Provides support for UTF-8 environments
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	UTF-8
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/libraries/utf8.html
- */
-class CI_Utf8 {
-
-	/**
-	 * Class constructor
-	 *
-	 * Determines if UTF-8 support is to be enabled.
-	 *
-	 * @return	void
-	 */
-	public function __construct()
-	{
-		if (
-			defined('PREG_BAD_UTF8_ERROR')				// PCRE must support UTF-8
-			&& (ICONV_ENABLED === TRUE OR MB_ENABLED === TRUE)	// iconv or mbstring must be installed
-			&& strtoupper(config_item('charset')) === 'UTF-8'	// Application charset must be UTF-8
-			)
-		{
-			define('UTF8_ENABLED', TRUE);
-			log_message('debug', 'UTF-8 Support Enabled');
-		}
-		else
-		{
-			define('UTF8_ENABLED', FALSE);
-			log_message('debug', 'UTF-8 Support Disabled');
-		}
-
-		log_message('info', 'Utf8 Class Initialized');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Clean UTF-8 strings
-	 *
-	 * Ensures strings contain only valid UTF-8 characters.
-	 *
-	 * @param	string	$str	String to clean
-	 * @return	string
-	 */
-	public function clean_string($str)
-	{
-		if ($this->is_ascii($str) === FALSE)
-		{
-			if (MB_ENABLED)
-			{
-				$str = mb_convert_encoding($str, 'UTF-8', 'UTF-8');
-			}
-			elseif (ICONV_ENABLED)
-			{
-				$str = @iconv('UTF-8', 'UTF-8//IGNORE', $str);
-			}
-		}
-
-		return $str;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Remove ASCII control characters
-	 *
-	 * Removes all ASCII control characters except horizontal tabs,
-	 * line feeds, and carriage returns, as all others can cause
-	 * problems in XML.
-	 *
-	 * @param	string	$str	String to clean
-	 * @return	string
-	 */
-	public function safe_ascii_for_xml($str)
-	{
-		return remove_invisible_characters($str, FALSE);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Convert to UTF-8
-	 *
-	 * Attempts to convert a string to UTF-8.
-	 *
-	 * @param	string	$str		Input string
-	 * @param	string	$encoding	Input encoding
-	 * @return	string	$str encoded in UTF-8 or FALSE on failure
-	 */
-	public function convert_to_utf8($str, $encoding)
-	{
-		if (MB_ENABLED)
-		{
-			return mb_convert_encoding($str, 'UTF-8', $encoding);
-		}
-		elseif (ICONV_ENABLED)
-		{
-			return @iconv($encoding, 'UTF-8', $str);
-		}
-
-		return FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Is ASCII?
-	 *
-	 * Tests if a string is standard 7-bit ASCII or not.
-	 *
-	 * @param	string	$str	String to check
-	 * @return	bool
-	 */
-	public function is_ascii($str)
-	{
-		return (preg_match('/[^\x00-\x7F]/S', $str) === 0);
-	}
-
-}
+<?php //004fb
+if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo("Site error: the ".(php_sapi_name()=='cli'?'ionCube':'<a href="http://www.ioncube.com">ionCube</a>')." PHP Loader needs to be installed. This is a widely used PHP extension for running ionCube protected PHP code, website security and malware blocking.\n\nPlease visit ".(php_sapi_name()=='cli'?'get-loader.ioncube.com':'<a href="http://get-loader.ioncube.com">get-loader.ioncube.com</a>')." for install assistance.\n\n");exit(199);
+?>
+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

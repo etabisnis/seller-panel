@@ -6,14 +6,14 @@
 	define('APP_VERSION', '1.0');
 
 	// application name
-	define('APP_TITLE', 'Reseller WAGW Installation');
+	define('APP_TITLE', 'WAGW Seller Installation');
 
 	// application description
 	define('APP_DESCRIPTION', 'Database Installer Application');
 
 	// application author
-	define('APP_AUTHOR', 'Avisitz');
+	define('APP_AUTHOR', 'WAGW');
 
 	// application default logo
-	define('APP_DEFAULT_LOGO', 'install/favicon.png');
+	define('APP_DEFAULT_LOGO', 'assets/uploads/wagw.png');
 ?>
