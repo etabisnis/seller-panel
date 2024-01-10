@@ -19,9 +19,9 @@ Installation
 Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
 of the WAGW Reseller Panel.
 
-###################
-Contact Person
-###################
+************
+Installation
+************
 
-Whatsapp : `+62 856-4110-7430 <https://wa.me/6285641107430>`
-Website : `WAGW Reseller <https://wagw-reseller.com>`
+Whatsapp :  `6285641107430 <https://wa.me/6285641107430>`_
+Website :  `WAGW Reseller <https://wagw-reseller.com>`_
