@@ -33,3 +33,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 install/*
 application/config/database.php
 application/config/database-old.php
+.htaccess
